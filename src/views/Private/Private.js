@@ -3,18 +3,20 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import { Loading } from './../../components/Loading';
 
+const Users = lazy(() => import('./Users'));
+
 
 const Private = () => {
   return (
     <Router>
       <Suspense fallback={<Loading />}>
         <Switch>
-          <Route />
+          <Route path="/users" component={Users} />
           <Redirect from="*" to="/" />
         </Switch>
       </Suspense>
     </Router>
   )
-}
+};
 
-export default Private
+export default Private;
