@@ -1,0 +1,343 @@
+body {
+  background: linear-gradient(#1e1e2f, #1e1e24);
+}
+
+.wrapper {
+  position: relative;
+  height: 100vh;
+  top: 0;
+  .sidebar {
+    position: fixed;
+    width: 230px;
+    height: calc(100vh - 90px);
+    margin-top: 80px;
+    margin-left: 20px;
+    z-index: 1024;
+    border-radius: 5px;
+    background: linear-gradient(#97174d, #ca3372);
+    transition-property: top, bottom, width;
+    transition-duration: 0.2s, 0.2s, 0.35s;
+    transition-timing-function: linear, linear, ease;
+    &::after {
+      content: "";
+      position: absolute;
+      border-top: 5px solid transparent;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid #97174d;
+      top: -10px;
+      left: 40px;
+      transform: translate(-50%);
+    }
+    .sidebar-wrapper {
+      min-height: 100%;
+      max-height: calc(100vh - 705px);
+      z-index: 4;
+      overflow: auto;
+    }
+  }
+  .main-panel {
+    width: 100%;
+    min-height: 100vh;
+    border-top: 2px solid #97174d;
+    background: linear-gradient(#1e1e2f, #1e1e24);
+    transition: 0.5s;
+    float: right;
+    nav.navbar {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 35px 0px 20px;
+      div.navbar-bar {
+        position: relative;
+        display: flex;
+        align-items: center;
+        button {
+          background: transparent;
+          border: none;
+          outline: none;
+          &#boton-sidebar {
+            opacity: 1;
+            transition: 0.6s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-bar i,
+.navbar-options i {
+  color: #fff;
+  font-size: 20px;
+  margin-left: 30px;
+}
+
+.navbar-bar p {
+  color: #fff;
+  font-family: "Poppins";
+  font-weight: 300;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-left: 20px;
+  opacity: 1;
+  transition: 0.6s;
+}
+
+.navbar-bar p {
+  position: relative;
+  font-size: 13px;
+}
+
+.navbar-options {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-options .photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 30px;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+}
+
+/* transisiones js */
+.navbar-bar_fixed button {
+  outline: none;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #a8a8a8;
+  opacity: 0;
+  transition: all 0.5s;
+  z-index: 100;
+}
+
+.navbar-bar_fixed {
+  display: none;
+}
+
+.navbar-bar_fixed.block {
+  display: block !important;
+  position: fixed;
+  color: #a8a8a8;
+  transition: all 0.5s;
+}
+
+.navbar-bar_fixed.align {
+  left: 20px;
+}
+
+.navbar-bar.none button#boton-sidebar,
+.navbar-bar.none p {
+  opacity: 0;
+  transition: 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+}
+
+.navbar-bar_fixed.block button {
+  opacity: 1 !important;
+  transition: all 0.5s;
+}
+
+/* Menu Sidebar*/
+.logo-rc {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+.logo-rc::after {
+  content: "";
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  height: 1px;
+  width: 90%;
+  right: 15px;
+  bottom: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+.logo-rc img {
+  width: 35px;
+  margin-left: 22px;
+}
+
+.logo-rc span {
+  text-transform: uppercase;
+  display: block;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #fff;
+  font-family: "Poppins";
+  overflow: hidden;
+  margin-left: 10px;
+  transition: all 0.5s;
+  font-weight: 300;
+}
+
+.nav ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.nav ul li {
+  padding: 30px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav ul li a i {
+  color: #fff;
+  font-size: 20px;
+  width: 37px;
+}
+
+.nav ul li a span {
+  display: block;
+  transition: 0.5s !important;
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.block {
+  animation: mostrarBotonFixed 1s;
+}
+
+@keyframes mostrarBotonFixed {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Contenedor principal */
+.content {
+  padding: 80px 30px 30px 280px;
+  transition: 0.5;
+}
+
+.main {
+  padding: 80px 30px 30px 130px;
+  transition: 0.5;
+}
+
+.footer-dashboard {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer-dashboard p {
+  margin-top: 20px;
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 12px;
+}
+
+.navbar-bar button#boton-sidebar_left {
+  display: none;
+}
+
+/* Animación al dar click en nuestro boton sidebar */
+.toggle {
+  width: 80px !important;
+}
+
+.toggle .logo-rc {
+  padding: 10px 0px 15px 0px;
+}
+
+.toggle .logo-rc::after {
+  width: 70%;
+  left: 15px;
+}
+
+.toggle .logo-rc span {
+  opacity: 0;
+  transform: translate3d(-25px, 0, 0);
+}
+
+.toggle .nav ul li a span {
+  opacity: 0;
+  transform: translate3d(-25px, 0, 0);
+}
+
+@media only screen and (max-width: 1200px) {
+  .sidebar {
+    position: fixed;
+    display: block;
+    top: 0;
+    height: 100vh;
+    width: 260px !important;
+    right: auto;
+    left: 0;
+    margin: 0;
+    border-radius: 0;
+    z-index: 1032;
+    visibility: visible;
+    overflow-y: visible;
+    padding: 0;
+    transition: 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    transform: translate3d(-260px, 0, 0);
+  }
+  .sidebar.toggle {
+    transition: 0.5;
+    z-index: 1000;
+  }
+  .sidebar-wrapper {
+    transition-property: top, bottom, width;
+    transition-duration: 0.2s, 0.2s, 0.35s;
+    transition-timing-function: linear, linear;
+  }
+  .main-panel > .content {
+    padding-left: 30px;
+  }
+  .navbar-bar_fixed button {
+    display: none;
+  }
+  .navbar-bar button#boton-sidebar {
+    display: none;
+  }
+  .navbar-bar button#boton-sidebar_left {
+    display: block;
+  }
+  .nav-open .sidebar {
+    transition: 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    transform: translateZ(0);
+  }
+  .nav-open .main-panel {
+    right: 0;
+    transform: translate3d(260px, 0, 0);
+    transition: 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  }
+  .toggle .logo-rc span {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  .toggle .nav ul li a span {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
