@@ -1,6 +1,6 @@
 import { Token } from "./../storage";
 import { auth } from "./../../services/auth/actions";
-import { store } from "./../../store";
+import { store } from "./../../Store";
 
 const API_URL = "";
 

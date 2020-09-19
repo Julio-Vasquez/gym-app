@@ -6,6 +6,7 @@
   "description": "App create with react and electron",
   "main": "public/electron.js",
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "antd": "^4.6.2",
     "electron-is-dev": "^1.2.0",
     "node-sass": "^4.14.1",

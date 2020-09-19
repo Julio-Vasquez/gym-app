@@ -1,15 +1,22 @@
-import React, { lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import React, { lazy, Suspense } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
-import { Loading } from './../../components/Loading';
-import Layout from './Layout';
+import { Loading } from "./../../components/Loading";
+import Layout from "./Layout";
 
-const Users = lazy(() => import('./Users'));
-
+const Users = lazy(() => import("./Users"));
 
 const Private = () => {
   return (
-    <Layout>
+    <Layout
+      appName="Cool Gym App"
+      logo="https://i.pinimg.com/originals/6c/44/e8/6c44e8d2cc9dca61e592c09cb9f82286.jpg"
+    >
       <Router>
         <Suspense fallback={<Loading />}>
           <Switch>
@@ -19,7 +26,7 @@ const Private = () => {
         </Suspense>
       </Router>
     </Layout>
-  )
+  );
 };
 
 export default Private;
