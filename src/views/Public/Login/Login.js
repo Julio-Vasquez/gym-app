@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Login = () => {
-  window.scrollTo(0, 0);
-  const [form, setForm] = useState({ user: '', password: '' });
+  //window.scrollTo(0, 0);
+  const [form, setForm] = useState({ user: "", password: "" });
 
-  const onChangeForm = e => {
-    console.log([e.target.name] + ':' + [e.target.value])
+  const onChangeForm = (e) => {
+    console.log([e.target.name] + ":" + [e.target.value]);
     setForm({ ...form, [e.target.name]: [e.target.value] });
-  }
+  };
+
   return (
     <div className="fragmento">
       <div className="body"></div>
       <div className="header">
-        <div>Cool<span> Gym </span></div>
+        <div>
+          Cool<span> Gym </span>
+        </div>
       </div>
       <br />
       <div className="login">
@@ -27,12 +30,13 @@ const Login = () => {
           type="password"
           placeholder="password"
           name="password"
-          onChange={onChangeForm} />
+          onChange={onChangeForm}
+        />
         <br />
         <input type="button" value="Login" />
       </div>
     </div>
   );
-}
+};
 
 export default Login;

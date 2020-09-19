@@ -5,7 +5,7 @@ import Public from './Public/Public';
 
 function App() {
 
-  const auth = true;
+  const auth = false;
 
   return (
     <div className="App">
