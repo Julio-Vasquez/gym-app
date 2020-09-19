@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-const Login = () => {
-  //window.scrollTo(0, 0);
+const Login = ({ appName }) => {
+  const name = appName.split(" ");
   const [form, setForm] = useState({ user: "", password: "" });
 
   const onChangeForm = (e) => {
@@ -13,8 +14,11 @@ const Login = () => {
     <div className="fragmento">
       <div className="body"></div>
       <div className="header">
-        <div>
-          Cool<span> Gym </span>
+        <div className="name-app-hover">
+          <a href="/">
+            {name[0]}
+            <span> {name[1]} </span>
+          </a>
         </div>
       </div>
       <br />
@@ -33,10 +37,18 @@ const Login = () => {
           onChange={onChangeForm}
         />
         <br />
+
         <input type="button" value="Login" />
+        <br />
+        <br />
+        <a href="/reset-password" id="forgot">
+          Olvidaste tu contraseña?
+        </a>
       </div>
     </div>
   );
 };
-
+Login.propTypes = {
+  appName: PropTypes.string.isRequired,
+};
 export default Login;
