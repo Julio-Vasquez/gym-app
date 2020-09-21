@@ -1,20 +1,26 @@
 import { logger } from "redux-logger";
-//import createSagaMiddleware from "redux-saga";
+import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { routerMiddleware } from "connected-react-router";
 
-//import rootSaga from "./Sagas";
+import rootSaga from "./Sagas";
 import { rootReducers } from "./Reducers";
 
-//const sagaMiddleware = createSagaMiddleware();
+const ENV = "development";
 
-//let middleware = [sagaMiddleware];
-let middleware = [logger];
-//if (ENV === "development") middleware = [...middleware, logger];
+export const Store = (history) => {
+  const sagaMiddleware = createSagaMiddleware();
+  const routerMiddlewareLocal = routerMiddleware();
 
-export const store = createStore(
-  rootReducers,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+  let middleware = [sagaMiddleware, routerMiddlewareLocal];
 
-//sagaMiddleware.run(rootSaga);
+  if (ENV === "development") middleware = [...middleware, logger];
+
+  const store = createStore(
+    rootReducers(history),
+    composeWithDevTools(applyMiddleware(...middleware))
+  );
+  sagaMiddleware.run(rootSaga);
+  return store;
+};
