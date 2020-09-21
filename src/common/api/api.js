@@ -1,8 +1,8 @@
 import { Token } from "./../storage";
-import { auth } from "./../../services/auth/actions";
-import { store } from "./../../Store";
+import { auth } from "../../services/Auth/AuthActions";
+import { store } from "./../../store";
 
-const API_URL = "";
+const API_URL = "https://localhost:8550";
 
 class Api {
   GET(url) {

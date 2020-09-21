@@ -1,5 +1,8 @@
 class token {
-  IsTokenValid = () => this.GetToken() !== undefined || this.GetToken() !== "";
+  IsTokenValid = () =>
+    this.GetToken() !== undefined &&
+    this.GetToken() !== "" &&
+    this.GetToken() !== null;
 
   GetToken = () => {
     return sessionStorage.getItem("coolgym");
