@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Row, Col, Card, message } from "antd";
+import { Form, Input, Button, Row, Col, Card } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
 
-import { auth } from "./../../../services/Auth/actions";
+import { auth } from "../../../services/Auth/AuthActions";
 import "./ResetPassword.scss";
 import { Loading } from "../../../components/Loading";
 
@@ -28,10 +28,8 @@ const ResetPassword = ({ appName }) => {
 
   const onChange = (e) => setUserName(e.target.value);
 
-  const onSubmit = (e) => {
-    if (userName && userName.length >= 4) {
-      dispatch(auth.resetPassword(userName));
-    } else message.error("Revise");
+  const onSubmit = () => {
+    dispatch(auth.resetPassword(userName));
   };
 
   return loading ? (
