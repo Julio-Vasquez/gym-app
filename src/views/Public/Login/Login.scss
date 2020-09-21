@@ -51,24 +51,6 @@
     width: 350px;
     padding: 10px;
     z-index: 99;
-    input[type="text"],
-    input[type="password"] {
-      width: 250px;
-      height: 40px;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 2px;
-      color: #fff;
-      font-family: "Exo", sans-serif;
-      font-size: 19px;
-      font-weight: 500;
-      padding: 4px;
-      &:focus {
-        outline: none;
-        border: 1px solid rgba(255, 255, 255, 0.9);
-      }
-    }
-    input[type="password"],
     input[type="button"] {
       margin-top: 10px;
     }
@@ -100,10 +82,15 @@
 input::placeholder {
   color: white;
 }
+
 #forgot {
   font-size: 16px;
   color: #5379fa;
   &:hover {
     color: white;
   }
+}
+
+div[role="alert"] {
+  font-size: 20px;
 }
