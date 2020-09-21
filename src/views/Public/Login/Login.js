@@ -4,7 +4,7 @@ import { UserOutlined, AlipayOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
-import { auth } from "../../../services/Auth/actions";
+import { auth } from "../../../services/Auth/AuthActions";
 
 const Login = ({ appName }) => {
   const name = appName.split(" ");
@@ -12,12 +12,13 @@ const Login = ({ appName }) => {
   const dispatch = useDispatch();
 
   const onChangeForm = (e) => {
-    console.log([e.target.name] + ":" + [e.target.value]);
-    setForm({ ...form, [e.target.name]: [e.target.value] });
+    console.log([e.target.name] + ":" + e.target.value);
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const onFinishForm = (e) => {
-    dispatch(auth.login(form.user, form.password));
+    const { password, user } = form;
+    dispatch(auth.login(user, password));
   };
 
   const { Item } = Form;
@@ -51,7 +52,7 @@ const Login = ({ appName }) => {
               prefix={<UserOutlined className="site-form-item-icon" />}
               type="text"
               placeholder="Nombre de usuario"
-              name="username"
+              name="user"
             />
           </Item>
           <Item
@@ -73,7 +74,7 @@ const Login = ({ appName }) => {
             />
           </Item>
 
-          <input type="button" value="Login" />
+          <input type="submit" value="Login" />
           <br />
           <br />
           <a href="/reset-password" id="forgot">

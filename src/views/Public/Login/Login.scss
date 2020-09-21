@@ -51,10 +51,13 @@
     width: 350px;
     padding: 10px;
     z-index: 99;
-    input[type="button"] {
+    input {
+      height: 28px;
+    }
+    input[type="submit"] {
       margin-top: 10px;
     }
-    input[type="button"] {
+    input[type="submit"] {
       width: 250px;
       height: 35px;
       background: #fff;
@@ -78,9 +81,6 @@
       }
     }
   }
-}
-input::placeholder {
-  color: white;
 }
 
 #forgot {
