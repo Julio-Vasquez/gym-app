@@ -6,7 +6,8 @@ import Public from "./Public/Public";
 
 function App() {
   const { authentication } = useSelector((state) => state.Auth);
-  console.log(authentication);
+  //console.log(authentication);
+  //const auth = true;
   return <div className="App">{authentication ? <Private /> : <Public />}</div>;
 }
 

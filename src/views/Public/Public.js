@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import Check from "../Private/Check";
 
 import { Loading } from "./../../components/Loading";
 
@@ -25,6 +26,7 @@ const Public = () => {
           <Route exact path="/reset-password">
             <ResetPassword appName="Cool Gym" />
           </Route>
+          <Route path="/check" exact component={Check} />
           <Redirect from="*" to="/" />
         </Switch>
       </Suspense>

@@ -5,7 +5,6 @@ import { UserOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
 
 import { auth } from "../../../services/Auth/AuthActions";
-import "./ResetPassword.scss";
 import { Loading } from "../../../components/Loading";
 
 const ResetPassword = ({ appName }) => {

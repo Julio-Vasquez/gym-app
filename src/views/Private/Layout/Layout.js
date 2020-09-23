@@ -8,8 +8,6 @@ import {
   BarChartOutlined,
 } from "@ant-design/icons";
 
-import "./Layout.scss";
-
 const Layout = ({ appName, logo, children }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [navbar, setNavbar] = useState(false);
@@ -53,7 +51,7 @@ const Layout = ({ appName, logo, children }) => {
           <div className="nav">
             <ul>
               <li>
-                <a href="/">
+                <a href="/dashboard">
                   <DashboardOutlined />
                   <span>dashboard</span>
                 </a>
@@ -65,15 +63,15 @@ const Layout = ({ appName, logo, children }) => {
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/users">
                   <UserOutlined />
                   <span>clientes</span>
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/trainers">
                   <i className="fas fa-money-bill-wave"></i>
-                  <span>ganancias</span>
+                  <span>entrenadores</span>
                 </a>
               </li>
             </ul>
