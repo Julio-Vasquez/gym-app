@@ -10,6 +10,7 @@ import { Loading } from "./../../components/Loading";
 import Layout from "./Layout";
 
 const Users = lazy(() => import("./Users"));
+const Check = lazy(() => import('./Check'));
 //const DashBoard = lazy(() => import("./DashBoard"));
 
 const Private = () => {
@@ -26,6 +27,7 @@ const Private = () => {
             </Route>
             {/*<Route exact path="/dashboard" component={DashBoard} />*/}
             <Route exact path="/users" component={Users} />
+            <Route exact path="/check" component={Check} />
             <Redirect from="*" to="/" />
           </Switch>
         </Suspense>

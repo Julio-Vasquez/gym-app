@@ -5,20 +5,26 @@ const Check = () => {
   const [open, setOpen] = useState(true);
   const [ok, setOk] = useState(false);
 
-  const openModal = () => setOpen(!open);
+  const closeModal = () => setOpen(!open);
+
   const okModal = () => {
     setOpen(false);
     setOk(true);
   }
+
+  const data = [{ name: 'julio', lastName: 'vasquez' }];
+
   return (
     <div>
       <ModalCheck
+        data={data}
         open={open}
         title="example"
         ok={okModal}
-        close={openModal}
+        close={closeModal}
         accept={ok}
       />
+      <p>checkeo</p>
     </div>
   )
 }

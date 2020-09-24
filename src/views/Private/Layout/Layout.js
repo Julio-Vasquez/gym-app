@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import {
   DashboardOutlined,
   UserOutlined,
   MenuOutlined,
   QrcodeOutlined,
   BarChartOutlined,
+  LoginOutlined,
+  UserSwitchOutlined
 } from "@ant-design/icons";
+import PropTypes from "prop-types";
 
 const Layout = ({ appName, logo, children }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -19,7 +21,7 @@ const Layout = ({ appName, logo, children }) => {
   };
 
   useEffect(() => {
-    const mostrarBotonFixed = () => {
+    const showButtonFixed = () => {
       const scroll = document.documentElement.scrollTop;
       if (scroll >= 25) {
         setNavbar(true);
@@ -29,7 +31,7 @@ const Layout = ({ appName, logo, children }) => {
         setVisibleBtnFixed(false);
       }
     };
-    document.addEventListener("scroll", mostrarBotonFixed);
+    document.addEventListener("scroll", showButtonFixed);
   }, []);
 
   const onClickSidebar = () => {
@@ -52,25 +54,25 @@ const Layout = ({ appName, logo, children }) => {
             <ul>
               <li>
                 <a href="/dashboard">
-                  <DashboardOutlined />
+                  <DashboardOutlined className="span-icon" />
                   <span>dashboard</span>
                 </a>
               </li>
               <li>
-                <a href="/">
-                  <i className="fas fa-cash-register"></i>
-                  <span>ventas</span>
+                <a href="/check">
+                  <LoginOutlined className="span-icon" />
+                  <span>Ingreso Gym</span>
                 </a>
               </li>
               <li>
                 <a href="/users">
-                  <UserOutlined />
+                  <UserOutlined className="span-icon" />
                   <span>clientes</span>
                 </a>
               </li>
               <li>
                 <a href="/trainers">
-                  <i className="fas fa-money-bill-wave"></i>
+                  <UserSwitchOutlined className="span-icon" />
                   <span>entrenadores</span>
                 </a>
               </li>
@@ -105,7 +107,7 @@ const Layout = ({ appName, logo, children }) => {
           </div>
           <div className="navbar-options">
             <div className="photo">
-              <img src="" alt="logo user" />
+              <img src={logo} alt="logo user" />
             </div>
           </div>
         </nav>
@@ -113,8 +115,7 @@ const Layout = ({ appName, logo, children }) => {
           {children}
           <div className="footer-dashboard">
             <p>
-              © 2020 hecho con <i className="far fa-heart"></i> de Rhaegar Code
-              para mis suscriptores.
+              © 2020 hecho con ♥ de  Code
             </p>
           </div>
         </div>

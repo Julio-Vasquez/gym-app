@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 import { auth } from "../../../services/Auth/AuthActions";
 import { Loading } from "../../../components/Loading";
+import { RedirectButton } from "../../../components/RedirectButton";
 
 const ResetPassword = ({ appName }) => {
   const name = appName.split(" ");
@@ -89,15 +90,11 @@ const ResetPassword = ({ appName }) => {
             <span> {name[1]} </span>
           </div>
         </Col>
-
-        <a href="/login" className="made-with-mk">
-          <div class="brand">
-            <img src={require('./../../../assets/img/house.png')} alt="Icon Home" />
-          </div>
-          <div class="made-with-text">
-            Volver al<span> Login</span>
-          </div>
-        </a>
+        <RedirectButton
+          url="/login"
+          imgPath="house.png"
+          urlName="Login"
+        />
       </div>
     );
 };

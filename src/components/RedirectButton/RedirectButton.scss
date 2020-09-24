@@ -1,0 +1,40 @@
+a.made-with-mk {
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 30px;
+  background-color: rgba(16, 16, 16, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 10px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: 0.75s cubic-bezier(0.6, 0, 0.4, 1);
+  &:hover, &:active, &:focus{
+    width: 218px;
+    transition-duration: .75s;
+    padding: 10px 30px;
+    .made-with-text{
+      opacity: 1;
+    }
+    .brand{
+      left: 0;
+    }
+  }
+  .made-with-text{
+    float: left;
+    position: absolute;
+    left: 75px;
+    top: 11px;
+    opacity: 0;
+    margin: 0;
+    transition: 0.55s cubic-bezier(0.6, 0, 0.4, 1);
+    span{
+      font-weight: 700;
+    }
+  }
+} 

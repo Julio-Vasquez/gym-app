@@ -25,31 +25,29 @@
   transition-property: top, bottom, width;
   transition-duration: 0.2s, 0.2s, 0.35s;
   transition-timing-function: linear, linear, ease;
+  &::after{
+    content: "";
+    position: absolute;
+    border-top: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #97174d;
+    top: -10px;
+    left: 40px;
+    transform: translate(-50%);
+    .sidebar-wrapper {
+      min-height: 100%;
+      max-height: calc(100vh - 705px);
+      z-index: 4;
+    }
+  }
 }
-
-.sidebar::after {
-  content: "";
-  position: absolute;
-  border-top: 5px solid transparent;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #97174d;
-  top: -10px;
-  left: 40px;
-  transform: translate(-50%);
-}
-
-.sidebar .sidebar-wrapper {
-  min-height: 100%;
-  max-height: calc(100vh - 705px);
-  z-index: 4;
-}
-
 /* Header */
 nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  white-space: pre;
   padding: 20px 35px 0px 20px;
 }
 
@@ -68,8 +66,7 @@ nav {
 .navbar-options svg {
   color: #fff;
   font-size: 20px;
-
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 .navbar-bar p {
@@ -190,7 +187,7 @@ nav {
   font-family: "Poppins";
   overflow: hidden;
   margin-left: 10px;
-  transition: all 0.5s;
+  transition: all 0.45s;
   font-weight: 300;
 }
 
@@ -200,31 +197,36 @@ nav {
 }
 
 .nav ul li {
-  padding: 30px;
+  padding: 20px;
+  &:hover{
+    background-color: rgb(184, 28, 93);
+  }
 }
 
 .nav ul li a {
   text-decoration: none;
   display: flex;
   align-items: center;
+  text-align: center;
+  white-space: nowrap;
 }
 
-.nav ul li a svg {
+.nav ul li a span svg {
   color: #fff;
   font-size: 17px;
   padding-right: 3px;
-  width: 37px;
+  width: 35px;
 }
-
+/*texto*/
 .nav ul li a span {
-  width: 30px;
+  width: 50px;
   display: block;
-  transition: 0.5s !important;
+  transition: 0.22s !important;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none;
   font-family: "Poppins";
-  font-weight: 300;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -277,22 +279,29 @@ nav {
 
 .toggle .logo-rc {
   padding: 10px 0px 15px 0px;
-}
-
-.toggle .logo-rc::after {
-  width: 70%;
-  left: 15px;
-}
-
-.toggle .logo-rc span {
-  opacity: 0;
-  transform: translate3d(-25px, 0, 0);
+  &::after{
+    width: 70%;
+    left: 15px;
+  }
+  span{
+    opacity: 0;
+    transform: translate3d(-25px, 0, 0);
+  }
 }
 
 .toggle .nav ul li a span {
   opacity: 0;
   transform: translate3d(-25px, 0, 0);
+  &.span-icon{
+    opacity: 1;
+    margin-left: 27px;
+    svg{
+      text-align: center;
+      height: 28px;  
+    }
+  }
 }
+
 
 @media only screen and (max-width: 1200px) {
   .sidebar {
