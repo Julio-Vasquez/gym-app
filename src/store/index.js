@@ -1,4 +1,4 @@
-import { Store } from "./Store";
+import { Store } from "./store";
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
