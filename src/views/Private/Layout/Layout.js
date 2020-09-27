@@ -112,11 +112,10 @@ const Layout = ({ appName, logo, children }) => {
           </div>
         </nav>
         <div className={sidebarVisible ? "content main" : "content"} id="main">
-          {children}
-          <div className="footer-dashboard">
-            <p>
-              © 2020 hecho con ♥ de  Code
-            </p>
+          <div className="grid-row">
+            <div className="card-chart card">
+              {children}
+            </div>
           </div>
         </div>
       </div>
