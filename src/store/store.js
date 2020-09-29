@@ -11,15 +11,17 @@ const ENV = "development";
 
 export const Store = (history) => {
   const sagaMiddleware = createSagaMiddleware();
-  const routerMiddlewareLocal = routerMiddleware();
+  const routeMiddleware = routerMiddleware();
 
-  let middleware = [sagaMiddleware, routerMiddlewareLocal];
+  let middleware = [sagaMiddleware, routeMiddleware];
 
   if (ENV === "development") middleware = [...middleware, logger];
 
   const store = createStore(
     rootReducers(history),
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeWithDevTools(
+      applyMiddleware(...middleware)
+    )
   );
   sagaMiddleware.run(rootSaga);
   return store;
