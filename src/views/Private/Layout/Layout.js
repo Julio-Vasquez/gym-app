@@ -65,7 +65,7 @@ const Layout = ({ appName, logo, children }) => {
                 </a>
               </li>
               <li>
-                <a href="/users">
+                <a href="/clients">
                   <UserOutlined className="span-icon" />
                   <span>clientes</span>
                 </a>
