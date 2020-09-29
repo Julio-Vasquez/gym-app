@@ -17,13 +17,13 @@ const Public = ({ history }) => {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/">
-            <Login appName="Cool Gym" />
+            <Login appName="MIND BODY" />
           </Route>
           <Route exact path="/login">
-            <Login appName="Cool Gym" />
+            <Login appName="MIND BODY" />
           </Route>
           <Route exact path="/reset-password">
-            <ResetPassword appName="Cool Gym" />
+            <ResetPassword appName="MIND BODY" />
           </Route>
           <Redirect from="*" to="/" />
         </Switch>

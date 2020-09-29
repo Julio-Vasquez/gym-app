@@ -24,14 +24,15 @@
       color: #fff;
       font-family: "Exo", sans-serif;
       font-size: 35px;
-      font-weight: 200;
+      font-weight: 400;
       span {
-        color: #5379fa !important;
+        color: #ee0b0e !important;
       }
     }
     .name-app-hover:hover {
+      font-weight: 400;
       a {
-        color: #5379fa;
+        color: #ee0b0e;
         span {
           color: #fff !important;
         }
