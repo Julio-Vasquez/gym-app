@@ -1,19 +1,19 @@
 import React, { lazy, Suspense } from "react";
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
   Redirect,
-} from "react-router-dom";
+} from "react-router";
 
 import { Loading } from "./../../components/Loading";
 
 const Login = lazy(() => import("./Login"));
 const ResetPassword = lazy(() => import("./ResetPassword"));
 
-const Public = () => {
+const Public = ({ history }) => {
   return (
-    <Router>
+    <Router history={history}>
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/">
