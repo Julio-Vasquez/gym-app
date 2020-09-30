@@ -37,8 +37,8 @@ function* FetchLogin({ payload }) {
 }
 
 function* FetchLogout() {
-  localStorage.clear();
-  yield put(push('/'));
+  sessionStorage.clear();
+  yield push('/');
 };
 
 function* FetchForgotPassword({ payload }) {
