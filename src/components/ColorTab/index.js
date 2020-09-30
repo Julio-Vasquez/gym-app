@@ -1,0 +1,1 @@
+export { ColorTab } from './ColorTab'
