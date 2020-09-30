@@ -1,21 +1,15 @@
-import React from 'react'
-import { Table } from "antd";
+import React from 'react';
 
 import { Columns } from './components/Columns';
-import { Search } from './components/Search';
+import { CustomTable } from '../../../components/CustomTable';
 
 const Clients = () => {
   const scoreData = [];
-  return (
-    <div className="list-clients">
-      <div className="list-clients__title">
-        <h2>Mis Calificaciones</h2>
-      </div>
-      <div className="list-clients__body">
-        <Table columns={Columns(Search)} dataSource={scoreData} />
-      </div>
-    </div>
-  )
+  return <CustomTable
+    data={scoreData}
+    title="Mis Clientes"
+    Columns={Columns}
+  />
 }
 
-export default Clients
+export default Clients;

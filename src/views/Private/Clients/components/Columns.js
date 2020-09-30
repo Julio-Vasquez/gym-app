@@ -1,13 +1,6 @@
 import React from 'react';
 import { Tag } from 'antd';
-
-const getColor = tag => {
-  switch (tag) {
-    case "ACTIVO": return "green";
-    case "INACTIVO": return "volcano";
-    default: return "geekblue";
-  }
-}
+import { ColorTab } from './../../../../components/ColorTab';
 
 export const Columns = search => {
   return [
@@ -40,7 +33,7 @@ export const Columns = search => {
       render: tag => (
         <span>
           <Tag
-            color={getColor(tag)}
+            color={ColorTab(tag)}
             key={tag}
           >
             {tag}
