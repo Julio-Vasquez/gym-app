@@ -6,8 +6,11 @@ import {
   QrcodeOutlined,
   BarChartOutlined,
   LoginOutlined,
-  UserSwitchOutlined
+  UserSwitchOutlined,
+  LogoutOutlined
 } from "@ant-design/icons";
+import { useDispatch } from 'react-redux';
+import { auth } from './../../../services/Auth/AuthActions';
 import PropTypes from "prop-types";
 
 const Layout = ({ appName, logo, children }) => {
@@ -19,7 +22,11 @@ const Layout = ({ appName, logo, children }) => {
     let html = document.getElementsByTagName("html")[0];
     html.classList.toggle("nav-open");
   };
+  const dispatch = useDispatch();
 
+  const onCLickLogout = () => {
+    dispatch(auth.logout());
+  }
   useEffect(() => {
     const showButtonFixed = () => {
       const scroll = document.documentElement.scrollTop;
@@ -106,9 +113,10 @@ const Layout = ({ appName, logo, children }) => {
             <p>Dashboard</p>
           </div>
           <div className="navbar-options">
-            <div className="photo">
-              <img src={logo} alt="logo user" />
-            </div>
+            <LogoutOutlined
+              className="photo"
+              onClick={onCLickLogout}
+            />
           </div>
         </nav>
         <div className={sidebarVisible ? "content main" : "content"} id="main">

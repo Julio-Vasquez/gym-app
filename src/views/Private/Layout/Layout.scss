@@ -33,7 +33,7 @@
     border-right: 5px solid transparent;
     border-bottom: 5px solid #97174d;
     top: -10px;
-    left: 40px;
+    left: 35px;
     transform: translate(-50%);
     .sidebar-wrapper {
       min-height: 100%;
@@ -45,10 +45,10 @@
 /* Header */
 nav {
   width: 100%;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   white-space: pre;
-  padding: 20px 35px 0px 20px;
+  padding: 10px 35px 0px 20px !important;
 }
 
 .navbar-bar {
@@ -66,14 +66,18 @@ nav {
 .navbar-options svg {
   color: #fff;
   font-size: 20px;
+}
+
+.navbar-bar svg{
   margin-left: 20px;
 }
 
 .navbar-bar p {
+  margin-top: 12px;
   color: #fff;
   font-family: "Poppins";
   font-weight: 300;
-  font-size: 16px;
+  font-size: 16px !important;
   text-transform: uppercase;
   margin-left: 20px;
   opacity: 1;
@@ -100,17 +104,8 @@ nav {
   align-items: center;
 }
 
-.navbar-options .photo {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-left: 30px;
-  overflow: hidden;
-}
 
-.photo img {
-  width: 100%;
-}
+
 
 /* transisiones js */
 .navbar-bar_fixed button {
