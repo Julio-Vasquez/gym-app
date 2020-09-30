@@ -1,9 +1,10 @@
 import React from 'react';
 import { Modal, Space } from 'antd';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types'
 
 export const ModalCheck = ({ title, close, ok, open, accept }) => {
-
+  const { people } = useSelector(state => state.Check);
   return (
     <div className="modal-check">
       <Space>

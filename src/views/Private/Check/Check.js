@@ -1,19 +1,31 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Col, Card } from "antd";
+import { Form, Button, Col, Card, Input } from "antd";
 import { IdcardOutlined } from "@ant-design/icons";
+import { useDispatch } from 'react-redux'
+
+import { check } from './../../../services/Check/CheckActions';
 import { ModalCheck } from "./components/ModalCheck";
 
 const Check = () => {
-  const { Item } = Form;
-  const [identification, setIdentification] = useState();
+  const [identification, setIdentification] = useState(0);
   const [open, setOpen] = useState(false);
   const [ok, setOk] = useState(false);
 
-  const closeModal = () => setOpen(!open);
+  const { Item } = Form;
+  const dispatch = useDispatch();
+
+  const clearInput = () => window.location.reload();
+
+  const closeModal = () => {
+    setOpen(!open);
+    clearInput();
+  };
 
   const okModal = () => {
     setOpen(false);
     setOk(true);
+    setIdentification(0);
+    clearInput();
   };
 
   const onChnageForm = (e) => {
@@ -23,9 +35,10 @@ const Check = () => {
 
   const onFinishForm = (e) => {
     console.log(`Finish Form Whit ID : ${identification}`)
+    dispatch(check.checkPeople(identification));
+    setOpen(true);
   };
 
-  const data = [{ name: "julio", lastName: "vasquez" }];
   return (
     <div className="check">
       <Col
@@ -63,9 +76,11 @@ const Check = () => {
               ]}
             >
               <Input
+                id="hola"
                 prefix={<IdcardOutlined className="site-form-item-icon" />}
                 placeholder="Número de identificación"
                 type="number"
+                value={identification}
               />
             </Item>
             <div className="check-content-card-btn">
@@ -78,7 +93,7 @@ const Check = () => {
       </Col>
 
       <ModalCheck
-        data={data}
+        clear={setIdentification}
         open={open}
         title="example"
         ok={okModal}
