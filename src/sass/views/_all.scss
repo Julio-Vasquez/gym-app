@@ -1,4 +1,13 @@
 @import "./../../views/Public/Login/Login.scss",
   "./../../views/Public/ResetPassword/ResetPassword.scss",
-  "./../../views/Private/Check/Check.scss",
-  "./../../views/Private/Clients/Clients.scss";
+  "./../../views/Private/Check/Check.scss";
+
+.ant-tag{
+  cursor: pointer;
+}
+
+.ant-table-filter-column span,
+.ant-table-cell, 
+th {
+  font-weight: 700 !important;
+}
