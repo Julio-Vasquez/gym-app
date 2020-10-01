@@ -1,31 +1,31 @@
 import React, { lazy, Suspense } from "react";
 import {
-  Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-} from "react-router";
+} from "react-router-dom";
 
 import { Loading } from "./../../components/Loading";
 
 const Login = lazy(() => import("./Login"));
 const ResetPassword = lazy(() => import("./ResetPassword"));
 
-const Public = ({ history }) => {
+const Public = () => {
   return (
-    <Router history={history}>
+    <Router>
       <Suspense fallback={<Loading />}>
         <Switch>
-          <Route exact path="/">
-            <Login appName="MIND BODY" />
-          </Route>
-          <Route exact path="/login">
+          <Route path="/login" exact>
             <Login appName="MIND BODY" />
           </Route>
           <Route exact path="/reset-password">
             <ResetPassword appName="MIND BODY" />
           </Route>
-          <Redirect from="*" to="/" />
+          <Route path="/" exact>
+            <Login appName="MIND BODY" />
+          </Route>
+          <Redirect from="/*" to="/login" />
         </Switch>
       </Suspense>
     </Router>
