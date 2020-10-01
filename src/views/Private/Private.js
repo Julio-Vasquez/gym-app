@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
-} from "react-router";
+} from "react-router-dom";
 
 import { Loading } from "./../../components/Loading";
 import Layout from "./Layout";
