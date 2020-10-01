@@ -1,7 +1,7 @@
 import { put, takeLatest, all } from "redux-saga/effects";
 import { message } from "antd";
 
-import history from './../../store'
+import { history } from './../../store'
 
 import Api from "../../common/api";
 import { Token } from "../../common/storage";
@@ -30,7 +30,6 @@ function* FetchLogin({ payload }) {
 }
 
 const FetchLogout = () => sessionStorage.clear();
-//history.push('/')
 
 function* FetchForgotPassword({ payload }) {
   try {

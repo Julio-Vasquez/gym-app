@@ -10,7 +10,7 @@ function App({ history }) {
     <div className="App">
       {authentication
         ? <Private history={history} />
-        : <Public history={history} />
+        : <Public />
       }
     </div>
   );
