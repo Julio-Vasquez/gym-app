@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { Loading } from './../../../components/Loading';
+import { CustomTable } from '../../../components/CustomTable';
 import { Columns } from './components/Columns';
-import { CustomTable } from './../../../components/CustomTable';
+
+import { clients } from './../../../services/Clients/ClientsActions';
 
 const Trainer = () => {
-  const scoreData = [];
-  return <CustomTable
-    title="Entrenadores"
-    data={scoreData}
-    Columns={Columns}
-  />
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(clients.getClients('Entrenador'));
+  }, [dispatch])
 
+  const { listClients, loading } = useSelector(state => state.Clients);
+  return loading
+    ? <Loading />
+    : <CustomTable
+      title="Entrenadores"
+      data={listClients}
+      Columns={Columns}
+    />
 }
 
 export default Trainer;
