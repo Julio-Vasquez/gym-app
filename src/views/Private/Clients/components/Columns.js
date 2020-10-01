@@ -5,31 +5,38 @@ import { ColorTab } from './../../../../components/ColorTab';
 export const Columns = search => {
   return [
     {
-      title: "Nombre",
+      title: "Identificación",
+      dataIndex: "identification",
+      key: "identification",
+      ...search("identification", "Identificación"),
+    },
+    {
+      title: "Nombres",
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Apellido",
+      title: "Apellidos",
       dataIndex: "lastName",
       key: "lastName",
     },
     {
-      title: "Tema",
-      dataIndex: "theme",
-      key: "theme",
-      ...search("theme", "Tema"),
+      title: "Telefono",
+      dataIndex: "phone",
+      key: "phone",
+      ...search("phone", "Telefono")
     },
     {
-      title: "Calificacion",
-      key: "cal",
-      dataIndex: "cal",
+      title: "Fecha Nacimiento",
+      dataIndex: "dateBirth",
+      key: "dateBirth",
+      ...search("dateBirth", "Fecha Nacimiento")
     },
     {
-      title: "Resultado",
-      key: "tag",
-      dataIndex: "tag",
-      ...search("tag", "Resultado"),
+      title: "Estado",
+      key: "state",
+      dataIndex: "state",
+      ...search("state", "Estado"),
       render: tag => (
         <span>
           <Tag
@@ -40,6 +47,12 @@ export const Columns = search => {
           </Tag>
         </span>
       ),
+    },
+    {
+      title: 'Ver Cliente',
+      key: 'btn-view',
+      dataIndex: 'btn-view',
+      render: (_, record) => <a href={`/clients/${record.identification}`}>ver</a>
     }
   ]
 }
