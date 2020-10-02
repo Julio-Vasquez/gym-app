@@ -29,7 +29,6 @@ const Check = () => {
   };
 
   const onChnageForm = (e) => {
-    console.log(e.target.value)
     setIdentification(e.target.value);
   };
 
