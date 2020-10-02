@@ -1,4 +1,4 @@
-import { createActions } from "redux-actions";
+import { createActions } from 'redux-actions'
 
 export const { check } = createActions({
   CHECK: {
