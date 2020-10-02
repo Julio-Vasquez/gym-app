@@ -27,6 +27,6 @@ function* ActionWatcher() {
   yield takeLatest(clients.getClients, FetchGetClients);
 }
 
-export default function* AuthClients() {
+export default function* ClientSaga() {
   yield all([ActionWatcher()]);
 }
