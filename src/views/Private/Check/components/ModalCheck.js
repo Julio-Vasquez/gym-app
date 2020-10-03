@@ -2,11 +2,15 @@ import React from 'react';
 import { Modal, Space } from 'antd';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Loading } from './../../../../components/Loading'
-export const ModalCheck = ({ title, close, ok, open, accept }) => {
+import Swal from 'sweetalert2'
+import Example from './example'
 
+import { Loading } from './../../../../components/Loading';
+
+export const ModalCheck = ({ title, close, ok, open, accept }) => {
+  const time = 5;
   const { client, loading } = useSelector(state => state.Check);
-  console.log(client);
+
   return loading
     ? <Loading />
     : (
@@ -19,15 +23,14 @@ export const ModalCheck = ({ title, close, ok, open, accept }) => {
             onOk={ok}
             visible={open}
           >
-            {accept && (
-              <img
-                src="https://lincolnsquarebid.org/uploads/NewsModel/720/image/community-alert-image.detailPage.jpg"
-                alt="xxx"
-              />
-            )}
             <p>{client.identification}</p>
-            {accept && (
-              <span>pailas poco tiempo</span>
+            <p>{client.name}</p>
+            <p>{client.lastName}</p>
+            <p>{client.phone}</p>
+            <p>{client.dateBirth}</p>
+
+            {time <= 5 && (
+              <Example />
             )}
 
           </Modal>
@@ -45,3 +48,13 @@ ModalCheck.propTypes = {
   open: PropTypes.bool.isRequired,
   accept: PropTypes.bool.isRequired
 }
+
+const HeadWarnign = () => {
+  return Swal.fire({
+    title: <p>Hello World</p>,
+    icon: 'warning',
+    text: 'Poco tiempo'
+  })
+}
+const HeadAlert = () => (<>Sin Tiempo</>)
+const HeadNormal = () => (<>Sin Tiempo</>)
