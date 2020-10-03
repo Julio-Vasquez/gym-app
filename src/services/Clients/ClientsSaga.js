@@ -23,8 +23,20 @@ function* FetchGetClients({ payload }) {
   }
 }
 
+function* FetchCreateClient(client) {
+
+}
+
+
+function* FetchUpdateClient(identification, newCLient) {
+
+}
+
+
 function* ActionWatcher() {
   yield takeLatest(clients.getClients, FetchGetClients);
+  yield takeLatest(clients.createClient, FetchCreateClient);
+  yield takeLatest(clients.updateClient, FetchUpdateClient);
 }
 
 export default function* ClientSaga() {
