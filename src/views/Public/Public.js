@@ -10,6 +10,7 @@ import { Loading } from "./../../components/Loading";
 
 const Login = lazy(() => import("./Login"));
 const ResetPassword = lazy(() => import("./ResetPassword"));
+const NewPassword = lazy(() => import("./NewPassword"));
 
 const Public = () => {
   return (
@@ -19,12 +20,18 @@ const Public = () => {
           <Route path="/login" exact>
             <Login appName="MIND BODY" />
           </Route>
+
           <Route exact path="/reset-password">
             <ResetPassword appName="MIND BODY" />
           </Route>
+
+          <Route exact path="/setnewpassword/:token" component={NewPassword}/>
+          <Route exact path="/setnewpassword/" component={NewPassword}/>
+
           <Route path="/" exact>
             <Login appName="MIND BODY" />
           </Route>
+          
           <Redirect from="/*" to="/login" />
         </Switch>
       </Suspense>
