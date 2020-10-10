@@ -47,6 +47,7 @@ const Login = ({ appName }) => {
               { min: 4, message: "Mínimo debe haber 4 caracteres" },
               { max: 45, message: "Máximo debe haber  45 caracteres" },
             ]}
+            hasFeedback
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -65,6 +66,7 @@ const Login = ({ appName }) => {
               { min: 4, message: "Mínimo debe haber 4 caracteres" },
               { max: 45, message: "Máximo debe haber  45 caracteres" },
             ]}
+            hasFeedback
           >
             <Input
               prefix={<AlipayOutlined className="site-form-item-icon" />}
