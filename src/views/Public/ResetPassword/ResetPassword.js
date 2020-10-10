@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Row, Col, Card } from "antd";
+import { Form, Input, Button, Row, Col, Card, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
@@ -24,7 +24,12 @@ const ResetPassword = ({ appName }) => {
 
   const dispatch = useDispatch();
 
-  const { loading } = useSelector((state) => state.Auth);
+  const { loading, success } = useSelector((state) => state.Auth);
+
+  useEffect(()=>{
+    if(success.ResetPassword)
+      message.success('Reinicio de contraseña exitoso, revise su correo electronico')
+  },[success.ResetPassword]);
 
   const onChange = (e) => setUserName(e.target.value);
 
@@ -70,6 +75,7 @@ const ResetPassword = ({ appName }) => {
                           "El nombre de usuario debe contener maximo 45 caracteres",
                       },
                     ]}
+                    hasFeedback
                   >
                     <Input
                       prefix={<UserOutlined className="site-form-item-icon" />}
