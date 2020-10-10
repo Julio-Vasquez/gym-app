@@ -9,6 +9,7 @@ import {
   UserSwitchOutlined,
   LogoutOutlined
 } from "@ant-design/icons";
+import { Tooltip } from 'antd';
 import { useDispatch } from 'react-redux';
 import { auth } from './../../../services/Auth/AuthActions';
 import PropTypes from "prop-types";
@@ -61,25 +62,33 @@ const Layout = ({ appName, logo, children }) => {
             <ul>
               <li>
                 <a href="/dashboard">
-                  <DashboardOutlined className="span-icon" />
+                  <Tooltip title="Dashboard">
+                    <DashboardOutlined className="span-icon" />
+                  </Tooltip>
                   <span>dashboard</span>
                 </a>
               </li>
               <li>
                 <a href="/check">
-                  <LoginOutlined className="span-icon" />
+                  <Tooltip title="Ingreso">
+                    <LoginOutlined className="span-icon" />
+                  </Tooltip>
                   <span>Ingreso Gym</span>
                 </a>
               </li>
               <li>
                 <a href="/clients">
-                  <UserOutlined className="span-icon" />
+                  <Tooltip title="Clientes">
+                    <UserOutlined className="span-icon" />
+                  </Tooltip>
                   <span>clientes</span>
                 </a>
               </li>
               <li>
                 <a href="/trainers">
-                  <UserSwitchOutlined className="span-icon" />
+                  <Tooltip title="Entrenadores">
+                    <UserSwitchOutlined className="span-icon" />
+                  </Tooltip>
                   <span>entrenadores</span>
                 </a>
               </li>
@@ -98,7 +107,9 @@ const Layout = ({ appName, logo, children }) => {
               <MenuOutlined />
             </button>
             <button id="boton-sidebar_left" onClick={onClickNavOpen}>
-              <QrcodeOutlined />
+              <Tooltip title="Mostrar Menus">
+                <QrcodeOutlined />
+              </Tooltip>
             </button>
             <div
               className={
@@ -113,10 +124,12 @@ const Layout = ({ appName, logo, children }) => {
             <p>Dashboard</p>
           </div>
           <div className="navbar-options">
-            <LogoutOutlined
-              className="photo"
-              onClick={onCLickLogout}
-            />
+            <Tooltip title="Cerrar sesión">
+              <LogoutOutlined
+                className="photo"
+                onClick={onCLickLogout}
+              />
+            </Tooltip>
           </div>
         </nav>
         <div className={sidebarVisible ? "content main" : "content"} id="main">
