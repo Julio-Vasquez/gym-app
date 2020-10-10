@@ -51,11 +51,13 @@ function* FetchForgotPassword({ payload }) {
 }
 
 function* FetchNewPassword({ payload }) {
+  console.log(payload);
   try {
     const res = yield Api.PUT("auth/forgot-password", payload);
+    console.log(res);
     if (res && res.payload.success) {
       yield put(auth.newPasswordSuccess("ok"));
-      History.push("/login");
+      history.push("/");
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`, 5);
       yield put(auth.newPasswordFailed(`${res.payload.detail}`));
