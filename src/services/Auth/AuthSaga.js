@@ -29,7 +29,7 @@ function* FetchLogin({ payload }) {
   }
 }
 
-const FetchLogout = () => sessionStorage.clear();
+const FetchLogout = () => localStorage.clear();
 
 function* FetchForgotPassword({ payload }) {
   try {

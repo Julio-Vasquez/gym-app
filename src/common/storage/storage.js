@@ -7,14 +7,14 @@ class token {
     this.GetToken() !== null;
 
   GetToken = () => {
-    return sessionStorage.getItem("coolgym");
+    return localStorage.getItem("coolgym");
   };
 
   SetToken = (token) => {
-    return sessionStorage.setItem("coolgym", token);
+    return localStorage.setItem("coolgym", token);
   };
 
-  RemoveToken = () => sessionStorage.removeItem("coolgym");
+  RemoveToken = () => localStorage.removeItem("coolgym");
 
   CheckToken = (token) => {
     try {
