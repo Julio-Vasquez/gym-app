@@ -38,7 +38,8 @@ export const SetPassword = ({token}) => {
   return loading
   ? <Loading />
   :(
-    <Col
+    <div className="new-password-content">
+      <Col
       xs={{ span: 22, offset: 1 }}
       sm={{ span: 16, offset: 4 }}
       lg={{ span: 12, offset: 6 }}
@@ -50,7 +51,7 @@ export const SetPassword = ({token}) => {
         <Row justify="center">
           <Col span={20} className="new-password__R">
             <h2 className="text-center">Nueva contraseña</h2>
-            <p className="text-center">Aquí puedes cambiar tu contraseña</p>
+            <p className="text-center">Aquí puedes ingresar tu nueva contraseña</p>
             <Form onChange={onChange} onFinish={onSubmit}>
               <Item
                 name="passwordI"
@@ -125,6 +126,7 @@ export const SetPassword = ({token}) => {
         urlName="Login" 
       />
     </Col>
+    </div>
   )
 }
 
