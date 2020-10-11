@@ -1,8 +1,6 @@
 import { put, takeLatest, all } from "redux-saga/effects";
 import { message } from "antd";
 
-import { history } from './../../store'
-
 import Api from "../../common/api";
 import { Token } from "../../common/storage";
 
@@ -36,7 +34,6 @@ function* FetchForgotPassword({ payload }) {
     const res = yield Api.POST("auth/request-forgot-password", payload);
     if (res && res.payload.success) {
       yield put(auth.resetPasswordSuccess("ok"));
-      yield history.push("/");
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`, 3);
       yield put(auth.resetPasswordFailed(`${res.payload.detail}`));
@@ -57,7 +54,6 @@ function* FetchNewPassword({ payload }) {
     console.log(res);
     if (res && res.payload.success) {
       yield put(auth.newPasswordSuccess("ok"));
-      history.push("/");
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`, 5);
       yield put(auth.newPasswordFailed(`${res.payload.detail}`));
