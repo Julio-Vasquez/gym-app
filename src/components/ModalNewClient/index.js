@@ -1,0 +1,1 @@
+export {ModalNewClient} from './ModalNewClient'
