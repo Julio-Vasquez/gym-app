@@ -4,7 +4,7 @@ import { IdcardOutlined } from "@ant-design/icons";
 import { useDispatch } from 'react-redux'
 
 import { check } from './../../../services/Check/CheckActions';
-import { ModalCheck } from "./components/ModalCheck";
+import { ModalCheck } from "../../../components/ModalCheck";
 
 const Check = () => {
   const [identification, setIdentification] = useState(0);
@@ -94,7 +94,7 @@ const Check = () => {
       <ModalCheck
         clear={setIdentification}
         open={open}
-        title="example"
+        title="Usuario"
         ok={okModal}
         close={closeModal}
         accept={ok}
