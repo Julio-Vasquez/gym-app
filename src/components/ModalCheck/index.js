@@ -1,0 +1,1 @@
+export { ModalCheck } from "./ModalCheck";
