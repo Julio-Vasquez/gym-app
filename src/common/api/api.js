@@ -2,7 +2,7 @@ import { Token } from "./../storage";
 import { auth } from "../../services/Auth/AuthActions";
 import { store } from "./../../store";
 
-const API_URL = "http://localhost:8550/cg";
+const API_URL = "http://localhost:8550/mb";
 
 class Api {
   GET(url) {
@@ -32,10 +32,10 @@ class Api {
       headers: header
         ? header
         : {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          Authorization: `Bearer ${Token.GetToken()}`,
-        },
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${Token.GetToken()}`,
+          },
       body: dataBody,
     })
       .then(async (res) => {
@@ -57,10 +57,10 @@ class Api {
       headers: header
         ? header
         : {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          Authorization: `Bearer ${Token.GetToken()}`,
-        },
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${Token.GetToken()}`,
+          },
       body: JSON.stringify(body),
     })
       .then(async (res) => {
@@ -80,10 +80,10 @@ class Api {
       headers: header
         ? header
         : {
-          Accept: "application/json",
-          "Content-type": "application/json",
-          Authorization: `Bearer ${Token.GetToken()}`,
-        },
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${Token.GetToken()}`,
+          },
       body: body ? body : "",
     })
       .then(async (res) => {
