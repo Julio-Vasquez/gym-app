@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Table, Input, Button } from 'antd';
+import React, { useState } from "react";
+import { Table, Input, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export const CustomTable = ({ data, Columns, title }) => {
   let searchInput;
@@ -21,27 +21,26 @@ export const CustomTable = ({ data, Columns, title }) => {
   };
 
   const getColumnSearchProps = (dataIndex, title) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+    }) => (
       <div style={{ padding: 8 }}>
         <Input
-          ref={
-            (node) => searchInput = node
-          }
+          ref={(node) => (searchInput = node)}
           placeholder={`Buscar por ${title}`}
           value={selectedKeys[0]}
-          onChange={
-            e => setSelectedKeys(e.target.value ? [e.target.value] : [])
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
           }
-          onPressEnter={
-            () => handleSearch(selectedKeys, confirm, dataIndex)
-          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{ width: 188, marginBottom: 8, display: "block" }}
         />
         <Button
           type="primary"
-          onClick={
-            () => handleSearch(selectedKeys, confirm, dataIndex)
-          }
+          onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
           size="small"
           style={{ width: 90, marginRight: 8 }}
         >
@@ -49,9 +48,7 @@ export const CustomTable = ({ data, Columns, title }) => {
           Buscar
         </Button>
         <Button
-          onClick={
-            () => handleReset(clearFilters)
-          }
+          onClick={() => handleReset(clearFilters)}
           size="small"
           style={{ width: 90 }}
         >
@@ -62,18 +59,22 @@ export const CustomTable = ({ data, Columns, title }) => {
     filterIcon: (filtered) => (
       <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
     ),
-    onFilter: (value, record) => record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+    onFilter: (value, record) =>
+      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
     onFilterDropdownVisibleChange: (visible) => {
       if (visible) setTimeout(() => searchInput.select());
     },
-    render: (text) => searchedColumn === dataIndex
-      ? <Highlighter
-        highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
-        searchWords={[searchText]}
-        autoEscape
-        textToHighlight={text.toString()}
-      />
-      : (text)
+    render: (text) =>
+      searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+          searchWords={[searchText]}
+          autoEscape
+          textToHighlight={text.toString()}
+        />
+      ) : (
+        text
+      ),
   });
 
   return (
@@ -89,11 +90,11 @@ export const CustomTable = ({ data, Columns, title }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 CustomTable.propTypes = {
   title: PropTypes.string.isRequired,
   data: PropTypes.any.isRequired,
-  Columns: PropTypes.any.isRequired
-}
+  Columns: PropTypes.any.isRequired,
+};
