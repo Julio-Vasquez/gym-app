@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal, Space, Row } from "antd";
-import { 
-  CheckCircleTwoTone, 
+import {
+  CheckCircleTwoTone,
   WarningTwoTone,
-  CloseCircleTwoTone}
-  from "@ant-design/icons";
+  CloseCircleTwoTone,
+} from "@ant-design/icons";
 
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
@@ -12,8 +12,6 @@ import { Loading } from "../Loading";
 
 export const ModalCheck = ({ title, close, ok, open, accept }) => {
   const { client, loading } = useSelector((state) => state.Check);
-
-  const Time=2;
 
   return loading ? (
     <Loading />
@@ -28,26 +26,39 @@ export const ModalCheck = ({ title, close, ok, open, accept }) => {
           visible={open}
         >
           <div className="modal-icon-info">
-            {Time === 0 && (<CloseCircleTwoTone twoToneColor="#f44336" className="modal-check-icon"/>)}
-            {Time > 5 && (<CheckCircleTwoTone twoToneColor="#8BC34A" className="modal-check-icon"/>)}
-            {Time <=5 && Time > 0 && (<WarningTwoTone twoToneColor="#ff9800" className="modal-check-icon"/>)}
-
+            {client.time === 0 && (
+              <CloseCircleTwoTone
+                twoToneColor="#f44336"
+                className="modal-check-icon"
+              />
+            )}
+            {client.time > 5 && (
+              <CheckCircleTwoTone
+                twoToneColor="#8BC34A"
+                className="modal-check-icon"
+              />
+            )}
+            {client.time <= 5 && client.time > 0 && (
+              <WarningTwoTone
+                twoToneColor="#ff9800"
+                className="modal-check-icon"
+              />
+            )}
           </div>
 
           <div className="info-body">
             <Row>
-            <p>{client.identification}</p>
-            <p>{client.name}</p>
-            <p>{client.lastName}</p>
+              <p>{client.identification}</p>
+              <p>{client.name}</p>
+              <p>{client.lastName}</p>
             </Row>
 
             <Row>
               <p>{client.phone}</p>
               <p>{client.dateBirth}</p>
-              <p>{Time} dias</p>
+              <p>{client.time === null ? "0" : client.time} Dias</p>
             </Row>
-            
-          </div>       
+          </div>
         </Modal>
       </Space>
     </div>
