@@ -1,8 +1,25 @@
-import React from "react";
-import { Button, Tag } from "antd";
+import React, { useState } from "react";
+import { Button, Tag, Tooltip } from "antd";
+import { useDispatch } from "react-redux";
+
 import { ColorTab } from "./../../../../components/ColorTab";
+import { check } from "./../../../../services/Check/CheckActions";
+import { ModalCheck } from "./../../../../components/ModalCheck";
 
 export const Columns = (search) => {
+  const [open, setOpen] = useState(false);
+
+  const closeModal = () => {
+    setOpen(!open);
+  };
+
+  const dispatch = useDispatch();
+
+  const getPeople = (identification) => {
+    dispatch(check.checkPeople(identification));
+    setOpen(true);
+  };
+
   return [
     {
       title: "Identificación",
@@ -27,10 +44,9 @@ export const Columns = (search) => {
       ...search("phone", "Telefono"),
     },
     {
-      title: "Fecha Nacimiento",
-      dataIndex: "dateBirth",
-      key: "dateBirth",
-      ...search("dateBirth", "Fecha Nacimiento"),
+      title: "Fin suscripción",
+      dataIndex: "end",
+      key: "end",
     },
     {
       title: "Estado",
@@ -51,8 +67,21 @@ export const Columns = (search) => {
       dataIndex: "btn-view",
       render: (_, record) => (
         <>
-          <a href={`/clients/${record.identification}`}>ver</a>
-          <Button>add time</Button>
+          <Tooltip title="Ver informacion personal">
+            <Button onClick={() => getPeople(record.identification)} danger>
+              ver
+            </Button>
+          </Tooltip>
+          <Button type="primary" style={{ marginLeft: "20px" }}>
+            Agregar Tiempo
+          </Button>
+          <ModalCheck
+            title="Detalle"
+            open={open}
+            close={closeModal}
+            ok={closeModal}
+            accept={true}
+          />
         </>
       ),
     },
