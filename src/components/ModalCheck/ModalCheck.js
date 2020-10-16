@@ -46,19 +46,23 @@ export const ModalCheck = ({ title, close, ok, open, accept }) => {
             )}
           </div>
 
-          <div className="info-body">
-            <Row>
-              <p>{client.identification}</p>
-              <p>{client.name}</p>
-              <p>{client.lastName}</p>
-            </Row>
+          {client.identification ? (
+            <div className="info-body">
+              <Row>
+                <p>{client.identification}</p>
+                <p>{client.name}</p>
+                <p>{client.lastName}</p>
+              </Row>
 
-            <Row>
-              <p>{client.phone}</p>
-              <p>{client.dateBirth}</p>
-              <p>{client.time === null ? "0" : client.time} Dias</p>
-            </Row>
-          </div>
+              <Row>
+                <p>{client.phone}</p>
+                <p>{client.dateBirth}</p>
+                <p>{client.time === null ? "0" : client.time} Dias</p>
+              </Row>
+            </div>
+          ) : (
+            <h2>No existe ese cliente</h2>
+          )}
         </Modal>
       </Space>
     </div>
