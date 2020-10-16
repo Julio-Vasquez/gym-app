@@ -5,12 +5,18 @@ import { useDispatch } from "react-redux";
 import { ColorTab } from "./../../../../components/ColorTab";
 import { check } from "./../../../../services/Check/CheckActions";
 import { ModalCheck } from "./../../../../components/ModalCheck";
+import { ModalUpdateClient } from "../../../../components/ModalUpdateClient/ModalUpdateClient";
 
 export const Columns = (search) => {
   const [open, setOpen] = useState(false);
+  const [editable, setEditable] = useState(false);
 
   const closeModal = () => {
     setOpen(!open);
+  };
+
+  const closeEditable = () => {
+    setEditable(!editable);
   };
 
   const dispatch = useDispatch();
@@ -18,6 +24,11 @@ export const Columns = (search) => {
   const getPeople = (identification) => {
     dispatch(check.checkPeople(identification));
     setOpen(true);
+  };
+
+  const updatePeople = (identification) => {
+    dispatch(check.checkPeople(identification));
+    setEditable(true);
   };
 
   return [
@@ -72,6 +83,14 @@ export const Columns = (search) => {
               ver
             </Button>
           </Tooltip>
+          <Button
+            onClick={() => updatePeople(record.identification)}
+            type="primary"
+            style={{ marginLeft: "10px" }}
+          >
+            Editar
+          </Button>
+
           <Button type="primary" style={{ marginLeft: "20px" }}>
             Agregar Tiempo
           </Button>
@@ -81,6 +100,12 @@ export const Columns = (search) => {
             close={closeModal}
             ok={closeModal}
             accept={true}
+          />
+          <ModalUpdateClient
+            title="Edite la información personal"
+            close={closeEditable}
+            open={editable}
+            identification={record.identification}
           />
         </>
       ),

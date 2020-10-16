@@ -12,14 +12,16 @@ import { clients } from "./../../../services/Clients/ClientsActions";
 
 const Trainer = () => {
   const [openModalNewTrainer, setOpenModalNewTrainer] = useState(false);
+
   const dispatch = useDispatch();
-  const { listClients, loading, successCreate } = useSelector(
+
+  const { listClients, loading, successCreate, successUpdate } = useSelector(
     (state) => state.Clients
   );
 
   useEffect(() => {
     dispatch(clients.getClients("Entrenador"));
-  }, [dispatch, successCreate]);
+  }, [dispatch, successCreate, successUpdate]);
 
   useEffect(() => {
     if (successCreate) message.success("Entrenador creado");
