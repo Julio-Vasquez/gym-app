@@ -7,14 +7,14 @@ import {
   BarChartOutlined,
   LoginOutlined,
   UserSwitchOutlined,
-  LogoutOutlined
+  LogoutOutlined,
 } from "@ant-design/icons";
-import { Tooltip } from 'antd';
-import { useDispatch } from 'react-redux';
-import { auth } from './../../../services/Auth/AuthActions';
+import { Tooltip } from "antd";
+import { useDispatch } from "react-redux";
+import { auth } from "./../../../services/Auth/AuthActions";
 import PropTypes from "prop-types";
 
-const Layout = ({ appName, logo, children }) => {
+const Layout = ({ appName, children }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const [visibleBtnFixed, setVisibleBtnFixed] = useState(false);
@@ -27,7 +27,7 @@ const Layout = ({ appName, logo, children }) => {
 
   const onCLickLogout = () => {
     dispatch(auth.logout());
-  }
+  };
   useEffect(() => {
     const showButtonFixed = () => {
       const scroll = document.documentElement.scrollTop;
@@ -55,7 +55,7 @@ const Layout = ({ appName, logo, children }) => {
       >
         <div className="sidebar-wrapper">
           <div className="logo-rc">
-            <img src={logo} alt="logo app" />
+            <img src={require("./../../../assets/img/mb.jpg")} alt="logo app" />
             <span>{appName}</span>
           </div>
           <div className="nav">
@@ -125,18 +125,13 @@ const Layout = ({ appName, logo, children }) => {
           </div>
           <div className="navbar-options">
             <Tooltip title="Cerrar sesión">
-              <LogoutOutlined
-                className="photo"
-                onClick={onCLickLogout}
-              />
+              <LogoutOutlined className="photo" onClick={onCLickLogout} />
             </Tooltip>
           </div>
         </nav>
         <div className={sidebarVisible ? "content main" : "content"} id="main">
           <div className="grid-row">
-            <div className="card-chart card">
-              {children}
-            </div>
+            <div className="card-chart card">{children}</div>
           </div>
         </div>
       </div>
@@ -146,7 +141,6 @@ const Layout = ({ appName, logo, children }) => {
 
 Layout.propTypes = {
   appName: PropTypes.string.isRequired,
-  logo: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
 };
 
