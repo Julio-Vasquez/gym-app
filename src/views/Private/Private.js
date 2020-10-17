@@ -7,6 +7,7 @@ import Layout from "./Layout";
 const Check = lazy(() => import("./Check"));
 const Clients = lazy(() => import("./Clients"));
 const Trainers = lazy(() => import("./Trainers"));
+const Dashboard = lazy(() => import("./Dashboard"));
 
 const Private = ({ history }) => {
   return (
@@ -14,13 +15,13 @@ const Private = ({ history }) => {
       <Router history={history}>
         <Suspense fallback={<Loading />}>
           <Switch>
-            <Route exact path="/">
-              hola
-            </Route>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/login" component={Dashboard} />
             <Route exact path="/clients" component={Clients} />
             <Route exact path="/check" component={Check} />
             <Route exact path="/trainers" component={Trainers} />
-            <Redirect from="*" to="/" />
+            <Redirect from="/login" to="/" />
           </Switch>
         </Suspense>
       </Router>
