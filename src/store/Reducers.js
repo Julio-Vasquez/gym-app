@@ -9,28 +9,32 @@ import reducerAuth, {
 
 import reducerCheck, {
   INITIAL_STATE as initialCheck,
-} from './../services/Check/CheckReducer';
+} from "./../services/Check/CheckReducer";
 
 import reducerClients, {
-  INITIAL_STATE as initialClients
+  INITIAL_STATE as initialClients,
 } from "../services/Clients/ClientsReducer";
 
-const appReducers = (history) => combineReducers(
-  {
+import reducerSuscription, {
+  INITIAL_STATE as initialSuscription,
+} from "../services/Suscription/SuscriptionReducer";
+
+const appReducers = (history) =>
+  combineReducers({
     router: connectRouter(history),
     Auth: reducerAuth,
     Check: reducerCheck,
-    Clients: reducerClients
-  }
-);
-
+    Clients: reducerClients,
+    Suscription: reducerSuscription,
+  });
 
 export const rootReducers = (history) => (state, action) => {
   if (action.type === "AUTH/LOGOUT" || action.type === auth.logout().type)
     state = {
       Auth: initialAuth,
       Check: initialCheck,
-      Clients: initialClients
+      Clients: initialClients,
+      Suscription: initialSuscription,
     };
   return appReducers(history)(state, action);
 };
