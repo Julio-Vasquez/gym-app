@@ -25,7 +25,7 @@
   transition-property: top, bottom, width;
   transition-duration: 0.2s, 0.2s, 0.35s;
   transition-timing-function: linear, linear, ease;
-  &::after{
+  &::after {
     content: "";
     position: absolute;
     border-top: 5px solid transparent;
@@ -68,7 +68,7 @@ nav {
   font-size: 20px;
 }
 
-.navbar-bar svg{
+.navbar-bar svg {
   margin-left: 20px;
 }
 
@@ -103,9 +103,6 @@ nav {
   display: flex;
   align-items: center;
 }
-
-
-
 
 /* transisiones js */
 .navbar-bar_fixed button {
@@ -193,7 +190,7 @@ nav {
 
 .nav ul li {
   padding: 20px;
-  &:hover{
+  &:hover {
     background-color: rgb(184, 28, 93);
   }
 }
@@ -260,11 +257,11 @@ nav {
 
 .toggle .logo-rc {
   padding: 10px 0px 15px 0px;
-  &::after{
+  &::after {
     width: 70%;
     left: 15px;
   }
-  span{
+  span {
     opacity: 0;
     transform: translate3d(-25px, 0, 0);
   }
@@ -273,16 +270,15 @@ nav {
 .toggle .nav ul li a span {
   opacity: 0;
   transform: translate3d(-25px, 0, 0);
-  &.span-icon{
+  &.span-icon {
     opacity: 1;
     margin-left: 27px;
-    svg{
+    svg {
       text-align: center;
-      height: 28px;  
+      height: 28px;
     }
   }
 }
-
 
 @media only screen and (max-width: 1200px) {
   .sidebar {
@@ -346,11 +342,11 @@ nav {
   background: #27293d;
   border-radius: 5px;
   padding: 10px;
-  box-shadow: 0 1px 20px 0 rgba(0,0,0,.1);
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .card-chart {
-  overflow: hidden;
-  height: 90.3vh;
+  //overflow: hidden;
+  //min-height: 91vh;
 }
 
 .grid-row {

@@ -47,6 +47,11 @@ const Layout = ({ appName, children }) => {
     setSidebarVisible(!sidebarVisible);
   };
 
+  const onClickBar = () => {
+    setVisibleBtnFixed(true);
+    setSidebarVisible(!sidebarVisible);
+  };
+
   return (
     <div className="wrapper">
       <div
@@ -117,7 +122,7 @@ const Layout = ({ appName, children }) => {
               }
               id="content-button_fixed"
             >
-              <button id="boton-sidebar_fixed">
+              <button id="boton-sidebar_fixed" onClick={onClickBar}>
                 <BarChartOutlined />
               </button>
             </div>
