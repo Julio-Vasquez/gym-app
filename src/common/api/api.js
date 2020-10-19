@@ -26,7 +26,6 @@ class Api {
 
   POST(url, body, header) {
     let dataBody = JSON.stringify(body);
-    console.log(dataBody);
     return fetch(`${API_URL}/${url}`, {
       method: "POST",
       headers: header
@@ -50,8 +49,6 @@ class Api {
   }
 
   PUT(url, body, header) {
-    console.log(url);
-    console.log(body);
     return fetch(`${API_URL}/${url}`, {
       method: "PUT",
       headers: header

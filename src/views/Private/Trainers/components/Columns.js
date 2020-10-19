@@ -112,25 +112,27 @@ export const Columns = (search) => {
               shape="circle"
             />
           </Tooltip>
-          <ModalCheck
-            title="Detalle"
-            open={open}
-            close={closeModal}
-            ok={closeModal}
-            accept={true}
-          />
-          <ModalUpdateClient
-            title="Edite la información personal"
-            close={closeEditable}
-            open={editable}
-            identification={record.identification}
-          />
-          <AddTime
-            open={time}
-            close={closeTime}
-            ok={closeTime}
-            identification={record.identification}
-          />
+          <div style={{ display: "none" }}>
+            <ModalCheck
+              title="Detalle"
+              open={open}
+              close={closeModal}
+              ok={closeModal}
+              accept={true}
+            />
+            <ModalUpdateClient
+              title="Edite la información personal"
+              close={closeEditable}
+              open={editable}
+              identification={record.identification}
+            />
+            <AddTime
+              open={time}
+              close={closeTime}
+              ok={closeTime}
+              identification={record.identification}
+            />
+          </div>
         </>
       ),
     },
