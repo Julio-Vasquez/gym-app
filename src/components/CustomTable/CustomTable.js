@@ -86,7 +86,7 @@ export const CustomTable = ({ data, Columns, title }) => {
         <Table
           columns={Columns(getColumnSearchProps)}
           dataSource={data}
-          rowKey="name"
+          rowKey="identification"
         />
       </div>
     </div>
