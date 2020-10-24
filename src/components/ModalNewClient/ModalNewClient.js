@@ -194,15 +194,13 @@ export const ModalNewClient = ({ open, close, title }) => {
                   name="dateBirthI"
                   rules={[
                     {
-                      required: true,
-                      message: "Por favor ingresa la fecha de nacimiento",
+                      required: false,
                     },
                     () => ({
                       validator(rule, value) {
                         let year = new Date().getFullYear() - 10;
-                        //if (value === undefined) return Promise.reject();
-                        if (value !== undefined && value.year() <= year)
-                          return Promise.resolve();
+                        if (value === undefined) return Promise.resolve();
+                        if (value.year() <= year) return Promise.resolve();
                         return Promise.reject(
                           "Usted debe tener al menos 10 años"
                         );
