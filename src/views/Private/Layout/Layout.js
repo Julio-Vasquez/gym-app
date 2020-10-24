@@ -8,11 +8,13 @@ import {
   LoginOutlined,
   UserSwitchOutlined,
   LogoutOutlined,
+  DollarOutlined,
 } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { useDispatch } from "react-redux";
-import { auth } from "./../../../services/Auth/AuthActions";
 import PropTypes from "prop-types";
+
+import { auth } from "./../../../services/Auth/AuthActions";
 
 const Layout = ({ appName, children }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -95,6 +97,14 @@ const Layout = ({ appName, children }) => {
                     <UserSwitchOutlined className="span-icon" />
                   </Tooltip>
                   <span>entrenadores</span>
+                </a>
+              </li>
+              <li>
+                <a href="/pays">
+                  <Tooltip title="Pagos">
+                    <DollarOutlined className="span-icon" />
+                  </Tooltip>
+                  <span>Pagos</span>
                 </a>
               </li>
             </ul>
