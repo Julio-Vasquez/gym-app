@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Space, Row } from "antd";
 import {
   CheckCircleTwoTone,
@@ -10,9 +10,19 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Loading } from "../Loading";
 
-export const ModalCheck = ({ title, close, ok, open, accept }) => {
+export const ModalCheck = ({ title, close, ok, open }) => {
   const { client, loading } = useSelector((state) => state.Check);
+  const [color, setColor] = useState("");
 
+  useEffect(() => {
+    if (client.time === 0) {
+      setColor("#f44336");
+    } else if (client.time <= 5 && client.time >= 0) {
+      setColor("#ff9800");
+    } else {
+      setColor("#8BC34A");
+    }
+  }, [client.time]);
   return loading ? (
     <Loading />
   ) : (
@@ -56,8 +66,13 @@ export const ModalCheck = ({ title, close, ok, open, accept }) => {
 
               <Row>
                 <p>{client.phone}</p>
-                <p>{client.dateBirth}</p>
-                <p>{client.time === null ? "0" : client.time} Dias</p>
+                <p
+                  style={{
+                    color: color,
+                  }}
+                >
+                  {client.time === null ? "0" : client.time} Dias
+                </p>
               </Row>
             </div>
           ) : (
@@ -74,5 +89,4 @@ ModalCheck.propTypes = {
   close: PropTypes.func.isRequired,
   ok: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  accept: PropTypes.bool.isRequired,
 };
