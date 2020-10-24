@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Loading } from "./../../../components/Loading";
 import { CustomTable } from "../../../components/CustomTable";
-import { Columns } from "./components/Columns";
 import { ModalNewClient } from "../../../components/ModalNewClient";
 import { FloatingButton } from "../../../components/FloatingButton";
 
@@ -32,7 +31,7 @@ const Clients = () => {
     <Loading />
   ) : (
     <>
-      <CustomTable data={listClients} title="Mis Clientes" Columns={Columns} />
+      <CustomTable data={listClients} title="Mis Clientes" />
       <FloatingButton
         title="Agregar nuevo cliente"
         state={openModalNewClient}

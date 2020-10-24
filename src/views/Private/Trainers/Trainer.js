@@ -4,7 +4,6 @@ import { message } from "antd";
 
 import { Loading } from "./../../../components/Loading";
 import { CustomTable } from "../../../components/CustomTable";
-import { Columns } from "./components/Columns";
 import { FloatingButton } from "../../../components/FloatingButton";
 import { ModalNewClient } from "../../../components/ModalNewClient";
 
@@ -33,7 +32,7 @@ const Trainer = () => {
     <Loading />
   ) : (
     <div>
-      <CustomTable title="Entrenadores" data={listClients} Columns={Columns} />
+      <CustomTable title="Entrenadores" data={listClients} />
       <FloatingButton
         title="Agregar Nuevo Entrenador"
         state={openModalNewTrainer}
