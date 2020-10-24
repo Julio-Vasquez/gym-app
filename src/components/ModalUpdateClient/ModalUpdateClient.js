@@ -29,9 +29,13 @@ export const ModalUpdateClient = ({ open, close, title, identification }) => {
     </div>
   );
 };
+
 ModalUpdateClient.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  identification: PropTypes.any.isRequired,
+  identification: PropTypes.any,
+};
+ModalUpdateClient.defaulrProps = {
+  identification: 0,
 };
