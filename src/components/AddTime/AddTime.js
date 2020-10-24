@@ -9,7 +9,6 @@ export const AddTime = ({ identification, open, close }) => {
   const { Item } = Form;
 
   const [form, setForm] = useState({
-    identification: identification,
     cost: 0,
     days: 0,
   });
@@ -21,8 +20,8 @@ export const AddTime = ({ identification, open, close }) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const onFinishForm = (e) => {
-    console.log(form);
-    dispatch(suscription.addSuscription(form));
+    console.log(form, identification);
+    dispatch(suscription.addSuscription({ ...form, identification }));
   };
 
   return (
@@ -80,7 +79,11 @@ export const AddTime = ({ identification, open, close }) => {
 };
 
 AddTime.propTypes = {
-  identification: PropTypes.any.isRequired,
+  identification: PropTypes.any,
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
+};
+
+AddTime.defaulrProps = {
+  identification: 0,
 };
