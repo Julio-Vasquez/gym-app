@@ -21,6 +21,7 @@ const Private = ({ history }) => {
             <Route exact path="/clients" component={Clients} />
             <Route exact path="/check" component={Check} />
             <Route exact path="/trainers" component={Trainers} />
+            <Route exact path="/pays" component={Dashboard} />
             <Redirect from="/login" to="/" />
           </Switch>
         </Suspense>
