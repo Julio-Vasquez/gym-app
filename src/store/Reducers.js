@@ -19,6 +19,10 @@ import reducerSuscription, {
   INITIAL_STATE as initialSuscription,
 } from "../services/Suscription/SuscriptionReducer";
 
+import reducerReport, {
+  INITIAL_STATE as initialReport,
+} from "../services/Report/ReportReducer";
+
 const appReducers = (history) =>
   combineReducers({
     router: connectRouter(history),
@@ -26,6 +30,7 @@ const appReducers = (history) =>
     Check: reducerCheck,
     Clients: reducerClients,
     Suscription: reducerSuscription,
+    Report: reducerReport,
   });
 
 export const rootReducers = (history) => (state, action) => {
@@ -35,6 +40,7 @@ export const rootReducers = (history) => (state, action) => {
       Check: initialCheck,
       Clients: initialClients,
       Suscription: initialSuscription,
+      Report: initialReport,
     };
   return appReducers(history)(state, action);
 };
