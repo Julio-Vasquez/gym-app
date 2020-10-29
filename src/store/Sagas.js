@@ -4,6 +4,7 @@ import AuthSaga from "../services/Auth/AuthSaga";
 import ClientsSaga from "../services/Clients/ClientsSaga";
 import CheckSaga from "../services/Check/CheckSaga";
 import SuscriptionSaga from "../services/Suscription/SuscriptionSaga";
+import ReportSaga from "../services/Report/ReportSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -11,5 +12,6 @@ export default function* rootSaga() {
     fork(ClientsSaga),
     fork(CheckSaga),
     fork(SuscriptionSaga),
+    fork(ReportSaga),
   ]);
 }
