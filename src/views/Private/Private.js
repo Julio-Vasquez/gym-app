@@ -8,6 +8,7 @@ const Check = lazy(() => import("./Check"));
 const Clients = lazy(() => import("./Clients"));
 const Trainers = lazy(() => import("./Trainers"));
 const Dashboard = lazy(() => import("./Dashboard"));
+const Pays = lazy(() => import("./Pays"));
 
 const Private = ({ history }) => {
   return (
@@ -21,7 +22,7 @@ const Private = ({ history }) => {
             <Route exact path="/clients" component={Clients} />
             <Route exact path="/check" component={Check} />
             <Route exact path="/trainers" component={Trainers} />
-            <Route exact path="/pays" component={Dashboard} />
+            <Route exact path="/pays" component={Pays} />
             <Redirect from="/login" to="/" />
           </Switch>
         </Suspense>
