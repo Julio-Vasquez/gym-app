@@ -1,11 +1,11 @@
-import { handleActions } from 'redux-actions'
+import { handleActions } from "redux-actions";
 
 export const INITIAL_STATE = {
   loading: false,
-  error: { message: '', error: undefined },
+  error: { message: "", error: undefined },
   success: undefined,
-  client: {}
-}
+  client: {},
+};
 
 const reducerCheck = handleActions(
   {
@@ -21,7 +21,7 @@ const reducerCheck = handleActions(
             ...state,
             loading: false,
             success: true,
-            client: people
+            client: people,
           };
         },
       },
@@ -30,11 +30,34 @@ const reducerCheck = handleActions(
         ...state,
         error: { ...state.error, message: error, error: true },
         success: false,
-        loading: false
-      })
-    }
+        loading: false,
+      }),
+
+      CHECK_PEOPLE_IN: (state, { payload }) => ({
+        ...state,
+        loading: true,
+      }),
+
+      CHECK_PEOPLE_IN_SUCCESS: {
+        next(state, { payload: { people } }) {
+          return {
+            ...state,
+            loading: false,
+            success: true,
+            client: people,
+          };
+        },
+      },
+
+      CHECK_PEOPLE_IN_FAILED: (state, { payload: { error } }) => ({
+        ...state,
+        error: { ...state.error, message: error, error: true },
+        success: false,
+        loading: false,
+      }),
+    },
   },
   INITIAL_STATE
 );
 
-export default reducerCheck
+export default reducerCheck;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button, Col, Card, Input } from "antd";
 import { IdcardOutlined } from "@ant-design/icons";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 
-import { check } from './../../../services/Check/CheckActions';
+import { check } from "./../../../services/Check/CheckActions";
 import { ModalCheck } from "../../../components/ModalCheck";
 
 const Check = () => {
@@ -33,8 +33,8 @@ const Check = () => {
   };
 
   const onFinishForm = (e) => {
-    console.log(`Finish Form Whit ID : ${identification}`)
-    dispatch(check.checkPeople(identification));
+    console.log(`Finish Form Whit ID : ${identification}`);
+    dispatch(check.checkPeopleIn(identification));
     setOpen(true);
   };
 

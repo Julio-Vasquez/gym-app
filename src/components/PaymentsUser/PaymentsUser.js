@@ -13,7 +13,7 @@ export const PaymentsUser = ({ name, lastName, identification, payments }) => {
           <li key={key}>
             {console.log(key)}
             {item.days} días, por un costo de : {item.cost}, registrado por :{" "}
-            {item.username}
+            {item.username} finalizando : {item.createdAt.substr(0, 10)}
           </li>
         ))}
       </ul>
