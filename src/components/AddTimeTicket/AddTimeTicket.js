@@ -24,7 +24,9 @@ export const AddTimeTicket = ({ identification, open, close }) => {
 
   const onFinishForm = (e) => {
     console.log(form, identification);
-    dispatch(suscription.addSuscription({ ...form, identification }));
+    dispatch(
+      suscription.addSuscription({ ...form, identification, concept: type })
+    );
   };
 
   const onChangeRadio = (e) => {

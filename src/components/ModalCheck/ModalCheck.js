@@ -66,6 +66,7 @@ export const ModalCheck = ({ title, close, ok, open }) => {
 
               <Row>
                 <p>{client.phone}</p>
+                <p style={{ color: "#39FF14" }}>{client.concept}</p>
                 <p
                   style={{
                     color: color,
