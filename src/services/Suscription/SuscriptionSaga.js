@@ -26,8 +26,29 @@ function* FetchAddSuscription({ payload }) {
   }
 }
 
+function* FetchRemoveTime({ payload }) {
+  try {
+    const res = yield Api.POST("suscription/remove", payload.time);
+    if (res && res.payload.success) {
+      yield put(suscription.removeTimeSuccess(res.payload.payload));
+    } else if (res.payload.error) {
+      message.error(`${res.payload.detail}`);
+      yield put(suscription.removeTimeFailed(`${res.payload.detail}`));
+    } else {
+      message.error(`Error Desconocido`);
+      yield put(
+        suscription.removeTimeFailed(new TypeError("ERROR_GET_CLIENTS"))
+      );
+    }
+  } catch (e) {
+    console.log(e);
+    yield put(suscription.removeTimeFailed(FailedConnectionServer()));
+  }
+}
+
 function* ActionWatcher() {
   yield takeLatest(suscription.addSuscription, FetchAddSuscription);
+  yield takeLatest(suscription.removeTime, FetchRemoveTime);
 }
 
 export default function* SuscriptionSaga() {
