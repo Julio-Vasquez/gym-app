@@ -41,6 +41,7 @@ export const AddTimeTicket = ({ identification, open, close }) => {
         title="Agregar Tiempo"
         visible={open}
         onCancel={() => close(false)}
+        onOk={() => close(false)}
         footer={[<div key="btn-modal"></div>]}
       >
         <Form onChange={onChangeForm} onFinish={onFinishForm}>
@@ -71,7 +72,7 @@ export const AddTimeTicket = ({ identification, open, close }) => {
                 },
               ]}
             >
-              <Input name="days" type="number" />
+              <Input name="days" type="number" min="1" />
             </Item>
           </Row>
           <Row>

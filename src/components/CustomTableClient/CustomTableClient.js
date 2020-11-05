@@ -5,6 +5,7 @@ import {
   EditTwoTone,
   EyeOutlined,
   PlusOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { useDispatch } from "react-redux";
@@ -178,8 +179,8 @@ export const CustomTable = ({ data, title }) => {
           <Tooltip title="Ver informacion personal">
             <Button
               onClick={() => handleGetPeople(record.identification)}
-              danger
-              icon={<EyeOutlined />}
+              style={{ borderColor: "#39FF14" }}
+              icon={<EyeOutlined style={{ color: "#39FF14" }} />}
               shape="circle"
             />
           </Tooltip>
@@ -199,6 +200,14 @@ export const CustomTable = ({ data, title }) => {
               onClick={() => handleAddTime(record.identification)}
               icon={<PlusOutlined />}
               shape="circle"
+            />
+          </Tooltip>
+          <Tooltip title="Restar Tiempo">
+            <Button
+              icon={<DeleteOutlined />}
+              shape="circle"
+              danger
+              style={{ marginLeft: "5px" }}
             />
           </Tooltip>
         </>

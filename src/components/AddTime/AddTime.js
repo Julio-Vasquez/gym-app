@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Space, Modal, Input, Form, Row } from "antd";
+import { Button, Space, Modal, Input, Form, Row, message } from "antd";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
@@ -21,7 +21,15 @@ export const AddTime = ({ identification, open, close }) => {
   };
   const onFinishForm = (e) => {
     console.log(form, identification);
-    dispatch(suscription.addSuscription({ ...form, identification }));
+    if (form.days > 0)
+      dispatch(
+        suscription.addSuscription({
+          ...form,
+          identification,
+          concept: "Mensual",
+        })
+      );
+    else message.error("El valor de los dias debe ser mayor a cero");
   };
 
   return (
@@ -31,6 +39,7 @@ export const AddTime = ({ identification, open, close }) => {
         title="Agregar Tiempo"
         visible={open}
         onCancel={() => close(false)}
+        onOk={() => close(false)}
         footer={[<div key="btn-modal"></div>]}
       >
         <Form onChange={onChangeForm} onFinish={onFinishForm}>
@@ -49,7 +58,7 @@ export const AddTime = ({ identification, open, close }) => {
                 },
               ]}
             >
-              <Input name="days" type="number" />
+              <Input name="days" type="number" min="1" />
             </Item>
           </Row>
           <Row>
