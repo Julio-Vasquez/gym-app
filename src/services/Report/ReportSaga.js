@@ -30,7 +30,6 @@ function* FetchGetPayDates({ payload }) {
     const res = yield Api.GET(
       `reports/pays?start=${payload.start}&end=${payload.end}`
     );
-    console.log(res);
     if (res && res.payload.success) {
       yield put(report.getPayDatesSuccess(res.payload));
     } else if (res.payload?.error) {

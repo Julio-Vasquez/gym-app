@@ -30,7 +30,6 @@ const Pays = () => {
   };
 
   const handlePays = () => {
-    console.log(`Actual => ${type}`);
     if (type === "identification")
       dispatch(report.getPayIdentification(identification));
     else dispatch(report.getPayDates(...dates));

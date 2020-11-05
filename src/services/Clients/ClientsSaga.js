@@ -24,10 +24,8 @@ function* FetchGetClients({ payload }) {
 }
 
 function* FetchCreateClient({ payload }) {
-  console.log(payload);
   try {
     const res = yield Api.POST("users/create", payload.client);
-    console.log(res);
     if (res && res.payload.success) {
       yield put(clients.createClientSuccess(res.payload.payload));
       message.success("cliente creado");
@@ -46,13 +44,11 @@ function* FetchCreateClient({ payload }) {
 }
 
 function* FetchUpdateClient({ payload }) {
-  console.log(payload);
   try {
     const res = yield Api.PUT("users/update", {
       oldId: payload.identification,
       ...payload.newClient,
     });
-    console.log(res);
     if (res && res.payload.success) {
       yield put(clients.updateClientSuccess(res.payload.success));
       message.success(res.payload.detail);

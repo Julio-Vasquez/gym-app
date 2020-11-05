@@ -28,6 +28,14 @@ const Clients = () => {
     if (successCreate) message.success("cliente creado");
   }, [successCreate]);
 
+  useEffect(() => {
+    if (successRemove) message.success("Tiempo removido");
+  }, [successRemove]);
+
+  useEffect(() => {
+    if (success) message.success("Tiempo Agregado");
+  }, [success]);
+
   return loading ? (
     <Loading />
   ) : (

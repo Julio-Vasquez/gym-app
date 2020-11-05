@@ -48,10 +48,8 @@ function* FetchForgotPassword({ payload }) {
 }
 
 function* FetchNewPassword({ payload }) {
-  console.log(payload);
   try {
     const res = yield Api.PUT("auth/forgot-password", payload);
-    console.log(res);
     if (res && res.payload.success) {
       yield put(auth.newPasswordSuccess("ok"));
     } else if (res.payload.error) {
@@ -71,7 +69,7 @@ function* ActionWatcher() {
   yield takeLatest(auth.login, FetchLogin);
   yield takeLatest(auth.resetPassword, FetchForgotPassword);
   yield takeLatest(auth.logout, FetchLogout);
-  yield takeLatest(auth.newPassword, FetchNewPassword)
+  yield takeLatest(auth.newPassword, FetchNewPassword);
 }
 
 export default function* AuthSaga() {

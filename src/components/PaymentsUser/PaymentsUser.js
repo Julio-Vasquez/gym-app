@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const PaymentsUser = ({ name, lastName, identification, payments }) => {
-  console.log(name);
   return (
     <div>
       <p>{`Usuario : ${name} ${lastName}`}</p>

@@ -21,7 +21,6 @@ function* FetchAddSuscription({ payload }) {
       );
     }
   } catch (e) {
-    console.log(e);
     yield put(suscription.addSuscriptionFailed(FailedConnectionServer()));
   }
 }
@@ -41,7 +40,6 @@ function* FetchRemoveTime({ payload }) {
       );
     }
   } catch (e) {
-    console.log(e);
     yield put(suscription.removeTimeFailed(FailedConnectionServer()));
   }
 }

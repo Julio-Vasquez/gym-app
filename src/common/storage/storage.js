@@ -4,7 +4,6 @@ class token {
   IsTokenValid = () => {
     try {
       const current = jwtDecode(this.GetToken());
-      console.log(current);
       return (
         this.GetToken() !== undefined &&
         this.GetToken() !== "" &&

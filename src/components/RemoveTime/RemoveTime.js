@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Space, Modal, Input, Form, Row, message } from "antd";
+import { Button, Space, Modal, Input, Form, Row } from "antd";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
@@ -15,21 +15,17 @@ export const RemoveTime = ({ identification, open, close }) => {
   const dispatch = useDispatch();
 
   const onChangeForm = (e) => {
-    console.log(e.target.name + ":" + e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const onFinishForm = (e) => {
-    console.log(form, identification);
-    if (form.days > 0) {
-      close(false);
-      dispatch(
-        suscription.removeTime({
-          ...form,
-          identification,
-        })
-      );
-    } else message.error("El valor de los dias debe ser mayor a cero");
+    close(false);
+    dispatch(
+      suscription.removeTime({
+        ...form,
+        identification,
+      })
+    );
   };
 
   return (

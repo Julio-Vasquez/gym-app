@@ -38,13 +38,11 @@ export const ModalNewClient = ({ open, close, title }) => {
   const dispatch = useDispatch();
 
   const onFinishForm = () => {
-    console.log(form);
     close(false);
     dispatch(clients.createClient(form));
   };
 
   const onChangeForm = (e) => {
-    console.log(e.target.name + ":" + e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 

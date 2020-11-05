@@ -24,12 +24,10 @@ export const FormModal = ({ client, identification }) => {
   const dispatch = useDispatch();
 
   const onFinishForm = () => {
-    console.log(form);
     dispatch(clients.updateClient(identification, form));
   };
 
   const onChangeForm = (e) => {
-    console.log(e.target.name + ":" + e.target.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,

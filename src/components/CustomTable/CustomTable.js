@@ -60,20 +60,17 @@ export const CustomTable = ({ data, title }) => {
   };
 
   const handleGetPeople = (identification) => {
-    console.log(`handleGetPeople => ${identification}`);
     dispatch(check.checkPeople(identification));
     setCheckModal(true);
   };
 
   const handleUpdatePeople = (identification) => {
-    console.log(`handleUpdatePeople => ${identification}`);
     dispatch(check.checkPeople(identification));
     setIdentification(identification);
     setUpdateModal(true);
   };
 
   const handleAddTime = (identification) => {
-    console.log(`handleAddTime => ${identification}`);
     setIdentification(identification);
     setTimeModal(true);
   };

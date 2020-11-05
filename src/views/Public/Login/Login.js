@@ -12,7 +12,6 @@ const Login = ({ appName }) => {
   const dispatch = useDispatch();
 
   const onChangeForm = (e) => {
-    console.log([e.target.name] + ":" + e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 

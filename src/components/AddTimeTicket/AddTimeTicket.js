@@ -18,12 +18,10 @@ export const AddTimeTicket = ({ identification, open, close }) => {
   const dispatch = useDispatch();
 
   const onChangeForm = (e) => {
-    console.log(e.target.name + ":" + e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const onFinishForm = (e) => {
-    console.log(form, identification);
     close(false);
     dispatch(
       suscription.addSuscription({ ...form, identification, concept: type })

@@ -33,7 +33,6 @@ const Check = () => {
   };
 
   const onFinishForm = (e) => {
-    console.log(`Finish Form Whit ID : ${identification}`);
     dispatch(check.checkPeopleIn(identification));
     setOpen(true);
   };
