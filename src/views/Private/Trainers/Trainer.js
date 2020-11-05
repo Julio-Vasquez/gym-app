@@ -18,11 +18,11 @@ const Trainer = () => {
     (state) => state.Clients
   );
 
-  const { success } = useSelector((state) => state.Suscription);
+  const { success, successRemove } = useSelector((state) => state.Suscription);
 
   useEffect(() => {
     dispatch(clients.getClients("Entrenador"));
-  }, [dispatch, successCreate, successUpdate, success]);
+  }, [dispatch, successCreate, successUpdate, success, successRemove]);
 
   useEffect(() => {
     if (successCreate) message.success("Entrenador creado");

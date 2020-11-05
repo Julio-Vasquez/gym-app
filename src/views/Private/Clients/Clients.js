@@ -11,17 +11,18 @@ import { message } from "antd";
 
 const Clients = () => {
   const [openModalNewClient, setOpenModalNewClient] = useState(false);
+
   const dispatch = useDispatch();
 
   const { listClients, loading, successCreate, successUpdate } = useSelector(
     (state) => state.Clients
   );
 
-  const { success } = useSelector((state) => state.Suscription);
+  const { success, successRemove } = useSelector((state) => state.Suscription);
 
   useEffect(() => {
     dispatch(clients.getClients("Cliente"));
-  }, [dispatch, successCreate, successUpdate, success]);
+  }, [dispatch, successCreate, successUpdate, success, successRemove]);
 
   useEffect(() => {
     if (successCreate) message.success("cliente creado");
@@ -30,7 +31,7 @@ const Clients = () => {
   return loading ? (
     <Loading />
   ) : (
-    <>
+    <div>
       <CustomTable data={listClients} title="Mis Clientes" />
       <FloatingButton
         title="Agregar nuevo cliente"
@@ -42,7 +43,7 @@ const Clients = () => {
         close={setOpenModalNewClient}
         title="Registrar Nuevo Cliente"
       />
-    </>
+    </div>
   );
 };
 

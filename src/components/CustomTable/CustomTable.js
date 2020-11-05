@@ -17,6 +17,7 @@ import { AddTime } from "./../AddTime";
 import { ModalUpdateClient } from "./../ModalUpdateClient";
 import { ColorTab } from "./../ColorTab";
 import { check } from "./../../services/Check/CheckActions";
+import { RemoveTime } from "../RemoveTime/RemoveTime";
 
 export const CustomTable = ({ data, title }) => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export const CustomTable = ({ data, title }) => {
   const [checkModal, setCheckModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
   const [timeModal, setTimeModal] = useState(false);
+  const [removeModal, setRemoveModal] = useState(false);
   const [identification, setIdentification] = useState(null);
 
   const closeCheckModal = () => {
@@ -40,6 +42,10 @@ export const CustomTable = ({ data, title }) => {
 
   const closeTimeModal = () => {
     setTimeModal(!timeModal);
+  };
+
+  const closeRemoveModal = () => {
+    setRemoveModal(!removeModal);
   };
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -70,6 +76,11 @@ export const CustomTable = ({ data, title }) => {
     console.log(`handleAddTime => ${identification}`);
     setIdentification(identification);
     setTimeModal(true);
+  };
+
+  const handleRemoveTime = (identification) => {
+    setIdentification(identification);
+    setRemoveModal(true);
   };
 
   const getColumnSearchProps = (dataIndex, title) => ({
@@ -206,6 +217,7 @@ export const CustomTable = ({ data, title }) => {
             <Button
               icon={<DeleteOutlined />}
               shape="circle"
+              onClick={() => handleRemoveTime(record.identification)}
               danger
               style={{ marginLeft: "5px" }}
             />
@@ -240,6 +252,12 @@ export const CustomTable = ({ data, title }) => {
           open={timeModal}
           close={closeTimeModal}
           ok={closeTimeModal}
+          identification={identification}
+        />
+        <RemoveTime
+          open={removeModal}
+          close={closeRemoveModal}
+          ok={closeRemoveModal}
           identification={identification}
         />
       </div>
