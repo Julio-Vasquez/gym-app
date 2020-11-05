@@ -4,9 +4,6 @@ export const INITIAL_STATE = {
   loading: false,
   success: undefined,
   error: undefined,
-  loadingRemove: false,
-  successRemove: undefined,
-  errorRemove: undefined,
 };
 
 const reducerSuscription = handleActions(
@@ -32,28 +29,6 @@ const reducerSuscription = handleActions(
         ...state,
         error: true,
         success: false,
-      }),
-
-      REMOVE_TIME: (state, { payload }) => ({
-        ...state,
-        loadingRemove: true,
-      }),
-
-      REMOVE_TIME_SUCCESS: {
-        next(state, { payload: { success } }) {
-          return {
-            ...state,
-            errorRemove: false,
-            successRemove: true,
-            loadingRemove: false,
-          };
-        },
-      },
-
-      REMOVE_TIME_FAILED: (state, { payload: { error } }) => ({
-        ...state,
-        errorRemove: true,
-        successRemove: false,
       }),
     },
   },
