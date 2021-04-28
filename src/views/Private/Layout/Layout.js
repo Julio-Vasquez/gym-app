@@ -14,6 +14,8 @@ import { Tooltip } from "antd";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
+import logo from "../../../assets/img/mb.jpg";
+
 import { auth } from "./../../../services/Auth/AuthActions";
 
 const Layout = ({ appName, children }) => {
@@ -62,7 +64,7 @@ const Layout = ({ appName, children }) => {
       >
         <div className="sidebar-wrapper">
           <div className="logo-rc">
-            <img src={require("./../../../assets/img/mb.jpg")} alt="logo app" />
+            <img src={logo} alt="logo app" />
             <span>{appName}</span>
           </div>
           <div className="nav">

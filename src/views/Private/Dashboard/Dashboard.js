@@ -1,13 +1,11 @@
 import React from "react";
+import dashboard from "./../../../assets/img/dashboard.jpeg";
 
 const Dashboard = () => {
   return (
     <div className="content-dashboard">
       <div className="content-dashboard-bg">
-        <img
-          src={`${require("./../../../assets/img/dashboard.jpeg")}`}
-          alt="Mind Body"
-        />
+        <img src={dashboard} alt="Apollo Gym" />
       </div>
     </div>
   );

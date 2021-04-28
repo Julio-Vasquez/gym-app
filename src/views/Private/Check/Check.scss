@@ -5,6 +5,8 @@
     &-card {
       box-shadow: 0 0 5px rgb(247, 241, 241);
       opacity: 0.91;
+      padding-left: 10px;
+      padding-right: 10px;
       input {
         height: 40px;
         font-size: 18px;
@@ -13,17 +15,19 @@
       h2 {
         text-align: center;
         color: #111;
-        font-family: "Poppins" !important;
+        font-family: "exo", "Poppins";
       }
       h2 {
-        font-weight: 500;
+        font-weight: 600;
         font-size: 26px;
+        padding-top: 15px;
       }
       p {
         padding-bottom: 20px;
       }
       &-btn {
         text-align: center;
+        padding-bottom: 15px;
         button {
           box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
           height: 45px;

@@ -55,6 +55,7 @@ const Check = () => {
           </p>
           <Form onChange={onChnageForm} onFinish={onFinishForm}>
             <Item
+              id="itemform"
               name="identification"
               rules={[
                 {
@@ -74,7 +75,7 @@ const Check = () => {
               ]}
             >
               <Input
-                id="hola"
+                id="idCheck"
                 prefix={<IdcardOutlined className="site-form-item-icon" />}
                 placeholder="Número de identificación"
                 type="number"

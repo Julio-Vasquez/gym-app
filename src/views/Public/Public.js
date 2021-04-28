@@ -18,20 +18,20 @@ const Public = () => {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route path="/login" exact>
-            <Login appName="MIND BODY" />
+            <Login appName="APOLLO GYM" />
           </Route>
 
           <Route exact path="/reset-password">
-            <ResetPassword appName="MIND BODY" />
+            <ResetPassword appName="APOLLO GYM" />
           </Route>
 
-          <Route exact path="/setnewpassword/:token" component={NewPassword}/>
-          <Route exact path="/setnewpassword/" component={NewPassword}/>
+          <Route exact path="/setnewpassword/:token" component={NewPassword} />
+          <Route exact path="/setnewpassword/" component={NewPassword} />
 
           <Route path="/" exact>
-            <Login appName="MIND BODY" />
+            <Login appName="APOLLO GYM" />
           </Route>
-          
+
           <Redirect from="/*" to="/login" />
         </Switch>
       </Suspense>
