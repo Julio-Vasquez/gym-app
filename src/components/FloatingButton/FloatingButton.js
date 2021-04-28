@@ -7,7 +7,7 @@ export const FloatingButton = ({ title, state, setState }) => {
   const onCLickBtn = () => setState(!state);
 
   return (
-    <div style={{ paddingBottom: "20px" }}>
+    <div style={{ padding: "20px 0" }}>
       <Tooltip title={title}>
         <Button
           className="floating-button-add"
