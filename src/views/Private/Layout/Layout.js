@@ -64,8 +64,10 @@ const Layout = ({ appName, children }) => {
       >
         <div className="sidebar-wrapper">
           <div className="logo-rc">
-            <img src={logo} alt="logo app" />
-            <span>{appName}</span>
+            <Tooltip title={appName}>
+              <img src={logo} alt="logo app" />
+            </Tooltip>
+            <span>{appName} APP</span>
           </div>
           <div className="nav">
             <ul>
@@ -74,7 +76,7 @@ const Layout = ({ appName, children }) => {
                   <Tooltip title="Dashboard">
                     <DashboardOutlined className="span-icon" />
                   </Tooltip>
-                  <span>dashboard</span>
+                  <span>Dashboard</span>
                 </a>
               </li>
               <li>
