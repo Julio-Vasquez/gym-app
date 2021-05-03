@@ -18,18 +18,18 @@ const Public = () => {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route path="/login" exact>
-            <Login appName="APOLLO GYM" />
+            <Login appName="APOLO GYM" />
           </Route>
 
           <Route exact path="/reset-password">
-            <ResetPassword appName="APOLLO GYM" />
+            <ResetPassword appName="APOLO GYM" />
           </Route>
 
           <Route exact path="/setnewpassword/:token" component={NewPassword} />
           <Route exact path="/setnewpassword/" component={NewPassword} />
 
           <Route path="/" exact>
-            <Login appName="APOLLO GYM" />
+            <Login appName="APOLO GYM" />
           </Route>
 
           <Redirect from="/*" to="/login" />

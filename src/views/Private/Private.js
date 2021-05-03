@@ -12,7 +12,7 @@ const Pays = lazy(() => import("./Pays"));
 
 const Private = ({ history }) => {
   return (
-    <Layout appName="APOLLO GYM">
+    <Layout appName="APOLO GYM">
       <Router history={history}>
         <Suspense fallback={<Loading />}>
           <Switch>

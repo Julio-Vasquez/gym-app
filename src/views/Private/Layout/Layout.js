@@ -14,7 +14,7 @@ import { Tooltip } from "antd";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
-import logo from "../../../assets/img/mb.jpg";
+import logo from "../../../assets/img/ag.jpeg";
 
 import { auth } from "./../../../services/Auth/AuthActions";
 
