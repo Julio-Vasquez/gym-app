@@ -25,7 +25,7 @@ function* FetchCheckPeople({ payload }) {
 
 function* FetchCheckPeopleIn({ payload }) {
   try {
-    const res = yield Api.GET(`users/find-in-${payload.identification}`);
+    const res = yield Api.GET(`users/find-entry-${payload.identification}`);
     if (res && res.payload.success) {
       yield put(check.checkPeopleInSuccess(res.payload.payload));
     } else if (res.payload.error) {
