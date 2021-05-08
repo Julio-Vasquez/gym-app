@@ -112,6 +112,7 @@ export const CustomTable = ({ data, title }) => {
           size="small"
           style={{ width: 90 }}
         >
+          <DeleteOutlined />
           Limpiar
         </Button>
       </div>
@@ -148,6 +149,7 @@ export const CustomTable = ({ data, title }) => {
       title: "Nombres",
       dataIndex: "name",
       key: "name",
+      ...getColumnSearchProps("name", "Nombre"),
     },
     {
       title: "Apellidos",
