@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const PaymentsUser = ({ name, lastName, identification, payments }) => {
+export const ByIdentification = ({
+  name,
+  lastName,
+  identification,
+  payments,
+}) => {
   return (
     <div>
       <p>{`Usuario : ${name} ${lastName}`}</p>
@@ -20,7 +25,7 @@ export const PaymentsUser = ({ name, lastName, identification, payments }) => {
   );
 };
 
-PaymentsUser.propTypes = {
+ByIdentification.propTypes = {
   name: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   identification: PropTypes.string.isRequired,

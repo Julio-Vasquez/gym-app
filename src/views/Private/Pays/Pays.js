@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Radio, Button, DatePicker, Row, InputNumber } from "antd";
 
 import { report } from "./../../../services/Report/ReportActions";
-import { PaymentsUser } from "../../../components/PaymentsUser";
+import { ByIdentification } from "./ByIdentification";
+import { ByDates } from "./ByDates/ByDates";
 
 const Pays = () => {
   const { success, user } = useSelector((state) => state.Report);
@@ -72,7 +73,7 @@ const Pays = () => {
               : "hidden_data_payment"
           }
         >
-          <PaymentsUser
+          <ByIdentification
             name={user.name}
             lastName={user.lastName}
             identification={user.identification}
@@ -86,8 +87,7 @@ const Pays = () => {
             type === "dates" ? "visible_data_payment" : "hidden_data_payment"
           }
         >
-          <p>hola</p>
-          <p>aqui debe ir un componente con el listado de pagos</p>
+          <ByDates identification={1117542316} />
         </Row>
       )}
     </Fragment>

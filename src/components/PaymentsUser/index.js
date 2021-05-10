@@ -1,1 +1,0 @@
-export { PaymentsUser } from "./PaymentsUser";

@@ -1,3 +1,6 @@
+@use "./ByIdentification/ByIdentification.scss";
+@use "./ByDates/ByDates.scss";
+
 .error_sms_id {
   color: red;
   font-size: 18px;
@@ -6,9 +9,9 @@
 }
 
 .visible_data_payment {
-  display: show !important;
+  display: show;
 }
 
 .hidden_data_payment {
-  display: none !important;
+  display: none;
 }
