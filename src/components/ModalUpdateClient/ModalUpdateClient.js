@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal, Space } from "antd";
-
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -36,6 +35,7 @@ ModalUpdateClient.propTypes = {
   title: PropTypes.string.isRequired,
   identification: PropTypes.any,
 };
+
 ModalUpdateClient.defaulrProps = {
   identification: 0,
 };

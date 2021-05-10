@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Form, Input, Radio, Row, Col, Button } from "antd";
+import { useDispatch } from "react-redux";
 import {
   WhatsAppOutlined,
   IdcardOutlined,
   AlipayOutlined,
+  PicLeftOutlined,
 } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
 
 import { clients } from "./../../../services/Clients/ClientsActions";
 
@@ -19,20 +20,19 @@ export const FormModal = ({ client, identification }) => {
     phone: client.phone,
     role: client.role,
     identification: client.identification,
+    debt: client.debt,
   });
 
   const dispatch = useDispatch();
 
-  const onFinishForm = () => {
+  const onFinishForm = () =>
     dispatch(clients.updateClient(identification, form));
-  };
 
-  const onChangeForm = (e) => {
+  const onChangeForm = (e) =>
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
-  };
 
   return (
     <Form
@@ -103,7 +103,6 @@ export const FormModal = ({ client, identification }) => {
           </Item>
         </Col>
       </Row>
-
       <Row>
         <Col xs={{ span: 11 }}>
           <Item
@@ -143,7 +142,6 @@ export const FormModal = ({ client, identification }) => {
           </Item>
         </Col>
       </Row>
-
       <Row>
         <Col xs={{ span: 11 }}>
           <Item
@@ -170,6 +168,25 @@ export const FormModal = ({ client, identification }) => {
               name="identification"
               type="number"
               prefix={<IdcardOutlined />}
+            />
+          </Item>
+        </Col>
+        <Col xs={{ span: 11, offset: 1 }}>
+          <Item
+            name="debtI"
+            label="Mora"
+            rules={[
+              { required: true, message: "Mora es requerido" },
+              { pattern: /^\d+$/, message: "valor minimo 0" },
+            ]}
+            hasFeedback
+          >
+            <Input
+              placeholder="Mora"
+              name="debt"
+              type="number"
+              min="0"
+              prefix={<PicLeftOutlined />}
             />
           </Item>
         </Col>
