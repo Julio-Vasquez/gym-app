@@ -15,14 +15,11 @@ export const ModalCheck = ({ title, close, ok, open }) => {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    if (client.time === 0) {
-      setColor("#f44336");
-    } else if (client.time <= 5 && client.time >= 0) {
-      setColor("#ff9800");
-    } else {
-      setColor("#8BC34A");
-    }
+    if (client.time === 0) setColor("#f44336");
+    else if (client.time <= 5 && client.time >= 0) setColor("#ff9800");
+    else setColor("#8BC34A");
   }, [client.time]);
+
   return loading ? (
     <Loading />
   ) : (
@@ -75,6 +72,11 @@ export const ModalCheck = ({ title, close, ok, open }) => {
                   {client.time === null ? "0" : client.time} Dias
                 </p>
               </Row>
+              {client.debt && (
+                <Row>
+                  <h3 className="debt">debe: {client.debt}</h3>
+                </Row>
+              )}
             </div>
           ) : (
             <h2>No existe ese cliente</h2>

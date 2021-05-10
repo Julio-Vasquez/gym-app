@@ -1,3 +1,5 @@
+@use "./../../sass/utils/variables";
+
 .ant-modal-header {
   display: flex;
   justify-content: center;
@@ -5,7 +7,7 @@
 
   .ant-modal-title {
     font-weight: 700;
-    font-family: 'exo';
+    font-family: "exo";
     font-size: 30px;
     color: #ca3372;
   }
@@ -54,8 +56,10 @@
   border-top: none !important;
 
   .ant-btn > span {
-    font-family: 'poppins';
+    font-family: "poppins";
   }
-
 }
 
+.debt {
+  color: $mainColor;
+}
