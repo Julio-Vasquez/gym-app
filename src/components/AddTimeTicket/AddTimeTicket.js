@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Button, Space, Modal, Input, Form, Row, Radio } from "antd";
+import {
+  Button,
+  Space,
+  Modal,
+  Input,
+  InputNumber,
+  Form,
+  Row,
+  Radio,
+  message,
+} from "antd";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
@@ -10,28 +20,37 @@ export const AddTimeTicket = ({ identification, open, close }) => {
   const { Group } = Radio;
 
   const [type, setType] = useState("Mensual");
+  const [error, setError] = useState(false);
   const [form, setForm] = useState({
     cost: 0,
     days: 0,
+    debt: 0,
   });
 
   const dispatch = useDispatch();
 
-  const onChangeForm = (e) => {
+  const onChangeForm = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
+
+  const onChangeDebt = (e) =>
+    e > form.cost ? setError(true) : setError(false);
+
+  const onChangeCost = (e) =>
+    parseInt(e.target.value) < form.debt ? setError(true) : setError(false);
 
   const onFinishForm = (e) => {
     close(false);
-    dispatch(
-      suscription.addSuscription({ ...form, identification, concept: type })
-    );
+    if (form.debt <= parseInt(form.cost))
+      dispatch(
+        suscription.addSuscription({ ...form, identification, concept: type })
+      );
+    else
+      message.error(
+        "No puede decir que la deuda es mayor a lo que cuesta los dias facturados"
+      );
   };
 
-  const onChangeRadio = (e) => {
-    console.log(e.target.value);
-    setType(e.target.value);
-  };
+  const onChangeRadio = (e) => setType(e.target.value);
 
   return (
     <Space>
@@ -86,8 +105,19 @@ export const AddTimeTicket = ({ identification, open, close }) => {
                 },
               ]}
             >
-              <Input name="cost" type="number" />
+              <Input name="cost" type="number" onChange={onChangeCost} />
             </Item>
+          </Row>
+          <Row className={error && "ant-form-item-has-error"}>
+            <Item label="Mora" name="debtI">
+              <InputNumber name="debt" min="1" onChange={onChangeDebt} />
+            </Item>
+            {error && (
+              <div role="alert" name="displayError" className="error__debt">
+                No puede decir que la deuda es mayor a lo que cuesta los dias
+                facturados
+              </div>
+            )}
           </Row>
           <Row>
             <Button type="primary" htmlType="submit">

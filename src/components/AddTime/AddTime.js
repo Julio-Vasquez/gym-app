@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Button, Space, Modal, Input, Form, Row } from "antd";
+import {
+  Button,
+  Space,
+  Modal,
+  Input,
+  Form,
+  Row,
+  InputNumber,
+  message,
+} from "antd";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
@@ -8,26 +17,38 @@ import { suscription } from "./../../services/Suscription/SuscriptionActions";
 export const AddTime = ({ identification, open, close }) => {
   const { Item } = Form;
 
+  const [error, setError] = useState(false);
   const [form, setForm] = useState({
     cost: 0,
     days: 0,
+    debt: 0,
   });
 
   const dispatch = useDispatch();
 
-  const onChangeForm = (e) => {
+  const onChangeForm = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
-  const onFinishForm = (e) => {
+  const onChangeDebt = (e) =>
+    e > form.cost ? setError(true) : setError(false);
+
+  const onChangeCost = (e) =>
+    parseInt(e.target.value) < form.debt ? setError(true) : setError(false);
+
+  const onFinishForm = () => {
     close(false);
-    dispatch(
-      suscription.addSuscription({
-        ...form,
-        identification,
-        concept: "Mensual",
-      })
-    );
+    if (form.debt <= parseInt(form.cost))
+      dispatch(
+        suscription.addSuscription({
+          ...form,
+          identification,
+          concept: "Mensual",
+        })
+      );
+    else
+      message.error(
+        "No puede decir que la deuda es mayor a lo que cuesta los dias facturados"
+      );
   };
 
   return (
@@ -71,8 +92,19 @@ export const AddTime = ({ identification, open, close }) => {
                 },
               ]}
             >
-              <Input name="cost" type="number" />
+              <Input name="cost" type="number" onChange={onChangeCost} />
             </Item>
+          </Row>
+          <Row className={error && "ant-form-item-has-error"}>
+            <Item label="Mora" name="debtI">
+              <InputNumber name="debt" min="1" onChange={onChangeDebt} />
+            </Item>
+            {error && (
+              <div role="alert" name="displayError" className="error__debt">
+                No puede decir que la deuda es mayor a lo que cuesta los dias
+                facturados
+              </div>
+            )}
           </Row>
           <Row>
             <Button type="primary" htmlType="submit">
