@@ -1,8 +1,7 @@
 .content-dashboard {
   display: table;
-  height: 90vh;
+  height: 89vh;
   width: 100%;
-  padding-bottom: 20px;
   &-bg {
     text-align: center;
     display: table-cell;
@@ -10,6 +9,16 @@
     img {
       width: 55%;
       border-radius: 25px;
+    }
+  }
+}
+
+@media (max-width: 1366px) and (max-height: 766px) {
+  .content-dashboard {
+    height: 86vh;
+    &-bg img {
+      width: 70%;
+      border-radius: 28px;
     }
   }
 }
