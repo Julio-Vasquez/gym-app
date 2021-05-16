@@ -7,25 +7,25 @@ import {
   PlusOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import Highlighter from "react-highlight-words";
 import { useDispatch } from "react-redux";
-
+import Highlighter from "react-highlight-words";
 import PropTypes from "prop-types";
 
 import { ModalCheck } from "./../ModalCheck";
 import { AddTimeTicket } from "./../AddTimeTicket";
 import { ModalUpdateClient } from "./../ModalUpdateClient";
 import { ColorTab } from "./../ColorTab";
-import { check } from "./../../services/Check/CheckActions";
 import { RemoveTime } from "../RemoveTime/RemoveTime";
+
+import { check } from "./../../services/Check/CheckActions";
 
 export const CustomTable = ({ data, title }) => {
   const dispatch = useDispatch();
 
   let searchInput;
+
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
-
   const [checkModal, setCheckModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
   const [timeModal, setTimeModal] = useState(false);
