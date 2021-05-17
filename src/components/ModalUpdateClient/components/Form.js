@@ -25,8 +25,12 @@ export const FormModal = ({ client, identification }) => {
 
   const dispatch = useDispatch();
 
-  const onFinishForm = () =>
+  const onFinishForm = () => {
+    if (form.debt === undefined) {
+      setForm({ ...form, debt: 0 });
+    }
     dispatch(clients.updateClient(identification, form));
+  };
 
   const onChangeForm = (e) =>
     setForm({
@@ -45,6 +49,7 @@ export const FormModal = ({ client, identification }) => {
         phoneI: form.phone,
         roleI: form.role,
         identificationI: form.identification,
+        debtI: form.debt,
       }}
     >
       <Row>
