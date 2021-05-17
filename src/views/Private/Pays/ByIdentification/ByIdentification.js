@@ -17,8 +17,10 @@ export const ByIdentification = () => {
         {user.payment.map((item, key) => (
           <li key={key}>
             {console.log(key)}
-            {item.days} días, por un costo de : {item.cost}, registrado por :{" "}
-            {item.username} finalizando : {item.createdAt.substr(0, 10)}
+            {item.days === 0 ? "Abono" : "Dias"}, Pago: {item.cost}
+            Debiendo : {item.debt}
+            finalizando : {item.createdAt.substr(0, 10)}
+            registrado por :{item.username}
           </li>
         ))}
       </ul>
