@@ -1,7 +1,9 @@
 import React from "react";
+import { Tag } from "antd";
 import { useSelector } from "react-redux";
 
 import { Loading } from "./../../../../components/Loading";
+import { ColorTab } from "../../../../components/ColorTab";
 
 export const ByIdentification = () => {
   const { user, loading } = useSelector((state) => state.Report);
@@ -21,6 +23,9 @@ export const ByIdentification = () => {
             {item.debt > 0 ? `Debiendo : ${item.debt}` : "Sin Deuda"}
             finalizando : {item.createdAt.substr(0, 10)}
             registrado por :{item.username}
+            <Tag color={ColorTab(item.debt > 0 ? "inactive" : "active")}>
+              {item.debt > 0 ? "DEBE" : "SIN DEUDA"}
+            </Tag>
           </li>
         ))}
       </ul>
