@@ -10,7 +10,7 @@ export const INITIAL_STATE = {
     byIdentification: undefined,
     byDates: undefined,
   },
-  peoples: [],
+  peoples: {},
   user: {},
 };
 

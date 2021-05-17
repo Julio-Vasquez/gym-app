@@ -1,39 +1,48 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Radio, Button, DatePicker, Row, InputNumber } from "antd";
+import { Radio, Button, DatePicker, Row, InputNumber, message } from "antd";
 
 import { report } from "./../../../services/Report/ReportActions";
 import { ByIdentification } from "./ByIdentification";
 import { ByDates } from "./ByDates/ByDates";
 
 const Pays = () => {
-  const { success, user } = useSelector((state) => state.Report);
+  const { success } = useSelector((state) => state.Report);
   const { Group } = Radio;
   const { RangePicker } = DatePicker;
 
   const [type, setType] = useState("identification");
+  const [sms, setSms] = useState();
   const [identification, setIdentification] = useState();
   const [dates, setDates] = useState();
-  const [sms, setSms] = useState();
 
   const dispatch = useDispatch();
 
-  const onChangeRadio = (e) => setType(e.target.value);
+  const onChangeRadio = (e) => {
+    setType(e.target.value);
+    setSms();
+  };
 
-  const onChangeInput = (value) => setIdentification(value);
+  const onChangeInput = (value) => {
+    if (value < 100000)
+      setSms("El valor minimo de la Identificación es : 100000 => 6 digitos");
+    else {
+      setIdentification(value);
+      setSms();
+    }
+  };
 
   const onChangeRange = (_, value) => setDates(value);
 
-  const checkId = () => {
-    if (identification < 100000)
-      setSms("El valor minimo de la Identificación es : 100000 => 6 digitos");
-    else setSms();
-  };
-
   const handlePays = () => {
-    if (type === "identification")
-      dispatch(report.getPayIdentification(identification));
-    else dispatch(report.getPayDates(...dates));
+    if (type === "identification") {
+      if (!identification) message.error("Debe llenar el formulario");
+      else dispatch(report.getPayIdentification(identification));
+    } else {
+      if (!dates || dates.length === 0)
+        message.error("Debe llenar el formulario");
+      else dispatch(report.getPayDates(...dates));
+    }
   };
 
   return (
@@ -50,7 +59,6 @@ const Pays = () => {
             max={999999999999}
             onChange={onChangeInput}
             required
-            onKeyUp={checkId}
             placeholder="Número Documento"
             style={{ width: "160px" }}
           />
@@ -73,12 +81,7 @@ const Pays = () => {
               : "hidden_data_payment"
           }
         >
-          <ByIdentification
-            name={user.name}
-            lastName={user.lastName}
-            identification={user.identification}
-            payments={user.payment}
-          />
+          <ByIdentification />
         </Row>
       )}
       {success.byDates && (
@@ -87,7 +90,7 @@ const Pays = () => {
             type === "dates" ? "visible_data_payment" : "hidden_data_payment"
           }
         >
-          <ByDates identification={1117542316} />
+          <ByDates />
         </Row>
       )}
     </Fragment>

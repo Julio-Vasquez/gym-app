@@ -7,12 +7,13 @@ import Api from "../../common/api";
 import { report } from "./ReportActions";
 
 function* FetchGetPayIdentification({ payload }) {
+  console.log(payload);
   try {
     const res = yield Api.GET(`reports/pays-${payload.identification}`);
     if (res && res.payload.success) {
       yield put(report.getPayIdentificationSuccess(res.payload));
     } else if (res.payload?.error) {
-      message.error(res.payload.detail);
+      message.error(res.payload.detail, 5);
       yield put(report.getPayIdentificationFailed(res.payload.detail));
     } else {
       message.error(`Error Desconocido`);

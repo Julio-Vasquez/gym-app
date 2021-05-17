@@ -1,19 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-export const ByIdentification = ({
-  name,
-  lastName,
-  identification,
-  payments,
-}) => {
-  return (
+import { Loading } from "./../../../../components/Loading";
+
+export const ByIdentification = () => {
+  const { user, loading } = useSelector((state) => state.Report);
+
+  return loading ? (
+    <Loading />
+  ) : (
     <div>
-      <p>{`Usuario : ${name} ${lastName}`}</p>
-      <p>{`Identificado con : ${identification}`}</p>
+      <p>{`Usuario : ${user.name} ${user.lastName}`}</p>
+      <p>{`Identificado con : ${user.identification}`}</p>
       <ul>
         <h4>Ha realizado los siguientes Pagos.</h4>
-        {payments.map((item, key) => (
+        {user.payment.map((item, key) => (
           <li key={key}>
             {console.log(key)}
             {item.days} días, por un costo de : {item.cost}, registrado por :{" "}
@@ -23,11 +24,4 @@ export const ByIdentification = ({
       </ul>
     </div>
   );
-};
-
-ByIdentification.propTypes = {
-  name: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  identification: PropTypes.string.isRequired,
-  payments: PropTypes.array.isRequired,
 };
