@@ -1,50 +1,34 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-// import { Table } from "antd";
+import { Tag } from "antd";
+import { useSelector } from "react-redux";
 
-// const columns = [
-//   { title: "Usuario", dataIndex: "user", key: "user" },
-//   { title: "Identificación", dataIndex: "id", key: "id" },
-//   { title: "Días", dataIndex: "days", key: "days" },
-//   { title: "Costo", dataIndex: "cost", key: "cost" },
-//   { title: "Registrado por:", dataIndex: "RegisterBy", key: "RegisterBy" },
-  
-//   {
-//     title: "Action",
-//     dataIndex: "",
-//     key: "x",
-//     render: () => <a>Delete</a>,
-//   },
-// ];
+import { Loading } from "./../../../../components/Loading";
+import { ColorTab } from "../../../../components/ColorTab";
 
-export const ByIdentification = ({
-  name,
-  lastName,
-  identification,
-  payments,
-}) => {
-  return (
+export const ByIdentification = () => {
+  const { user, loading } = useSelector((state) => state.Report);
+  return loading ? (
+    <Loading />
+  ) : (
     <div>
-      <p>{`Usuario : ${name} ${lastName}`}</p>
-      <p>{`Identificado con : ${identification}`}</p>
+      <p>{`Usuario : ${user.name} ${user.lastName}`}</p>
+      <p>{`Identificado con : ${user.identification}`}</p>
       <ul>
         <h4>Ha realizado los siguientes Pagos.</h4>
-        {payments.map((item, key) => (
+        {user.payments.map((item, key) => (
           <li key={key}>
             {console.log(key)}
-            {item.days} días, por un costo de : {item.cost}, registrado por :{" "}
-            {item.username} finalizando : {item.createdAt.substr(0, 10)}
+            {item.days === 0 ? "Abono" : `${item.days} Dias`}, Pago: {item.cost}
+            {item.debt > 0 ? `Debiendo : ${item.debt}` : "Sin Deuda"}
+            finalizando : {item.createdAt.substr(0, 10)}
+            registrado por :{item.username}
+            <Tag color={ColorTab(item.debt > 0 ? "inactive" : "active")}>
+              {item.debt > 0 ? "DEBE" : "SIN DEUDA"}
+            </Tag>
           </li>
         ))}
       </ul>
     </div>
   );
-};
-
-ByIdentification.propTypes = {
-  name: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  identification: PropTypes.string.isRequired,
-  payments: PropTypes.array.isRequired,
 };
