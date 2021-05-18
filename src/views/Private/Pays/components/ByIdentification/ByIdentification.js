@@ -1,43 +1,13 @@
 import React from "react";
-
 import { Tag } from "antd";
-import { Table } from 'antd';
 import { useSelector } from "react-redux";
 
-import { Loading } from "./../../../../components/Loading";
-import { ColorTab } from "../../../../components/ColorTab";
+import { Loading } from "../../../../../components/Loading";
+import { ColorTab } from "../../../../../components/ColorTab";
 
 export const ByIdentification = () => {
-
-
-
-  const columns = [
-    {
-      title: 'Usuario',
-      dataIndex: 'user',
-    },
-    {
-      title: 'Identificación',
-      dataIndex: 'identification',
-      align: 'right',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-    },
-  ];
-
-
-
   const { user, loading } = useSelector((state) => state.Report);
+
   return loading ? (
     <Loading />
   ) : (

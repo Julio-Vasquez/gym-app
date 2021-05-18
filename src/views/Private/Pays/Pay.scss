@@ -1,5 +1,5 @@
-@use "./ByIdentification/ByIdentification.scss";
-@use "./ByDates/ByDates.scss";
+@use "./components/ByIdentification/ByIdentification.scss";
+@use "./components/ByDates/ByDates.scss";
 
 .error_sms_id {
   color: red;

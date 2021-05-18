@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Radio, Button, DatePicker, Row, InputNumber, message } from "antd";
 
 import { report } from "./../../../services/Report/ReportActions";
-import { ByIdentification } from "./ByIdentification";
-import { ByDates } from "./ByDates/ByDates";
+import { ByIdentification } from "./components/ByIdentification";
+import { ByDates } from "./components/ByDates/ByDates";
 
 const Pays = () => {
   const { success } = useSelector((state) => state.Report);
