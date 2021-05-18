@@ -1,20 +1,36 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-import { Loading } from "./../../../../components/Loading";
+// import { Table } from "antd";
 
-export const ByIdentification = () => {
-  const { user, loading } = useSelector((state) => state.Report);
+// const columns = [
+//   { title: "Usuario", dataIndex: "user", key: "user" },
+//   { title: "Identificación", dataIndex: "id", key: "id" },
+//   { title: "Días", dataIndex: "days", key: "days" },
+//   { title: "Costo", dataIndex: "cost", key: "cost" },
+//   { title: "Registrado por:", dataIndex: "RegisterBy", key: "RegisterBy" },
+  
+//   {
+//     title: "Action",
+//     dataIndex: "",
+//     key: "x",
+//     render: () => <a>Delete</a>,
+//   },
+// ];
 
-  return loading ? (
-    <Loading />
-  ) : (
+export const ByIdentification = ({
+  name,
+  lastName,
+  identification,
+  payments,
+}) => {
+  return (
     <div>
-      <p>{`Usuario : ${user.name} ${user.lastName}`}</p>
-      <p>{`Identificado con : ${user.identification}`}</p>
+      <p>{`Usuario : ${name} ${lastName}`}</p>
+      <p>{`Identificado con : ${identification}`}</p>
       <ul>
         <h4>Ha realizado los siguientes Pagos.</h4>
-        {user.payment.map((item, key) => (
+        {payments.map((item, key) => (
           <li key={key}>
             {console.log(key)}
             {item.days} días, por un costo de : {item.cost}, registrado por :{" "}
@@ -24,4 +40,11 @@ export const ByIdentification = () => {
       </ul>
     </div>
   );
+};
+
+ByIdentification.propTypes = {
+  name: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  identification: PropTypes.string.isRequired,
+  payments: PropTypes.array.isRequired,
 };
