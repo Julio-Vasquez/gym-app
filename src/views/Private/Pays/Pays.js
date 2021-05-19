@@ -49,8 +49,8 @@ const Pays = () => {
     <Fragment>
       <Row>
         <Group onChange={onChangeRadio} value={type}>
-          <Radio value="identification">Identificación</Radio>
-          <Radio value="dates">Fechas</Radio>
+          <Radio className="text-id" value="identification">Identificación</Radio>
+          <Radio className="text-dates" value="dates">Fechas</Radio>
         </Group>
         {type === "dates" ? (
           <RangePicker format="YYYY-MM-DD" onChange={onChangeRange} />

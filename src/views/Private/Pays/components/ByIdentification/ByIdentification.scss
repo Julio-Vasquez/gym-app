@@ -1,0 +1,60 @@
+.ContentById {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5%;
+  justify-content: space-around;
+  height: 500px;
+
+  .Rpt-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+
+    h1 {
+      font-family: "Poppins";
+      color: #fefefe;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    p {
+      font-family: "Poppins";
+      font-size: 20px;
+      font-weight: 500;
+      color: #ca3372;
+    }
+  }
+
+  .Rpt-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 500;
+      color: #fefefe;
+      font-family: "Poppins";
+      text-transform: uppercase;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      justify-content: space-around;
+      li {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        gap: 15px;
+        font-family: "Poppins";
+        h3 {
+          color: #fefefe;
+        }
+      }
+    }
+  }
+}

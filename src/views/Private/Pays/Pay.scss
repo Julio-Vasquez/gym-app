@@ -15,3 +15,31 @@
 .hidden_data_payment {
   display: none;
 }
+
+.text-id {
+  font-family: "Poppins";
+  color: #fefefe;
+}
+
+.text-dates {
+  font-family: "Poppins";
+  color: #fefefe;
+}
+
+.ant-row {
+  width: 100%;
+  gap: 30px;
+}
+
+.ant-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ant-btn-round {
+  width: 100px;
+
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}

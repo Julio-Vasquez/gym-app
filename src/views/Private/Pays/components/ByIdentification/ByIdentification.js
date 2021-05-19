@@ -11,13 +11,13 @@ export const ByIdentification = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div>
+    <div className="ContentById">
       <div className="Rpt-header">
         <h1>Usuario</h1>
         <p>
           {user.name} {user.lastName}
         </p>
-        <h1>Identificado con: </h1>
+        <h1>Identificación: </h1>
         <p>{user.identification}</p>
       </div>
       <div className="Rpt-body">
