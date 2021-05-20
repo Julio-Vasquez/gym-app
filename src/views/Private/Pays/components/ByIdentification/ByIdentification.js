@@ -13,7 +13,7 @@ export const ByIdentification = () => {
   ) : (
     <div className="ContentById">
       <div className="Rpt-header">
-        <h1>Usuario</h1>
+        <h1>Usuario:</h1>
         <p>
           {user.name} {user.lastName}
         </p>
@@ -21,15 +21,14 @@ export const ByIdentification = () => {
         <p>{user.identification}</p>
       </div>
       <div className="Rpt-body">
-        <h2>Ha realizado los siguientes Pagos.</h2>
+        <h2>Ha realizado los siguientes Pagos:</h2>
         <ul>
           {user.payment.map((item, key) => (
             <li key={key}>
-              {console.log(key)}
               <h3>
-                {item.days === 0 ? "Abono" : `${item.days} Dias`}, Pago:{" "}
-                {item.cost}
+                Concepto: {item.days === 0 ? "Abono" : `${item.days} Dias`}
               </h3>
+              <h3>Pago: {item.cost}</h3>
               <h3>{item.debt > 0 ? `Debiendo : ${item.debt}` : "Sin Deuda"}</h3>
               <h3>finalizando : {item.createdAt.substr(0, 10)}</h3>
               <h3>registrado por : {item.username} </h3>

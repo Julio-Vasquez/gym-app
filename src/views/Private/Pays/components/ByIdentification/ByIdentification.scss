@@ -1,3 +1,4 @@
+@import "./../../../../../sass/utils/variables";
 .ContentById {
   display: flex;
   flex-direction: column;
@@ -6,37 +7,45 @@
   justify-content: space-around;
   height: 500px;
 
-  .Rpt-header {
+  .Rpt-header,
+  .Rpt-body {
     display: flex;
+    gap: 20px;
+  }
+
+  .Rpt-header {
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
 
-    h1 {
-      font-family: "Poppins";
-      color: #fefefe;
-      font-size: 24px;
+    h1,
+    p {
+      font-family: $mainFontFamily;
       font-weight: 500;
     }
 
+    h1 {
+      color: #fefefe;
+      font-size: 24px;
+    }
+
     p {
-      font-family: "Poppins";
       font-size: 20px;
-      font-weight: 500;
       color: #ca3372;
     }
   }
 
   .Rpt-body {
-    display: flex;
     flex-direction: column;
-    gap: 20px;
+
+    h2,
+    ul li {
+      font-family: $mainFontFamily;
+    }
 
     h2 {
       font-size: 24px;
       font-weight: 500;
       color: #fefefe;
-      font-family: "Poppins";
       text-transform: uppercase;
     }
 
@@ -45,12 +54,13 @@
       flex-direction: column;
       gap: 30px;
       justify-content: space-around;
+
       li {
         display: flex;
         height: 100%;
         align-items: center;
         gap: 15px;
-        font-family: "Poppins";
+
         h3 {
           color: #fefefe;
         }
