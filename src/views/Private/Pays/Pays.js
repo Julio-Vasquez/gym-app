@@ -46,7 +46,7 @@ const Pays = () => {
   };
 
   return (
-    <Fragment>
+    <Fragment className="Pays">
       <Row>
         <Group onChange={onChangeRadio} value={type}>
           <Radio className="text-id" value="identification">Identificación</Radio>
