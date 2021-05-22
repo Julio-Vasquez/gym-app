@@ -33,13 +33,16 @@
     display: none;
   }
 
-  .text-id {
-    font-family: "Poppins";
-    color: #fefefe;
-  }
-
+  .text-id,
   .text-dates {
     font-family: "Poppins";
     color: #fefefe;
+  }
+  .bdc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
