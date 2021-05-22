@@ -19,7 +19,7 @@ export const ByDates = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div>
+    <div className="ByDatesTable">
       <h3>Registro de reportes de fechas.</h3>
       <table className="table-layout: auto;">
         <thead className="ant-table-thead">
@@ -30,6 +30,7 @@ export const ByDates = () => {
             <th className="ant-table-cell">Rol</th>
           </tr>
         </thead>
+
         <tbody className="ant-table-tbody">
           {peoples.data.map((item, key) => (
             <tr
