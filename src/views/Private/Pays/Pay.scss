@@ -27,6 +27,11 @@
 
   .visible_data_payment {
     display: show;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .hidden_data_payment {

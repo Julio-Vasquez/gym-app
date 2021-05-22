@@ -30,6 +30,7 @@ const reducerReport = handleActions(
             success: {
               ...state.success,
               byIdentification: true,
+              byDates: false,
             },
             user: user,
           };
@@ -60,6 +61,7 @@ const reducerReport = handleActions(
             success: {
               ...state.success,
               byDates: true,
+              byIdentification: false,
             },
             peoples: peoples,
           };

@@ -16,11 +16,11 @@ const Pays = () => {
   const [identification, setIdentification] = useState();
   const [dates, setDates] = useState();
 
-  console.log(success.byIdentification);
-  console.log(success.byDates);
+  console.log(type);
   const dispatch = useDispatch();
 
   const onChangeRadio = (e) => {
+    console.log(`cambie a :${e.target.value}`);
     setType(e.target.value);
     setSms();
   };
@@ -94,12 +94,10 @@ const Pays = () => {
         {success.byDates && (
           <Row
             className={
-              type === "dates"
-                ? "visible_data_payment bdc"
-                : "hidden_data_payment bdc"
+              type === "dates" ? "visible_data_payment" : "hidden_data_payment"
             }
           >
-            <ByDates />
+            <ByDates className="bdc" />
           </Row>
         )}
       </Fragment>

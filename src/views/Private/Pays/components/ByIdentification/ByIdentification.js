@@ -13,12 +13,12 @@ export const ByIdentification = () => {
   ) : (
     <div className="ContentById">
       <div className="Rpt-header">
-        <h1>Usuario:</h1>
-        <p>
-          {user.name} {user.lastName}
-        </p>
-        <h1>Identificación: </h1>
-        <p>{user.identification}</p>
+        <h1>
+          <span>
+            {user.name} {user.lastName}{" "}
+          </span>
+          Identificaco con : <span>{user.identification}</span>
+        </h1>
       </div>
       <div className="Rpt-body">
         <h2>Ha realizado los siguientes Pagos:</h2>
@@ -26,12 +26,18 @@ export const ByIdentification = () => {
           {user.payment.map((item, key) => (
             <li key={key}>
               <h3>
-                Concepto: {item.days === 0 ? "Abono" : `${item.days} Dias`}
+                Concepto:{" "}
+                <span>{item.days === 0 ? "Abono" : `${item.days} Dias`} </span>
+                Pago: <span>{item.cost} </span>
+                Debiendo :{" "}
+                {item.debt > 0 ? (
+                  <span> {item.debt} </span>
+                ) : (
+                  <span>Sin Deuda </span>
+                )}
+                finalizando : <span>{item.createdAt.substr(0, 10)} </span>
+                registrado por : <span>{item.username} </span>
               </h3>
-              <h3>Pago: {item.cost}</h3>
-              <h3>{item.debt > 0 ? `Debiendo : ${item.debt}` : "Sin Deuda"}</h3>
-              <h3>finalizando : {item.createdAt.substr(0, 10)}</h3>
-              <h3>registrado por : {item.username} </h3>
               <Tag color={ColorTab(item.debt > 0 ? "inactive" : "active")}>
                 {item.debt > 0 ? "DEBE" : "SIN DEUDA"}
               </Tag>

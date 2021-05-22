@@ -1,68 +1,59 @@
 @import "./../../../../../sass/utils/variables";
+
 .ContentById {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 5%;
+  padding: 4%;
   justify-content: space-around;
-  height: 500px;
-
   .Rpt-header,
   .Rpt-body {
     display: flex;
-    gap: 20px;
+    gap: 18px;
   }
-
   .Rpt-header {
-    justify-content: flex-start;
     align-items: center;
-
+    flex-direction: column;
     h1,
-    p {
+    span {
       font-family: $mainFontFamily;
       font-weight: 500;
+      font-size: 20px;
+      text-transform: uppercase;
     }
-
     h1 {
       color: #fefefe;
-      font-size: 24px;
     }
-
-    p {
-      font-size: 20px;
-      color: #ca3372;
+    span {
+      color: $secondColor;
     }
   }
-
   .Rpt-body {
     flex-direction: column;
 
     h2,
+    h3,
     ul li {
       font-family: $mainFontFamily;
-    }
-
-    h2 {
-      font-size: 24px;
-      font-weight: 500;
       color: #fefefe;
+    }
+    h2 {
+      padding-top: 6px;
+      font-size: 19px;
+      font-weight: 500;
       text-transform: uppercase;
     }
-
     ul {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 20px;
       justify-content: space-around;
-
       li {
         display: flex;
         height: 100%;
         align-items: center;
-        gap: 15px;
-
-        h3 {
-          color: #fefefe;
+        gap: 10px;
+        h3 span {
+          color: $secondColor;
         }
       }
     }
