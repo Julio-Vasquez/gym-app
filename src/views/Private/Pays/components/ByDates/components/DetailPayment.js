@@ -8,11 +8,11 @@ export const DetailPayment = ({ data }) => {
         <table className="table-layout: auto;">
           <thead className="ant-table-thead">
             <tr>
-              <th className="ant-table-cell">Concepto</th>
-              <th className="ant-table-cell">Costo</th>
-              <th className="ant-table-cell">Dias</th>
-              <th className="ant-table-cell">Mora</th>
-              <th className="ant-table-cell">Usuario</th>
+              <th className="ant-table-cell title">Concepto</th>
+              <th className="ant-table-cell title">Costo</th>
+              <th className="ant-table-cell title">Dias</th>
+              <th className="ant-table-cell title">Mora</th>
+              <th className="ant-table-cell title">Usuario</th>
             </tr>
           </thead>
         </table>

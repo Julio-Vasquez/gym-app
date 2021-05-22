@@ -6,9 +6,42 @@
   display: show;
 }
 
-.ByDatesTable{
+.ByDatesTable {
+  h3 {
+    display: flex;
+    height: 50px;
+    font-size: 20px;
+    align-items: center;
+    font-weight: 500;
+    color: #fefefe;
+    font-family: poppins;
+    
+  }
   button {
     background: transparent;
     border: none;
+  }
 }
+
+.User-table {
+  margin-left: 10px;
+  tr .title {
+    font-weight: 700 !important;
+  }
+}
+
+.indexed-table {
+  table {
+    width: 95%;
+  }
+  
+
+  .ant-table-tbody .ant-table-cell:nth-child(5) {
+    text-align: right;
+    padding: 5px;
+  }
+
+  .ant-table-tbody .ant-table-cell:nth-child(1) {
+    text-align:center;
+  }
 }
