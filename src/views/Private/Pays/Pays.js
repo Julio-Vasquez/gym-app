@@ -46,54 +46,60 @@ const Pays = () => {
   };
 
   return (
-    <Fragment className="Pays">
-      <Row>
-        <Group onChange={onChangeRadio} value={type}>
-          <Radio className="text-id" value="identification">Identificación</Radio>
-          <Radio className="text-dates" value="dates">Fechas</Radio>
-        </Group>
-        {type === "dates" ? (
-          <RangePicker format="YYYY-MM-DD" onChange={onChangeRange} />
-        ) : (
-          <InputNumber
-            max={999999999999}
-            onChange={onChangeInput}
-            required
-            placeholder="Número Documento"
-            style={{ width: "160px" }}
-          />
+    <div className="Pays">
+      <Fragment>
+        <Row>
+          <Group onChange={onChangeRadio} value={type}>
+            <Radio className="text-id" value="identification">
+              Identificación
+            </Radio>
+            <Radio className="text-dates" value="dates">
+              Fechas
+            </Radio>
+          </Group>
+          {type === "dates" ? (
+            <RangePicker format="YYYY-MM-DD" onChange={onChangeRange} />
+          ) : (
+            <InputNumber
+              max={999999999999}
+              onChange={onChangeInput}
+              required
+              placeholder="Número Documento"
+              style={{ width: "160px" }}
+            />
+          )}
+          <Button
+            onClick={handlePays}
+            type="primary"
+            shape="round"
+            disabled={sms !== undefined ? true : false}
+          >
+            Buscar
+          </Button>
+          <div className="error_sms_id">{sms}</div>
+        </Row>
+        {success.byIdentification && (
+          <Row
+            className={
+              type === "identification"
+                ? "visible_data_payment"
+                : "hidden_data_payment"
+            }
+          >
+            <ByIdentification />
+          </Row>
         )}
-        <Button
-          onClick={handlePays}
-          type="primary"
-          shape="round"
-          disabled={sms !== undefined ? true : false}
-        >
-          Buscar
-        </Button>
-        <div className="error_sms_id">{sms}</div>
-      </Row>
-      {success.byIdentification && (
-        <Row
-          className={
-            type === "identification"
-              ? "visible_data_payment"
-              : "hidden_data_payment"
-          }
-        >
-          <ByIdentification />
-        </Row>
-      )}
-      {success.byDates && (
-        <Row
-          className={
-            type === "dates" ? "visible_data_payment" : "hidden_data_payment"
-          }
-        >
-          <ByDates />
-        </Row>
-      )}
-    </Fragment>
+        {success.byDates && (
+          <Row
+            className={
+              type === "dates" ? "visible_data_payment" : "hidden_data_payment"
+            }
+          >
+            <ByDates />
+          </Row>
+        )}
+      </Fragment>
+    </div>
   );
 };
 

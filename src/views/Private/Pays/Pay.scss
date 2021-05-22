@@ -2,6 +2,22 @@
 @use "./components/ByDates/ByDates.scss";
 
 .Pays {
+  .ant-row {
+    width: 100%;
+    gap: 30px;
+  }
+
+  .ant-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ant-btn-round {
+    width: 100px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+  }
   .error_sms_id {
     color: red;
     font-size: 18px;
@@ -25,22 +41,5 @@
   .text-dates {
     font-family: "Poppins";
     color: #fefefe;
-  }
-
-  .ant-row {
-    width: 100%;
-    gap: 30px;
-  }
-
-  .ant-radio-group {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .ant-btn-round {
-    width: 100px;
-    font-weight: 700;
-    letter-spacing: 0.6px;
   }
 }
