@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Space, Row } from "antd";
+import { Modal, Space, Row, Tag } from "antd";
 import {
   CheckCircleTwoTone,
   WarningTwoTone,
   CloseCircleTwoTone,
 } from "@ant-design/icons";
-
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+
 import { Loading } from "../Loading";
+import { ColorTab } from "./../ColorTab";
 
 export const ModalCheck = ({ title, close, ok, open }) => {
   const { client, loading } = useSelector((state) => state.Check);
@@ -18,8 +19,16 @@ export const ModalCheck = ({ title, close, ok, open }) => {
     if (client.time === 0) setColor("#f44336");
     else if (client.time <= 5 && client.time >= 0) setColor("#ff9800");
     else setColor("#8BC34A");
-  }, [client.time]);
 
+    const timer = setTimeout(() => {
+      ok();
+    }, 7000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [client.time, ok]);
+
+  console.log(client.debt);
   return loading ? (
     <Loading />
   ) : (
@@ -72,11 +81,11 @@ export const ModalCheck = ({ title, close, ok, open }) => {
                   {client.time === null ? "0" : client.time} Dias
                 </p>
               </Row>
-              {client.debt && (
-                <Row>
-                  <h3 className="debt">debe: {client.debt}</h3>
-                </Row>
-              )}
+              <Row>
+                <Tag color={ColorTab(client.debt > 0 ? "inactive" : "active")}>
+                  {client.debt > 0 ? `DEBE ${client.debt}` : `SIN DEUDA`}
+                </Tag>
+              </Row>
             </div>
           ) : (
             <h2>No existe ese cliente</h2>
