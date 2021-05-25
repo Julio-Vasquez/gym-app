@@ -20,13 +20,15 @@ export const ModalCheck = ({ title, close, ok, open }) => {
     else if (client.time <= 5 && client.time >= 0) setColor("#ff9800");
     else setColor("#8BC34A");
 
-    const timer = setTimeout(() => {
-      ok();
-    }, 7000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [client.time, ok]);
+    if(open){
+      const timer = setTimeout(() => {
+        ok();
+      }, 7000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [client.time, ok, open]);
 
   console.log(client.debt);
   return loading ? (

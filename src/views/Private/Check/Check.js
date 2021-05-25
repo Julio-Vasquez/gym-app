@@ -79,6 +79,7 @@ const Check = () => {
                 prefix={<IdcardOutlined className="site-form-item-icon" />}
                 placeholder="Número de identificación"
                 type="number"
+                autoFocus
                 value={identification}
               />
             </Item>

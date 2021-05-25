@@ -1,7 +1,7 @@
 .check {
   &-content {
-    padding-top: 30vh;
-    padding-bottom: 30vh;
+    padding-top: 28.5vh;
+    padding-bottom: 28.5vh;
     &-card {
       box-shadow: 0 0 5px rgb(247, 241, 241);
       opacity: 0.91;
@@ -43,4 +43,13 @@
 
 .site-form-item-icon svg {
   height: 30px;
+}
+
+@media (max-width: 1366px) and (max-height: 766px) {
+  .check {
+    &-content {
+      padding-top: 22.9vh;
+      padding-bottom: 22.9vh;
+    }
+  }
 }
