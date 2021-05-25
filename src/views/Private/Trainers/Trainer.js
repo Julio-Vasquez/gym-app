@@ -31,7 +31,7 @@ const Trainer = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div>
+    <div className="trainer-bg">
       <CustomTable title="Entrenadores" data={listClients} />
       <FloatingButton
         title="Agregar Nuevo Entrenador"

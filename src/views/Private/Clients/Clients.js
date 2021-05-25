@@ -39,7 +39,7 @@ const Clients = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div>
+    <div className="client-bg">
       <CustomTable data={listClients} title="Mis Clientes" />
       <FloatingButton
         title="Agregar nuevo cliente"

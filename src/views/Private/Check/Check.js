@@ -43,8 +43,8 @@ const Check = () => {
         xs={{ span: 22, offset: 1 }}
         sm={{ span: 18, offset: 3 }}
         lg={{ span: 14, offset: 5 }}
-        xl={{ span: 12, offset: 6 }}
-        xxl={{ span: 10, offset: 7 }}
+        xl={{ span: 12, offset: 10 }}
+        xxl={{ span: 10, offset: 10 }}
         className="check-content"
       >
         <Card className="check-content-card">
