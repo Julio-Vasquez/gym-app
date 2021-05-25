@@ -14,27 +14,40 @@
     z-index: 1;
   }
 
-  .header {
-    position: absolute;
-    top: calc(50% - 35px);
-    left: calc(50% - 275px);
+  .content-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    box-shadow: 0px 0px 20px 5px #900a0a;
+    border-radius: 10px;
     z-index: 99;
-    .name-app-hover a {
-      float: left;
-      color: #fff;
-      font-family: "Exo", sans-serif;
-      font-size: 35px;
-      font-weight: 400;
-      span {
-        color: #ee0b0e;
-      }
-    }
-    .name-app-hover:hover {
-      font-weight: 400;
-      a {
-        color: #ee0b0e;
+    height: 420px;
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .name-app-hover a {
+        float: left;
+        color: #fff;
+        font-family: "Exo", sans-serif;
+        font-size: 35px;
+        font-weight: 400;
         span {
-          color: #fff;
+          color: #ee0b0e;
+        }
+      }
+      .name-app-hover:hover {
+        font-weight: 400;
+        a {
+          color: #ee0b0e;
+          span {
+            color: #fff;
+          }
         }
       }
     }
@@ -42,13 +55,8 @@
 
   .login {
     text-align: center;
-    position: absolute;
-    top: calc(50% - 85px);
-    left: calc(50% - 20px);
-    height: 150px;
     width: 350px;
-    padding: 10px;
-    z-index: 99;
+    padding: 30px 0;
     input {
       height: 28px;
     }
@@ -57,19 +65,19 @@
     }
     input[type="submit"] {
       width: 250px;
-      height: 35px;
-      background: #fff;
-      border: 1px solid #fff;
+      height: 40px;
+      background: #9e0036;
+      border: 1px solid rgba(104, 91, 91, 0.808);
       cursor: pointer;
-      border-radius: 2px;
-      color: #a18d6c;
+      border-radius: 15px;
+      color: #fefefe;
       font-family: "Exo", sans-serif;
-      font-size: 16px;
-      font-weight: 400;
+      font-size: 18px;
+      font-weight: 500;
       padding: 6px;
       &:hover {
         opacity: 0.8;
-        color: black;
+        color: #fefefe;
       }
       &:active {
         opacity: 0.6;
@@ -77,6 +85,10 @@
       &:focus {
         outline: none;
       }
+    }
+
+    .ant-input-affix-wrapper {
+      border-radius: 15px;
     }
   }
 }

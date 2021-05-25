@@ -25,64 +25,65 @@ const Login = ({ appName }) => {
   return (
     <div className="fragmento">
       <div className="body"></div>
-      <div className="header">
-        <div className="name-app-hover">
-          <a href="/">
-            {name[0]}
-            <span> {name[1]} </span>
-          </a>
+      <div className="content-login">
+        <div className="header">
+          <div className="name-app-hover">
+            <a href="/">
+              {name[0]}
+              <span> {name[1]} </span>
+            </a>
+          </div>
         </div>
-      </div>
-      <br />
-      <Form onChange={onChangeForm} onFinish={onFinishForm}>
-        <div className="login">
-          <Item
-            name="usernameI"
-            rules={[
-              {
-                required: true,
-                message: "Nombre de usuario es requerido",
-              },
-              { min: 4, message: "Mínimo debe haber 4 caracteres" },
-              { max: 45, message: "Máximo debe haber  45 caracteres" },
-            ]}
-            hasFeedback
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              type="text"
-              placeholder="Nombre de usuario"
-              name="user"
-            />
-          </Item>
-          <Item
-            name="passwordI"
-            rules={[
-              {
-                required: true,
-                message: "Contraseña es requerida",
-              },
-              { min: 4, message: "Mínimo debe haber 4 caracteres" },
-              { max: 45, message: "Máximo debe haber  45 caracteres" },
-            ]}
-            hasFeedback
-          >
-            <Input
-              prefix={<AlipayOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="********"
-              name="password"
-            />
-          </Item>
+        <Form onChange={onChangeForm} onFinish={onFinishForm}>
+          <div className="login">
+            <Item
+              name="usernameI"
+              rules={[
+                {
+                  required: true,
+                  message: "Nombre de usuario es requerido",
+                },
+                { min: 4, message: "Mínimo debe haber 4 caracteres" },
+                { max: 45, message: "Máximo debe haber  45 caracteres" },
+              ]}
+              hasFeedback
+            >
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                type="text"
+                placeholder="Nombre de usuario"
+                name="user"
+              />
+            </Item>
+            <Item
+              name="passwordI"
+              rules={[
+                {
+                  required: true,
+                  message: "Contraseña es requerida",
+                },
+                { min: 4, message: "Mínimo debe haber 4 caracteres" },
+                { max: 45, message: "Máximo debe haber  45 caracteres" },
+              ]}
+              hasFeedback
+            >
+              <Input
+                prefix={<AlipayOutlined className="site-form-item-icon" />}
+                type="password"
+                placeholder="********"
+                name="password"
+              />
+            </Item>
 
-          <input type="submit" value="Login" />
-          <br />
-          <br />
-          <a href="/reset-password" id="forgot">
-            Olvidaste tu contraseña?
-          </a>
-        </div>
-      </Form>
+            <input type="submit" value="Login" />
+            <br />
+            <br />
+            <a href="/reset-password" id="forgot">
+              Olvidaste tu contraseña?
+            </a>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 };
