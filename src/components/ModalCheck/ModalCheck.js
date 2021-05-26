@@ -8,7 +8,7 @@ import {
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { Loading } from "../Loading";
+
 import { ColorTab } from "./../ColorTab";
 
 export const ModalCheck = ({ title, close, ok, open }) => {
@@ -30,10 +30,7 @@ export const ModalCheck = ({ title, close, ok, open }) => {
     }
   }, [client.time, ok, open]);
 
-  console.log(client.debt);
-  return loading ? (
-    <Loading />
-  ) : (
+  return loading ? "" :(
     <div className="modal-check">
       <Space>
         <Modal
