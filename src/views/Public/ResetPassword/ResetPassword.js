@@ -85,7 +85,7 @@ const ResetPassword = ({ appName }) => {
                   />
                 </Item>
                 <div className="forgot-password__R__btn">
-                  <Button type="primary" htmlType="submit">
+                  <Button type="danger" htmlType="submit">
                     Restaurar contraseña
                   </Button>
                 </div>
