@@ -99,6 +99,7 @@ const Check = () => {
         ok={okModal}
         close={closeModal}
         accept={ok}
+        visible={open}
       />
     </div>
   );

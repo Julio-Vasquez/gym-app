@@ -240,6 +240,7 @@ export const CustomTable = ({ data, title }) => {
           open={checkModal}
           close={closeCheckModal}
           ok={closeCheckModal}
+          visible={false}
         />
         <ModalUpdateClient
           title="Edite la información personal"

@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 
 import { ColorTab } from "./../ColorTab";
 
-export const ModalCheck = ({ title, close, ok, open }) => {
+export const ModalCheck = ({ title, close, ok, open, visible }) => {
   const { client, loading } = useSelector((state) => state.Check);
   const [color, setColor] = useState("");
 
@@ -20,7 +20,7 @@ export const ModalCheck = ({ title, close, ok, open }) => {
     else if (client.time <= 5 && client.time >= 0) setColor("#ff9800");
     else setColor("#8BC34A");
 
-    if(open){
+    if(visible){
       const timer = setTimeout(() => {
         ok();
       }, 7000);
@@ -28,7 +28,7 @@ export const ModalCheck = ({ title, close, ok, open }) => {
         clearTimeout(timer);
       };
     }
-  }, [client.time, ok, open]);
+  }, [client.time, ok, visible]);
 
   return loading ? "" :(
     <div className="modal-check">
