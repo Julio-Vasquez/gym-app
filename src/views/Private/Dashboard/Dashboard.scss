@@ -15,10 +15,11 @@
 
 @media (max-width: 1366px) and (max-height: 766px) {
   .content-dashboard {
-    height: 86vh;
+    height: 82vh;
     &-bg img {
-      width: 70%;
-      border-radius: 28px;
+      width: 75%;
+      border-radius: 20px;
+      filter: drop-shadow(2px 4px 16px black);
     }
   }
 }

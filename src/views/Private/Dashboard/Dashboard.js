@@ -1,5 +1,5 @@
 import React from "react";
-import dashboard from "./../../../assets/img/dashboard.jpeg";
+import dashboard from "./../../../assets/img/BannerDash.jpg";
 
 const Dashboard = () => {
   return (
