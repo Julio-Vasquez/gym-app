@@ -3,23 +3,17 @@
   height: 89vh;
   width: 100%;
   &-bg {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    img {
-      width: 55%;
-      border-radius: 25px;
-    }
+    width: 99.9%;
+    height: 99.9%;
+    background-image: url('./../../../assets/img/BannerDash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
 
 @media (max-width: 1366px) and (max-height: 766px) {
   .content-dashboard {
-    height: 82vh;
-    &-bg img {
-      width: 100%;
-      border-radius: 20px;
-      filter: drop-shadow(2px 4px 16px black);
-    }
+    height: 86vh;
   }
 }
