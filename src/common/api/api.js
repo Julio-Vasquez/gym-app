@@ -5,7 +5,7 @@ import { store } from "./../../store";
 const API_URL = "http://localhost:8550/mb";
 
 class Api {
-  GET(url) {
+  async GET(url) {
     url = new URL(`${API_URL}/${url}`);
     return fetch(url, {
       method: "GET",
@@ -24,7 +24,7 @@ class Api {
       .catch((err) => err);
   }
 
-  POST(url, body, header) {
+  async POST(url, body, header) {
     let dataBody = JSON.stringify(body);
     return fetch(`${API_URL}/${url}`, {
       method: "POST",
@@ -48,7 +48,7 @@ class Api {
       .catch((err) => err);
   }
 
-  PUT(url, body, header) {
+  async PUT(url, body, header) {
     return fetch(`${API_URL}/${url}`, {
       method: "PUT",
       headers: header
@@ -71,7 +71,7 @@ class Api {
       .catch((res) => res);
   }
 
-  DELETE(url, body, header) {
+  async DELETE(url, body, header) {
     return fetch(`${API_URL}/${url}`, {
       method: "DELETE",
       headers: header
