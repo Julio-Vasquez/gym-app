@@ -1,65 +1,65 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 import {
+  BarChartOutlined,
   DashboardOutlined,
-  UserOutlined,
+  DollarOutlined,
+  LoginOutlined,
+  LogoutOutlined,
   MenuOutlined,
   QrcodeOutlined,
-  BarChartOutlined,
-  LoginOutlined,
+  UserOutlined,
   UserSwitchOutlined,
-  LogoutOutlined,
-  DollarOutlined,
-} from "@ant-design/icons";
-import { Tooltip } from "antd";
-import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
+} from '@ant-design/icons'
+import { Tooltip } from 'antd'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import logo from "../../../assets/img/ag.jpeg";
+import logo from '../../../assets/img/ag.jpeg'
 
-import { auth } from "./../../../services/Auth/AuthActions";
+import { logout } from './../../../services/Auth/AuthSlice'
 
 const Layout = ({ appName, children }) => {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [navbar, setNavbar] = useState(false);
-  const [visibleBtnFixed, setVisibleBtnFixed] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(false)
+  const [navbar, setNavbar] = useState(false)
+  const [visibleBtnFixed, setVisibleBtnFixed] = useState(false)
 
   const onClickNavOpen = () => {
-    let html = document.getElementsByTagName("html")[0];
-    html.classList.toggle("nav-open");
-  };
-  const dispatch = useDispatch();
+    let html = document.getElementsByTagName('html')[0]
+    html.classList.toggle('nav-open')
+  }
+  const dispatch = useDispatch()
 
-  const onCLickLogout = () => {
-    dispatch(auth.logout());
-  };
+  const onClickLogout = () => {
+    dispatch(logout())
+  }
   useEffect(() => {
     const showButtonFixed = () => {
-      const scroll = document.documentElement.scrollTop;
+      const scroll = document.documentElement.scrollTop
       if (scroll >= 25) {
-        setNavbar(true);
-        setVisibleBtnFixed(true);
+        setNavbar(true)
+        setVisibleBtnFixed(true)
       } else {
-        setNavbar(false);
-        setVisibleBtnFixed(false);
+        setNavbar(false)
+        setVisibleBtnFixed(false)
       }
-    };
-    document.addEventListener("scroll", showButtonFixed);
-  }, []);
+    }
+    document.addEventListener('scroll', showButtonFixed)
+  }, [])
 
   const onClickSidebar = () => {
-    setVisibleBtnFixed(false);
-    setSidebarVisible(!sidebarVisible);
-  };
+    setVisibleBtnFixed(false)
+    setSidebarVisible(!sidebarVisible)
+  }
 
   const onClickBar = () => {
-    setVisibleBtnFixed(true);
-    setSidebarVisible(!sidebarVisible);
-  };
+    setVisibleBtnFixed(true)
+    setSidebarVisible(!sidebarVisible)
+  }
 
   return (
     <div className="wrapper">
       <div
-        className={sidebarVisible ? "sidebar toggle" : "sidebar"}
+        className={sidebarVisible ? 'sidebar toggle' : 'sidebar'}
         id="sidebar"
       >
         <div className="sidebar-wrapper">
@@ -119,7 +119,7 @@ const Layout = ({ appName, children }) => {
       <div className="main-panel">
         <nav className="navbar">
           <div
-            className={navbar ? "navbar-bar none" : "navbar-bar"}
+            className={navbar ? 'navbar-bar none' : 'navbar-bar'}
             id="content-buttons"
           >
             <button id="boton-sidebar" onClick={onClickSidebar}>
@@ -132,7 +132,7 @@ const Layout = ({ appName, children }) => {
             </button>
             <div
               className={
-                visibleBtnFixed ? "navbar-bar_fixed block" : "navbar-bar_fixed"
+                visibleBtnFixed ? 'navbar-bar_fixed block' : 'navbar-bar_fixed'
               }
               id="content-button_fixed"
             >
@@ -144,23 +144,23 @@ const Layout = ({ appName, children }) => {
           </div>
           <div className="navbar-options">
             <Tooltip title="Cerrar sesión">
-              <LogoutOutlined className="photo" onClick={onCLickLogout} />
+              <LogoutOutlined className="photo" onClick={onClickLogout} />
             </Tooltip>
           </div>
         </nav>
-        <div className={sidebarVisible ? "content main" : "content"} id="main">
+        <div className={sidebarVisible ? 'content main' : 'content'} id="main">
           <div className="grid-row">
             <div className="card-chart card">{children}</div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Layout.propTypes = {
   appName: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
-};
+}
 
-export default Layout;
+export default Layout

@@ -1,29 +1,29 @@
-import { combineReducers } from "redux";
-import { connectRouter } from "connected-react-router";
+import { combineReducers } from '@reduxjs/toolkit'
+import { connectRouter } from 'connected-react-router'
 
-import { auth } from "../services/Auth/AuthActions";
+import { logout } from './../services/Auth/AuthSlice'
 
 import reducerAuth, {
-  INITIAL_STATE as initialAuth,
-} from "./../services/Auth/AuthReducer";
+  initialState as initialAuth,
+} from './../services/Auth/AuthSlice'
 
 import reducerCheck, {
-  INITIAL_STATE as initialCheck,
-} from "./../services/Check/CheckReducer";
+  initialState as initialCheck,
+} from './../services/Check/CheckSlice'
 
 import reducerClients, {
-  INITIAL_STATE as initialClients,
-} from "../services/Clients/ClientsReducer";
+  initialState as initialClients,
+} from '../services/Clients/ClientsSlice'
 
 import reducerSuscription, {
-  INITIAL_STATE as initialSuscription,
-} from "../services/Suscription/SuscriptionReducer";
+  initialState as initialSuscription,
+} from '../services/Suscription/SuscriptionSlice'
 
 import reducerReport, {
-  INITIAL_STATE as initialReport,
-} from "../services/Report/ReportReducer";
+  initialState as initialReport,
+} from '../services/Report/ReportSlice'
 
-const appReducers = (history) =>
+const appReducers = history =>
   combineReducers({
     router: connectRouter(history),
     Auth: reducerAuth,
@@ -31,16 +31,16 @@ const appReducers = (history) =>
     Clients: reducerClients,
     Suscription: reducerSuscription,
     Report: reducerReport,
-  });
+  })
 
-export const rootReducers = (history) => (state, action) => {
-  if (action.type === "AUTH/LOGOUT" || action.type === auth.logout().type)
+export const rootReducers = history => (state, action) => {
+  if (action.type === 'AUTH/LOGOUT' || action.type === logout().type)
     state = {
       Auth: initialAuth,
       Check: initialCheck,
       Clients: initialClients,
       Suscription: initialSuscription,
       Report: initialReport,
-    };
-  return appReducers(history)(state, action);
-};
+    }
+  return appReducers(history)(state, action)
+}

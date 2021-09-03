@@ -1,56 +1,53 @@
-import React, { useState } from "react";
+import { useState } from 'react'
 import {
   Button,
-  Space,
-  Modal,
+  Form,
   Input,
   InputNumber,
-  Form,
-  Row,
-  Radio,
   message,
-} from "antd";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+  Modal,
+  Radio,
+  Row,
+  Space,
+} from 'antd'
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
-import { suscription } from "./../../services/Suscription/SuscriptionActions";
+import { addSuscription } from './../../services/Suscription/SuscriptionSlice'
 
 export const AddTimeTicket = ({ identification, open, close }) => {
-  const { Item } = Form;
-  const { Group } = Radio;
+  const { Item } = Form
+  const { Group } = Radio
 
-  const [type, setType] = useState("Mensual");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(false)
+  const [type, setType] = useState('Mensual')
   const [form, setForm] = useState({
     cost: 0,
     days: 0,
     debt: 0,
-  });
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const onChangeForm = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const onChangeForm = e =>
+    setForm({ ...form, [e.target.name]: e.target.value })
 
-  const onChangeDebt = (e) =>
-    e > form.cost ? setError(true) : setError(false);
+  const onChangeDebt = e => (e > form.cost ? setError(true) : setError(false))
 
-  const onChangeCost = (e) =>
-    parseInt(e.target.value) < form.debt ? setError(true) : setError(false);
+  const onChangeCost = e =>
+    parseInt(e.target.value) < form.debt ? setError(true) : setError(false)
 
-  const onFinishForm = (e) => {
-    close(false);
+  const onFinishForm = e => {
+    close(false)
     if (form.debt <= parseInt(form.cost))
-      dispatch(
-        suscription.addSuscription({ ...form, identification, concept: type })
-      );
+      dispatch(addSuscription({ ...form, identification, concept: type }))
     else
       message.error(
-        "No puede decir que la deuda es mayor a lo que cuesta los dias facturados"
-      );
-  };
+        'No puede decir que la deuda es mayor a lo que cuesta los dias facturados'
+      )
+  }
 
-  const onChangeRadio = (e) => setType(e.target.value);
+  const onChangeRadio = e => setType(e.target.value)
 
   return (
     <Space>
@@ -67,7 +64,7 @@ export const AddTimeTicket = ({ identification, open, close }) => {
             <Item
               label="Tipo Pago"
               name="type_pay"
-              rules={[{ required: true, message: "Tipo pago, requqerido" }]}
+              rules={[{ required: true, message: 'Tipo pago, requqerido' }]}
             >
               <Group onChange={onChangeRadio} value={type}>
                 <Radio value="Mensual">Mensual</Radio>
@@ -82,11 +79,11 @@ export const AddTimeTicket = ({ identification, open, close }) => {
               rules={[
                 {
                   required: true,
-                  message: "Cantidad de dias requerido",
+                  message: 'Cantidad de dias requerido',
                 },
                 {
                   min: 1,
-                  message: "Minimo 1 dia",
+                  message: 'Minimo 1 dia',
                 },
               ]}
             >
@@ -98,17 +95,17 @@ export const AddTimeTicket = ({ identification, open, close }) => {
               name="costI"
               label="Precio"
               rules={[
-                { required: true, message: "Costo Requerido" },
+                { required: true, message: 'Costo Requerido' },
                 {
                   min: 4,
-                  message: "El costo minimo es 1000",
+                  message: 'El costo minimo es 1000',
                 },
               ]}
             >
               <Input name="cost" type="number" onChange={onChangeCost} />
             </Item>
           </Row>
-          <Row className={error && "ant-form-item-has-error"}>
+          <Row className={error && 'ant-form-item-has-error'}>
             <Item label="Mora" name="debtI">
               <InputNumber name="debt" min="1" onChange={onChangeDebt} />
             </Item>
@@ -127,15 +124,15 @@ export const AddTimeTicket = ({ identification, open, close }) => {
         </Form>
       </Modal>
     </Space>
-  );
-};
+  )
+}
 
 AddTimeTicket.propTypes = {
   identification: PropTypes.any,
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-};
+}
 
 AddTimeTicket.defaulrProps = {
   identification: 0,
-};
+}

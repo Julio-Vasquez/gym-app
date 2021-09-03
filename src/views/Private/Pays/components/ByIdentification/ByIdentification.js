@@ -1,12 +1,11 @@
-import React from "react";
-import { Tag } from "antd";
-import { useSelector } from "react-redux";
+import { Tag } from 'antd'
+import { useSelector } from 'react-redux'
 
-import { Loading } from "../../../../../components/Loading";
-import { ColorTab } from "../../../../../components/ColorTab";
+import { Loading } from '../../../../../components/Loading'
+import { ColorTab } from '../../../../../components/ColorTab'
 
 export const ByIdentification = () => {
-  const { user, loading } = useSelector((state) => state.Report);
+  const { user, loading } = useSelector(state => state.Report)
 
   return loading ? (
     <Loading />
@@ -15,7 +14,7 @@ export const ByIdentification = () => {
       <div className="Rpt-header">
         <h1>
           <span>
-            {user.name} {user.lastName}{" "}
+            {user.name} {user.lastName}{' '}
           </span>
           Identificaco con : <span>{user.identification}</span>
         </h1>
@@ -26,10 +25,10 @@ export const ByIdentification = () => {
           {user.payment.map((item, key) => (
             <li key={key}>
               <h3>
-                Concepto:{" "}
-                <span>{item.days === 0 ? "Abono" : `${item.days} Dias`} </span>
+                Concepto:{' '}
+                <span>{item.days === 0 ? 'Abono' : `${item.days} Dias`} </span>
                 Pago: <span>{item.cost} </span>
-                Debiendo :{" "}
+                Debiendo :{' '}
                 {item.debt > 0 ? (
                   <span> {item.debt} </span>
                 ) : (
@@ -38,13 +37,13 @@ export const ByIdentification = () => {
                 finalizando : <span>{item.createdAt.substr(0, 10)} </span>
                 registrado por : <span>{item.username} </span>
               </h3>
-              <Tag color={ColorTab(item.debt > 0 ? "inactive" : "active")}>
-                {item.debt > 0 ? "DEBE" : "SIN DEUDA"}
+              <Tag color={ColorTab(item.debt > 0 ? 'inactive' : 'active')}>
+                {item.debt > 0 ? 'DEBE' : 'SIN DEUDA'}
               </Tag>
             </li>
           ))}
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}

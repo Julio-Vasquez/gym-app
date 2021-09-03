@@ -1,13 +1,12 @@
-import React from "react";
-import { Modal, Space } from "antd";
-import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
+import { Modal, Space } from 'antd'
+import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import { Loading } from "../Loading";
-import { FormModal } from "./components/Form";
+import { Loading } from '../Loading'
+import { FormModal } from './components/Form'
 
 export const ModalUpdateClient = ({ open, close, title, identification }) => {
-  const { client, loading } = useSelector((state) => state.Check);
+  const { client, loading } = useSelector(state => state.Check)
 
   return loading ? (
     <Loading />
@@ -26,16 +25,16 @@ export const ModalUpdateClient = ({ open, close, title, identification }) => {
         </Modal>
       </Space>
     </div>
-  );
-};
+  )
+}
 
 ModalUpdateClient.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   identification: PropTypes.any,
-};
+}
 
 ModalUpdateClient.defaulrProps = {
   identification: 0,
-};
+}

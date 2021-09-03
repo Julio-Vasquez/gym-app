@@ -1,41 +1,41 @@
-import React, { useState } from "react";
-import { Form, Button, Col, Card, Input } from "antd";
-import { IdcardOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react'
+import { Form, Button, Col, Card, Input } from 'antd'
+import { IdcardOutlined } from '@ant-design/icons'
+import { useDispatch } from 'react-redux'
 
-import { check } from "./../../../services/Check/CheckActions";
-import { ModalCheck } from "../../../components/ModalCheck";
+import { checkPeopleIn } from './../../../services/Check/CheckSlice'
+import { ModalCheck } from '../../../components/ModalCheck'
 
 const Check = () => {
-  const [identification, setIdentification] = useState(0);
-  const [open, setOpen] = useState(false);
-  const [ok, setOk] = useState(false);
+  const [identification, setIdentification] = useState(0)
+  const [open, setOpen] = useState(false)
+  const [ok, setOk] = useState(false)
 
-  const { Item } = Form;
-  const dispatch = useDispatch();
+  const { Item } = Form
+  const dispatch = useDispatch()
 
-  const clearInput = () => window.location.reload();
+  const clearInput = () => window.location.reload()
 
   const closeModal = () => {
-    setOpen(!open);
-    clearInput();
-  };
+    setOpen(!open)
+    clearInput()
+  }
 
   const okModal = () => {
-    setOpen(false);
-    setOk(true);
-    setIdentification(0);
-    clearInput();
-  };
+    setOpen(false)
+    setOk(true)
+    setIdentification(0)
+    clearInput()
+  }
 
-  const onChnageForm = (e) => {
-    setIdentification(e.target.value);
-  };
+  const onChnageForm = e => {
+    setIdentification(e.target.value)
+  }
 
-  const onFinishForm = (e) => {
-    dispatch(check.checkPeopleIn(identification));
-    setOpen(true);
-  };
+  const onFinishForm = e => {
+    dispatch(checkPeopleIn(identification))
+    setOpen(true)
+  }
 
   return (
     <div className="check">
@@ -60,17 +60,17 @@ const Check = () => {
               rules={[
                 {
                   required: true,
-                  message: "Número de identificación requerido",
+                  message: 'Número de identificación requerido',
                 },
                 {
                   min: 6,
                   message:
-                    "El número identificación debe contener mínimo 6 caracteres",
+                    'El número identificación debe contener mínimo 6 caracteres',
                 },
                 {
                   max: 14,
                   message:
-                    "El número identificación debe contener máximo 14 caracteres",
+                    'El número identificación debe contener máximo 14 caracteres',
                 },
               ]}
             >
@@ -102,7 +102,7 @@ const Check = () => {
         visible={open}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Check;
+export default Check

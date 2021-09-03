@@ -1,21 +1,21 @@
-import React, { useState, Fragment } from "react";
-import { useSelector } from "react-redux";
-import { Row, Col } from "antd";
-import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import { useState, Fragment } from 'react'
+import { useSelector } from 'react-redux'
+import { Row, Col } from 'antd'
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
 
-import { Loading } from "../../../../../components/Loading";
-import { DetailPayment } from "./components/DetailPayment";
+import { Loading } from '../../../../../components/Loading'
+import { DetailPayment } from './components/DetailPayment'
 
 export const ByDates = () => {
-  const { peoples, loading } = useSelector((state) => state.Report);
+  const { peoples, loading } = useSelector(state => state.Report)
 
-  const [expanded, setExpanded] = useState(false);
-  const [id, setId] = useState(0);
+  const [expanded, setExpanded] = useState(false)
+  const [id, setId] = useState(0)
 
-  const handleExpanded = (id) => {
-    setId(id);
-    setExpanded(!expanded);
-  };
+  const handleExpanded = id => {
+    setId(id)
+    setExpanded(!expanded)
+  }
 
   return loading ? (
     <Loading />
@@ -76,8 +76,8 @@ export const ByDates = () => {
                         <tr
                           className={
                             expanded && id === item.identification
-                              ? "show-expandible ant-table-expanded-row ant-table-expanded-row-level-1"
-                              : "hidden-expandible ant-table-expanded-row ant-table-expanded-row-level-1"
+                              ? 'show-expandible ant-table-expanded-row ant-table-expanded-row-level-1'
+                              : 'hidden-expandible ant-table-expanded-row ant-table-expanded-row-level-1'
                           }
                         >
                           <td colSpan="8" className="ant-table-cell">
@@ -94,5 +94,5 @@ export const ByDates = () => {
         </Col>
       </Row>
     </div>
-  );
-};
+  )
+}

@@ -1,6 +1,1 @@
-import { createBrowserHistory } from 'history'
-import { Store } from './Store'
-
-export const history = createBrowserHistory()
-
-export const store = Store(history)
+export { history, default } from './Store'

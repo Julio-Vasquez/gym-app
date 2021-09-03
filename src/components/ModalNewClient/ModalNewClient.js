@@ -1,54 +1,54 @@
-import React, { useState } from "react";
+import { useState } from 'react'
 import {
   Button,
-  Modal,
-  Space,
-  Form,
-  Input,
-  Radio,
-  Row,
   Col,
   DatePicker,
-} from "antd";
+  Form,
+  Input,
+  Modal,
+  Radio,
+  Row,
+  Space,
+} from 'antd'
 
 import {
   WhatsAppOutlined,
   IdcardOutlined,
   AlipayOutlined,
-} from "@ant-design/icons";
-import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
+} from '@ant-design/icons'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import { clients } from "./../../services/Clients/ClientsActions";
+import { createClient } from './../../services/Clients/ClientsSlice'
 
 export const ModalNewClient = ({ open, close, title }) => {
-  const { Item } = Form;
-  const { Group } = Radio;
+  const { Item } = Form
+  const { Group } = Radio
 
   const [form, setForm] = useState({
-    name: "",
-    lastName: "",
+    name: '',
+    lastName: '',
     identification: 0,
-    dateBirth: "",
-    gender: "",
-    phone: "",
-    role: "",
-  });
+    dateBirth: '',
+    gender: '',
+    phone: '',
+    role: '',
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onFinishForm = () => {
-    close(false);
-    dispatch(clients.createClient(form));
-  };
+    close(false)
+    dispatch(createClient(form))
+  }
 
-  const onChangeForm = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const onChangeForm = e => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
 
   const onChangeDatePicker = (_, date) => {
-    setForm({ ...form, dateBirth: date });
-  };
+    setForm({ ...form, dateBirth: date })
+  }
 
   return (
     <div>
@@ -85,15 +85,15 @@ export const ModalNewClient = ({ open, close, title }) => {
                   rules={[
                     {
                       required: true,
-                      message: "Por favor ingresa su nombre",
+                      message: 'Por favor ingresa su nombre',
                     },
                     {
                       min: 3,
-                      message: "El nombre de contener al menos 3 caracteres",
+                      message: 'El nombre de contener al menos 3 caracteres',
                     },
                     {
                       max: 75,
-                      message: "El nombre de contener máximo 75 caracteres",
+                      message: 'El nombre de contener máximo 75 caracteres',
                     },
                   ]}
                   hasFeedback
@@ -111,15 +111,15 @@ export const ModalNewClient = ({ open, close, title }) => {
                   rules={[
                     {
                       required: true,
-                      message: "Por favor ingresa su Apellido",
+                      message: 'Por favor ingresa su Apellido',
                     },
                     {
                       min: 3,
-                      message: "El apellido de contener al menos 3 caracteres",
+                      message: 'El apellido de contener al menos 3 caracteres',
                     },
                     {
                       max: 75,
-                      message: "El apellido de contener máximo 75 caracteres",
+                      message: 'El apellido de contener máximo 75 caracteres',
                     },
                   ]}
                   hasFeedback
@@ -140,11 +140,11 @@ export const ModalNewClient = ({ open, close, title }) => {
                   rules={[
                     {
                       required: true,
-                      message: "El número telefónico es requerido.",
+                      message: 'El número telefónico es requerido.',
                     },
                     {
                       len: 10,
-                      message: "Deben ser 10 caracteres.",
+                      message: 'Deben ser 10 caracteres.',
                     },
                   ]}
                   hasFeedback
@@ -163,15 +163,15 @@ export const ModalNewClient = ({ open, close, title }) => {
                   rules={[
                     {
                       required: true,
-                      message: "El número de identificación es requerido.",
+                      message: 'El número de identificación es requerido.',
                     },
                     {
                       min: 6,
-                      message: "Mínimo 6 caracteres.",
+                      message: 'Mínimo 6 caracteres.',
                     },
                     {
                       max: 12,
-                      message: "Máximo 12 caracteres.",
+                      message: 'Máximo 12 caracteres.',
                     },
                   ]}
                   hasFeedback
@@ -196,12 +196,12 @@ export const ModalNewClient = ({ open, close, title }) => {
                     },
                     () => ({
                       validator(rule, value) {
-                        let year = new Date().getFullYear() - 10;
-                        if (value === undefined) return Promise.resolve();
-                        if (value.year() <= year) return Promise.resolve();
+                        let year = new Date().getFullYear() - 10
+                        if (value === undefined) return Promise.resolve()
+                        if (value.year() <= year) return Promise.resolve()
                         return Promise.reject(
-                          "Usted debe tener al menos 10 años"
-                        );
+                          'Usted debe tener al menos 10 años'
+                        )
                       },
                     }),
                   ]}
@@ -210,7 +210,7 @@ export const ModalNewClient = ({ open, close, title }) => {
                   <DatePicker
                     name="dateBirth"
                     placeholder="Fecha de Nacimiento"
-                    style={{ width: "100%" }}
+                    style={{ width: '100%' }}
                     onChange={onChangeDatePicker}
                   />
                 </Item>
@@ -219,7 +219,7 @@ export const ModalNewClient = ({ open, close, title }) => {
                 <Item
                   name="genderI"
                   hasFeedback
-                  rules={[{ required: true, message: "Seleccione un genero" }]}
+                  rules={[{ required: true, message: 'Seleccione un genero' }]}
                   label="Genero"
                 >
                   <Group name="gender">
@@ -234,7 +234,7 @@ export const ModalNewClient = ({ open, close, title }) => {
                 <Item
                   hasFeedback
                   name="roleI"
-                  rules={[{ required: true, message: "Seleccione un rol" }]}
+                  rules={[{ required: true, message: 'Seleccione un rol' }]}
                   label="Rol"
                 >
                   <Group name="role">
@@ -248,10 +248,10 @@ export const ModalNewClient = ({ open, close, title }) => {
         </Modal>
       </Space>
     </div>
-  );
-};
+  )
+}
 ModalNewClient.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-};
+}

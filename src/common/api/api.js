@@ -1,98 +1,98 @@
-import { Token } from "./../storage";
-import { auth } from "../../services/Auth/AuthActions";
-import { store } from "./../../store";
+import { Token } from './../storage'
+import { logout } from '../../services/Auth/AuthSlice'
+import Store from './../../store'
 
-const API_URL = "http://localhost:8550/mb";
+const API_URL = 'http://localhost:8550/mb'
 
 class Api {
   async GET(url) {
-    url = new URL(`${API_URL}/${url}`);
+    url = new URL(`${API_URL}/${url}`)
     return fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${Token.GetToken()}`,
       },
     })
-      .then(async (res) => {
+      .then(async res => {
         if (res.status === 401) {
-          store.dispatch(auth.logout());
-          return res;
+          Store.dispatch(logout())
+          return res
         }
-        res.payload = await res.json();
-        return res;
+        res.payload = await res.json()
+        return res
       })
-      .catch((err) => err);
+      .catch(err => err)
   }
 
   async POST(url, body, header) {
-    let dataBody = JSON.stringify(body);
+    let dataBody = JSON.stringify(body)
     return fetch(`${API_URL}/${url}`, {
-      method: "POST",
+      method: 'POST',
       headers: header
         ? header
         : {
-            Accept: "application/json",
-            "Content-type": "application/json",
+            Accept: 'application/json',
+            'Content-type': 'application/json',
             Authorization: `Bearer ${Token.GetToken()}`,
           },
       body: dataBody,
     })
-      .then(async (res) => {
+      .then(async res => {
         if (res.status === 401) {
-          store.dispatch(auth.logout());
-          return res;
+          Store.dispatch(logout())
+          return res
         }
-        res.payload = await res.json();
-        return res;
+        res.payload = await res.json()
+        return res
       })
-      .catch((err) => err);
+      .catch(err => err)
   }
 
   async PUT(url, body, header) {
     return fetch(`${API_URL}/${url}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: header
         ? header
         : {
-            Accept: "application/json",
-            "Content-type": "application/json",
+            Accept: 'application/json',
+            'Content-type': 'application/json',
             Authorization: `Bearer ${Token.GetToken()}`,
           },
       body: JSON.stringify(body),
     })
-      .then(async (res) => {
+      .then(async res => {
         if (res.status === 401) {
-          store.dispatch(auth.logout());
-          return res;
+          Store.dispatch(logout())
+          return res
         }
-        res.payload = await res.json();
-        return res;
+        res.payload = await res.json()
+        return res
       })
-      .catch((res) => res);
+      .catch(res => res)
   }
 
   async DELETE(url, body, header) {
     return fetch(`${API_URL}/${url}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: header
         ? header
         : {
-            Accept: "application/json",
-            "Content-type": "application/json",
+            Accept: 'application/json',
+            'Content-type': 'application/json',
             Authorization: `Bearer ${Token.GetToken()}`,
           },
-      body: body ? body : "",
+      body: body ? body : '',
     })
-      .then(async (res) => {
+      .then(async res => {
         if (res.status === 401) {
-          store.dispatch(auth.logout());
-          return res;
+          Store.dispatch(logout())
+          return res
         }
-        res.payload = await res.json();
-        return res;
+        res.payload = await res.json()
+        return res
       })
-      .catch((err) => err);
+      .catch(err => err)
   }
 }
 
-export default new Api();
+export default new Api()

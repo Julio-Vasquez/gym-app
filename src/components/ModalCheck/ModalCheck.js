@@ -1,36 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { Modal, Space, Row, Tag } from "antd";
+import { useState, useEffect } from 'react'
+import { Modal, Space, Row, Tag } from 'antd'
 import {
   CheckCircleTwoTone,
-  WarningTwoTone,
   CloseCircleTwoTone,
-} from "@ant-design/icons";
-import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
+  WarningTwoTone,
+} from '@ant-design/icons'
+import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
-
-import { ColorTab } from "./../ColorTab";
+import { ColorTab } from './../ColorTab'
 
 export const ModalCheck = ({ title, close, ok, open, visible }) => {
-  const { client, loading } = useSelector((state) => state.Check);
-  const [color, setColor] = useState("");
+  const { client, loading } = useSelector(state => state.Check)
+  const [color, setColor] = useState('')
 
   useEffect(() => {
-    if (client.time === 0) setColor("#f44336");
-    else if (client.time <= 5 && client.time >= 0) setColor("#ff9800");
-    else setColor("#8BC34A");
+    if (client.time === 0) setColor('#f44336')
+    else if (client.time <= 5 && client.time >= 0) setColor('#ff9800')
+    else setColor('#8BC34A')
 
-    if(visible){
+    if (visible) {
       const timer = setTimeout(() => {
-        ok();
-      }, 7000);
+        ok()
+      }, 7000)
       return () => {
-        clearTimeout(timer);
-      };
+        clearTimeout(timer)
+      }
     }
-  }, [client.time, ok, visible]);
+  }, [client.time, ok, visible])
 
-  return loading ? "" :(
+  return loading ? (
+    ''
+  ) : (
     <div className="modal-check">
       <Space>
         <Modal
@@ -71,17 +72,17 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
 
               <Row>
                 <p>{client.phone}</p>
-                <p style={{ color: "#39FF14" }}>{client.concept}</p>
+                <p style={{ color: '#39FF14' }}>{client.concept}</p>
                 <p
                   style={{
                     color: color,
                   }}
                 >
-                  {client.time === null ? "0" : client.time} Dias
+                  {client.time === null ? '0' : client.time} Dias
                 </p>
               </Row>
               <Row>
-                <Tag color={ColorTab(client.debt > 0 ? "inactive" : "active")}>
+                <Tag color={ColorTab(client.debt > 0 ? 'inactive' : 'active')}>
                   {client.debt > 0 ? `DEBE ${client.debt}` : `SIN DEUDA`}
                 </Tag>
               </Row>
@@ -92,12 +93,12 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
         </Modal>
       </Space>
     </div>
-  );
-};
+  )
+}
 
 ModalCheck.propTypes = {
   title: PropTypes.string.isRequired,
   close: PropTypes.func.isRequired,
   ok: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-};
+}

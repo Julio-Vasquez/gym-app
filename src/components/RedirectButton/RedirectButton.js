@@ -1,6 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-import home from "./../../assets/img/house.png";
+import PropTypes from 'prop-types'
+import home from './../../assets/img/house.png'
 
 export const RedirectButton = ({ url, imgPath, urlName }) => {
   return (
@@ -12,11 +11,11 @@ export const RedirectButton = ({ url, imgPath, urlName }) => {
         Volver a<span> {urlName} </span>
       </div>
     </a>
-  );
-};
+  )
+}
 
 RedirectButton.propTypes = {
   url: PropTypes.string.isRequired,
   imgPath: PropTypes.string.isRequired,
   urlName: PropTypes.string.isRequired,
-};
+}

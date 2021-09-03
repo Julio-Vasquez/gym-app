@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 
@@ -6,11 +5,16 @@ import Private from './../Routes/Private'
 import Public from './../Routes/Public'
 
 function App({ history }) {
+  console.log(history)
   const { authentication } = useSelector(state => state.Auth)
   return (
     <div className="App">
       <ConnectedRouter history={history}>
-        {authentication ? <Private history={history} /> : <Public />}
+        {authentication ? (
+          <Private history={history} />
+        ) : (
+          <Public history={history} />
+        )}
       </ConnectedRouter>
     </div>
   )

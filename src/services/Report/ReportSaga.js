@@ -1,55 +1,60 @@
-import { put, takeLatest, all } from "redux-saga/effects";
-import { message } from "antd";
+import { put, takeLatest, all } from 'redux-saga/effects'
+import { message } from 'antd'
 
-import { FailedConnectionServer } from "../Util/FailedConnectionServer";
-import Api from "../../common/api";
+import { FailedConnectionServer } from '../Util/FailedConnectionServer'
+import Api from '../../common/api'
 
-import { report } from "./ReportActions";
-
-function* FetchGetPayIdentification({ payload }) {
-  console.log(payload);
-  try {
-    const res = yield Api.GET(`reports/pays-${payload.identification}`);
-    if (res && res.payload.success) {
-      yield put(report.getPayIdentificationSuccess(res.payload));
-    } else if (res.payload?.error) {
-      message.error(res.payload.detail, 5);
-      yield put(report.getPayIdentificationFailed(res.payload.detail));
-    } else {
-      message.error(`Error Desconocido`);
-      yield put(
-        report.getPayIdentificationFailed(new TypeError("ERROR_GET_PAYS"))
-      );
-    }
-  } catch (e) {
-    yield put(report.getPayIdentificationFailed(FailedConnectionServer()));
-  }
-}
+import {
+  getPayDates,
+  getPayDatesFailed,
+  getPayDatesSuccess,
+  getPayIdentification,
+  getPayIdentificationFailed,
+  getPayIdentificationSuccess,
+} from './ReportSlice'
 
 function* FetchGetPayDates({ payload }) {
   try {
     const res = yield Api.GET(
       `reports/pays?start=${payload.start}&end=${payload.end}`
-    );
+    )
     if (res && res.payload.success) {
-      yield put(report.getPayDatesSuccess(res.payload));
+      yield put(getPayDatesSuccess(res.payload))
     } else if (res.payload?.error) {
-      message.error(res.payload.detail);
-      yield put(report.getPayDatesFailed(res.payload.detail));
+      message.error(res.payload.detail)
+      yield put(getPayDatesFailed(res.payload.detail))
     } else {
-      message.error(`Error Desconocido`);
-      yield put(report.getPayDatesFailed(new TypeError("ERROR_GET_PAYS")));
+      message.error(`Error Desconocido`)
+      yield put(getPayDatesFailed(new TypeError('ERROR_GET_PAYS')))
     }
   } catch (e) {
-    yield put(report.getPayDatesFailed(FailedConnectionServer()));
+    yield put(getPayDatesFailed(FailedConnectionServer()))
+  }
+}
+
+function* FetchGetPayIdentification({ payload }) {
+  console.log(payload)
+  try {
+    const res = yield Api.GET(`reports/pays-${payload.identification}`)
+    if (res && res.payload.success) {
+      yield put(getPayIdentificationSuccess(res.payload))
+    } else if (res.payload?.error) {
+      message.error(res.payload.detail, 5)
+      yield put(getPayIdentificationFailed(res.payload.detail))
+    } else {
+      message.error(`Error Desconocido`)
+      yield put(getPayIdentificationFailed(new TypeError('ERROR_GET_PAYS')))
+    }
+  } catch (e) {
+    yield put(getPayIdentificationFailed(FailedConnectionServer()))
   }
 }
 
 function* ActionWatcher() {
-  yield takeLatest(report.getPayIdentification, FetchGetPayIdentification);
-  yield takeLatest(report.getPayDates, FetchGetPayDates);
+  yield takeLatest(getPayIdentification, FetchGetPayIdentification)
+  yield takeLatest(getPayDates, FetchGetPayDates)
 }
 
 export default function* ReportSaga() {
-  yield all([ActionWatcher()]);
+  yield all([ActionWatcher()])
 }

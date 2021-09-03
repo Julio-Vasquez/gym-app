@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { Form, Input, Radio, Row, Col, Button } from "antd";
-import { useDispatch } from "react-redux";
+import { useState } from 'react'
+import { Form, Input, Radio, Row, Col, Button } from 'antd'
+import { useDispatch } from 'react-redux'
 import {
-  WhatsAppOutlined,
-  IdcardOutlined,
   AlipayOutlined,
+  IdcardOutlined,
   PicLeftOutlined,
-} from "@ant-design/icons";
+  WhatsAppOutlined,
+} from '@ant-design/icons'
 
-import { clients } from "./../../../services/Clients/ClientsActions";
+import { updateClient } from './../../../services/Clients/ClientsSlice'
 
 export const FormModal = ({ client, identification }) => {
-  const { Item } = Form;
-  const { Group } = Radio;
+  const { Item } = Form
+  const { Group } = Radio
 
   const [form, setForm] = useState({
     name: client.name,
@@ -21,22 +21,22 @@ export const FormModal = ({ client, identification }) => {
     role: client.role,
     identification: client.identification,
     debt: client.debt,
-  });
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onFinishForm = () => {
     if (form.debt === undefined) {
-      setForm({ ...form, debt: 0 });
+      setForm({ ...form, debt: 0 })
     }
-    dispatch(clients.updateClient(identification, form));
-  };
+    dispatch(updateClient(identification, form))
+  }
 
-  const onChangeForm = (e) =>
+  const onChangeForm = e =>
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-    });
+    })
 
   return (
     <Form
@@ -60,15 +60,15 @@ export const FormModal = ({ client, identification }) => {
             rules={[
               {
                 required: true,
-                message: "Por favor ingresa su nombre",
+                message: 'Por favor ingresa su nombre',
               },
               {
                 min: 3,
-                message: "El nombre de contener al menos 3 caracteres",
+                message: 'El nombre de contener al menos 3 caracteres',
               },
               {
                 max: 75,
-                message: "El nombre de contener máximo 75 caracteres",
+                message: 'El nombre de contener máximo 75 caracteres',
               },
             ]}
             hasFeedback
@@ -87,15 +87,15 @@ export const FormModal = ({ client, identification }) => {
             rules={[
               {
                 required: true,
-                message: "Por favor ingresa su Apellido",
+                message: 'Por favor ingresa su Apellido',
               },
               {
                 min: 3,
-                message: "El apellido de contener al menos 3 caracteres",
+                message: 'El apellido de contener al menos 3 caracteres',
               },
               {
                 max: 75,
-                message: "El apellido de contener máximo 75 caracteres",
+                message: 'El apellido de contener máximo 75 caracteres',
               },
             ]}
             hasFeedback
@@ -116,11 +116,11 @@ export const FormModal = ({ client, identification }) => {
             rules={[
               {
                 required: true,
-                message: "El número telefónico es requerido.",
+                message: 'El número telefónico es requerido.',
               },
               {
                 len: 10,
-                message: "Deben ser 10 caracteres.",
+                message: 'Deben ser 10 caracteres.',
               },
             ]}
             hasFeedback
@@ -137,7 +137,7 @@ export const FormModal = ({ client, identification }) => {
           <Item
             hasFeedback
             name="roleI"
-            rules={[{ required: true, message: "Seleccione un rol" }]}
+            rules={[{ required: true, message: 'Seleccione un rol' }]}
             label="Rol"
           >
             <Group name="role">
@@ -155,15 +155,15 @@ export const FormModal = ({ client, identification }) => {
             rules={[
               {
                 required: true,
-                message: "El número de identificación es requerido.",
+                message: 'El número de identificación es requerido.',
               },
               {
                 min: 6,
-                message: "Mínimo 6 caracteres.",
+                message: 'Mínimo 6 caracteres.',
               },
               {
                 max: 12,
-                message: "Máximo 12 caracteres.",
+                message: 'Máximo 12 caracteres.',
               },
             ]}
             hasFeedback
@@ -181,8 +181,8 @@ export const FormModal = ({ client, identification }) => {
             name="debtI"
             label="Mora"
             rules={[
-              { required: true, message: "Mora es requerido" },
-              { pattern: /^\d+$/, message: "valor minimo 0" },
+              { required: true, message: 'Mora es requerido' },
+              { pattern: /^\d+$/, message: 'valor minimo 0' },
             ]}
             hasFeedback
           >
@@ -202,5 +202,5 @@ export const FormModal = ({ client, identification }) => {
         </Button>
       </Row>
     </Form>
-  );
-};
+  )
+}

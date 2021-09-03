@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { Form, Input } from "antd";
-import { UserOutlined, AlipayOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
+import React, { useState } from 'react'
+import { Form, Input } from 'antd'
+import { UserOutlined, AlipayOutlined } from '@ant-design/icons'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import { auth } from "../../../services/Auth/AuthActions";
+import { login } from './../../../services/Auth/AuthSlice'
 
 const Login = ({ appName }) => {
-  const name = appName.split(" ");
-  const [form, setForm] = useState({ user: "", password: "" });
-  const dispatch = useDispatch();
+  const name = appName.split(' ')
+  const [form, setForm] = useState({ user: '', password: '' })
+  const dispatch = useDispatch()
 
-  const onChangeForm = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const onChangeForm = e => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
 
-  const onFinishForm = (e) => {
-    const { password, user } = form;
-    dispatch(auth.login(user, password));
-  };
+  const onFinishForm = e => {
+    const { password, user } = form
+    dispatch(login(user, password))
+  }
 
-  const { Item } = Form;
+  const { Item } = Form
 
   return (
     <div className="fragmento">
@@ -41,10 +41,10 @@ const Login = ({ appName }) => {
               rules={[
                 {
                   required: true,
-                  message: "Nombre de usuario es requerido",
+                  message: 'Nombre de usuario es requerido',
                 },
-                { min: 4, message: "Mínimo debe haber 4 caracteres" },
-                { max: 45, message: "Máximo debe haber  45 caracteres" },
+                { min: 4, message: 'Mínimo debe haber 4 caracteres' },
+                { max: 45, message: 'Máximo debe haber  45 caracteres' },
               ]}
               hasFeedback
             >
@@ -60,10 +60,10 @@ const Login = ({ appName }) => {
               rules={[
                 {
                   required: true,
-                  message: "Contraseña es requerida",
+                  message: 'Contraseña es requerida',
                 },
-                { min: 4, message: "Mínimo debe haber 4 caracteres" },
-                { max: 45, message: "Máximo debe haber  45 caracteres" },
+                { min: 4, message: 'Mínimo debe haber 4 caracteres' },
+                { max: 45, message: 'Máximo debe haber  45 caracteres' },
               ]}
               hasFeedback
             >
@@ -85,11 +85,11 @@ const Login = ({ appName }) => {
         </Form>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Login.propTypes = {
   appName: PropTypes.string.isRequired,
-};
+}
 
-export default Login;
+export default Login

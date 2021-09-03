@@ -1,84 +1,84 @@
-import React, { useState } from "react";
-import { Table, Input, Button, Tag, Tooltip } from "antd";
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
+import Highlighter from 'react-highlight-words'
+import { Table, Input, Button, Tag, Tooltip } from 'antd'
 import {
-  SearchOutlined,
+  DeleteOutlined,
   EditTwoTone,
   EyeOutlined,
   PlusOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
-import Highlighter from "react-highlight-words";
-import { useDispatch } from "react-redux";
+  SearchOutlined,
+} from '@ant-design/icons'
 
-import PropTypes from "prop-types";
+import { ModalCheck } from './../ModalCheck'
+import { AddTime } from './../AddTime'
+import { ModalUpdateClient } from './../ModalUpdateClient'
+import { ColorTab } from './../ColorTab'
+import { RemoveTime } from '../RemoveTime/RemoveTime'
 
-import { ModalCheck } from "./../ModalCheck";
-import { AddTime } from "./../AddTime";
-import { ModalUpdateClient } from "./../ModalUpdateClient";
-import { ColorTab } from "./../ColorTab";
-import { check } from "./../../services/Check/CheckActions";
-import { RemoveTime } from "../RemoveTime/RemoveTime";
+import { checkPeople } from './../../services/Check/CheckSlice'
 
 export const CustomTable = ({ data, title }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  let searchInput;
-  const [searchText, setSearchText] = useState("");
-  const [searchedColumn, setSearchedColumn] = useState("");
+  let searchInput
+  const [searchText, setSearchText] = useState('')
+  const [searchedColumn, setSearchedColumn] = useState('')
 
-  const [checkModal, setCheckModal] = useState(false);
-  const [updateModal, setUpdateModal] = useState(false);
-  const [timeModal, setTimeModal] = useState(false);
-  const [removeModal, setRemoveModal] = useState(false);
-  const [identification, setIdentification] = useState(null);
+  const [checkModal, setCheckModal] = useState(false)
+  const [updateModal, setUpdateModal] = useState(false)
+  const [timeModal, setTimeModal] = useState(false)
+  const [removeModal, setRemoveModal] = useState(false)
+  const [identification, setIdentification] = useState(null)
 
   const closeCheckModal = () => {
-    setCheckModal(!checkModal);
-  };
+    setCheckModal(!checkModal)
+  }
 
   const closeUpdateModal = () => {
-    setUpdateModal(!updateModal);
-  };
+    setUpdateModal(!updateModal)
+  }
 
   const closeTimeModal = () => {
-    setTimeModal(!timeModal);
-  };
+    setTimeModal(!timeModal)
+  }
 
   const closeRemoveModal = () => {
-    setRemoveModal(!removeModal);
-  };
+    setRemoveModal(!removeModal)
+  }
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    confirm();
-    setSearchText(selectedKeys[0]);
-    setSearchedColumn(dataIndex);
-  };
+    confirm()
+    setSearchText(selectedKeys[0])
+    setSearchedColumn(dataIndex)
+  }
 
-  const handleReset = (clearFilters) => {
-    clearFilters();
-    setSearchText("");
-  };
+  const handleReset = clearFilters => {
+    clearFilters()
+    setSearchText('')
+  }
 
-  const handleGetPeople = (identification) => {
-    dispatch(check.checkPeople(identification));
-    setCheckModal(true);
-  };
+  const handleGetPeople = identification => {
+    dispatch(checkPeople(identification))
+    setCheckModal(true)
+  }
 
-  const handleUpdatePeople = (identification) => {
-    dispatch(check.checkPeople(identification));
-    setIdentification(identification);
-    setUpdateModal(true);
-  };
+  const handleUpdatePeople = identification => {
+    dispatch(checkPeople(identification))
+    setIdentification(identification)
+    setUpdateModal(true)
+  }
 
-  const handleAddTime = (identification) => {
-    setIdentification(identification);
-    setTimeModal(true);
-  };
+  const handleAddTime = identification => {
+    setIdentification(identification)
+    setTimeModal(true)
+  }
 
-  const handleRemoveTime = (identification) => {
-    setIdentification(identification);
-    setRemoveModal(true);
-  };
+  const handleRemoveTime = identification => {
+    setIdentification(identification)
+    setRemoveModal(true)
+  }
 
   const getColumnSearchProps = (dataIndex, title) => ({
     filterDropdown: ({
@@ -89,14 +89,14 @@ export const CustomTable = ({ data, title }) => {
     }) => (
       <div style={{ padding: 8 }}>
         <Input
-          ref={(node) => (searchInput = node)}
+          ref={node => (searchInput = node)}
           placeholder={`Buscar por ${title}`}
           value={selectedKeys[0]}
-          onChange={(e) =>
+          onChange={e =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
           }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{ width: 188, marginBottom: 8, display: "block" }}
+          style={{ width: 188, marginBottom: 8, display: 'block' }}
         />
         <Button
           type="primary"
@@ -117,18 +117,18 @@ export const CustomTable = ({ data, title }) => {
         </Button>
       </div>
     ),
-    filterIcon: (filtered) => (
-      <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
+    filterIcon: filtered => (
+      <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
     ),
     onFilter: (value, record) =>
       record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownVisibleChange: (visible) => {
-      if (visible) setTimeout(() => searchInput.select());
+    onFilterDropdownVisibleChange: visible => {
+      if (visible) setTimeout(() => searchInput.select())
     },
-    render: (text) =>
+    render: text =>
       searchedColumn === dataIndex ? (
         <Highlighter
-          highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
           searchWords={[searchText]}
           autoEscape
           textToHighlight={text.toString()}
@@ -136,43 +136,43 @@ export const CustomTable = ({ data, title }) => {
       ) : (
         text
       ),
-  });
+  })
 
   const columns = [
     {
-      title: "Identificación",
-      dataIndex: "identification",
-      key: "identification",
-      ...getColumnSearchProps("identification", "Identificación"),
+      title: 'Identificación',
+      dataIndex: 'identification',
+      key: 'identification',
+      ...getColumnSearchProps('identification', 'Identificación'),
     },
     {
-      title: "Nombres",
-      dataIndex: "name",
-      key: "name",
-      ...getColumnSearchProps("name", "Nombre"),
+      title: 'Nombres',
+      dataIndex: 'name',
+      key: 'name',
+      ...getColumnSearchProps('name', 'Nombre'),
     },
     {
-      title: "Apellidos",
-      dataIndex: "lastName",
-      key: "lastName",
+      title: 'Apellidos',
+      dataIndex: 'lastName',
+      key: 'lastName',
     },
     {
-      title: "Telefono",
-      dataIndex: "phone",
-      key: "phone",
-      ...getColumnSearchProps("phone", "Telefono"),
+      title: 'Telefono',
+      dataIndex: 'phone',
+      key: 'phone',
+      ...getColumnSearchProps('phone', 'Telefono'),
     },
     {
-      title: "Fin suscripción",
-      dataIndex: "end",
-      key: "end",
+      title: 'Fin suscripción',
+      dataIndex: 'end',
+      key: 'end',
     },
     {
-      title: "Estado",
-      key: "state",
-      dataIndex: "state",
-      ...getColumnSearchProps("state", "Estado"),
-      render: (tag) => (
+      title: 'Estado',
+      key: 'state',
+      dataIndex: 'state',
+      ...getColumnSearchProps('state', 'Estado'),
+      render: tag => (
         <span>
           <Tag color={ColorTab(tag)} key={tag}>
             {tag}
@@ -181,16 +181,16 @@ export const CustomTable = ({ data, title }) => {
       ),
     },
     {
-      title: "Acciones",
-      key: "btn-view",
-      dataIndex: "btn-view",
+      title: 'Acciones',
+      key: 'btn-view',
+      dataIndex: 'btn-view',
       render: (_, record) => (
         <>
           <Tooltip title="Ver informacion personal">
             <Button
               onClick={() => handleGetPeople(record.identification)}
-              style={{ borderColor: "#39FF14" }}
-              icon={<EyeOutlined style={{ color: "#39FF14" }} />}
+              style={{ borderColor: '#39FF14' }}
+              icon={<EyeOutlined style={{ color: '#39FF14' }} />}
               shape="circle"
             />
           </Tooltip>
@@ -199,14 +199,14 @@ export const CustomTable = ({ data, title }) => {
               onClick={() => handleUpdatePeople(record.identification)}
               type="primary"
               shape="circle"
-              style={{ marginLeft: "5px" }}
+              style={{ marginLeft: '5px' }}
               icon={<EditTwoTone />}
             />
           </Tooltip>
           <Tooltip title="Agregar Tiempo">
             <Button
               type="primary"
-              style={{ marginLeft: "5px" }}
+              style={{ marginLeft: '5px' }}
               onClick={() => handleAddTime(record.identification)}
               icon={<PlusOutlined />}
               shape="circle"
@@ -218,13 +218,13 @@ export const CustomTable = ({ data, title }) => {
               shape="circle"
               onClick={() => handleRemoveTime(record.identification)}
               danger
-              style={{ marginLeft: "5px" }}
+              style={{ marginLeft: '5px' }}
             />
           </Tooltip>
         </>
       ),
     },
-  ];
+  ]
 
   return (
     <div className="table">
@@ -234,7 +234,7 @@ export const CustomTable = ({ data, title }) => {
       <div className="table__body">
         <Table columns={columns} dataSource={data} rowKey="identification" />
       </div>
-      <div style={{ display: "none" }}>
+      <div style={{ display: 'none' }}>
         <ModalCheck
           title="Detalle"
           open={checkModal}
@@ -261,10 +261,10 @@ export const CustomTable = ({ data, title }) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
 CustomTable.propTypes = {
   title: PropTypes.string.isRequired,
   data: PropTypes.any.isRequired,
-};
+}

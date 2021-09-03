@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
 export const DetailPayment = ({ data }) => {
   return (
@@ -22,7 +21,7 @@ export const DetailPayment = ({ data }) => {
                   <td className="ant-table-cell">{i.concept}</td>
                   <td className="ant-table-cell">{i.cost}</td>
                   <td className="ant-table-cell">{i.days}</td>
-                  <td className="ant-table-cell">{!i.debt ? "0" : i.debt}</td>
+                  <td className="ant-table-cell">{!i.debt ? '0' : i.debt}</td>
                   <td className="ant-table-cell">{i.username.toUpperCase()}</td>
                 </tr>
               ))}
@@ -31,9 +30,9 @@ export const DetailPayment = ({ data }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 DetailPayment.propTypes = {
   data: PropTypes.array.isRequired,
-};
+}

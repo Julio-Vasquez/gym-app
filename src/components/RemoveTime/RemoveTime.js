@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import { Button, Space, Modal, Input, Form, Row } from "antd";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useState } from 'react'
+import { Button, Space, Modal, Input, Form, Row } from 'antd'
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
-import { suscription } from "./../../services/Suscription/SuscriptionActions";
+import { removeTime } from './../../services/Suscription/SuscriptionSlice'
 
 export const RemoveTime = ({ identification, open, close }) => {
-  const { Item } = Form;
+  const { Item } = Form
 
   const [form, setForm] = useState({
     days: 0,
-  });
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const onChangeForm = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const onChangeForm = e => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
 
-  const onFinishForm = (e) => {
-    close(false);
+  const onFinishForm = e => {
+    close(false)
     dispatch(
-      suscription.removeTime({
+      removeTime({
         ...form,
         identification,
       })
-    );
-  };
+    )
+  }
 
   return (
     <Space>
@@ -46,11 +46,11 @@ export const RemoveTime = ({ identification, open, close }) => {
               rules={[
                 {
                   required: true,
-                  message: "Cantidad de dias requerido",
+                  message: 'Cantidad de dias requerido',
                 },
                 {
                   min: 1,
-                  message: "Minimo 1 dia",
+                  message: 'Minimo 1 dia',
                 },
               ]}
             >
@@ -65,15 +65,15 @@ export const RemoveTime = ({ identification, open, close }) => {
         </Form>
       </Modal>
     </Space>
-  );
-};
+  )
+}
 
 RemoveTime.propTypes = {
   identification: PropTypes.any,
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-};
+}
 
 RemoveTime.defaulrProps = {
   identification: 0,
-};
+}

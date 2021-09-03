@@ -1,43 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Row, Col, Card, message } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { UserOutlined } from "@ant-design/icons";
-import PropTypes from "prop-types";
+import { useState, useEffect } from 'react'
+import { Form, Input, Button, Row, Col, Card, message } from 'antd'
+import { useDispatch, useSelector } from 'react-redux'
+import { UserOutlined } from '@ant-design/icons'
+import PropTypes from 'prop-types'
 
-import { auth } from "../../../services/Auth/AuthActions";
-import { Loading } from "../../../components/Loading";
-import { RedirectButton } from "../../../components/RedirectButton";
+import { Loading } from '../../../components/Loading'
+import { RedirectButton } from '../../../components/RedirectButton'
+
+import { resetPassword } from './../../../services/Auth/AuthSlice'
 
 const ResetPassword = ({ appName }) => {
-  const name = appName.split(" ");
+  const name = appName.split(' ')
 
-  const { Item } = Form;
-  const getSize = () => document.body.clientWidth < 833;
-  const handleResize = () => setLock(getSize());
-  const [lock, setLock] = useState(getSize);
-  const [userName, setUserName] = useState("");
+  const { Item } = Form
+  const getSize = () => document.body.clientWidth < 833
+  const handleResize = () => setLock(getSize())
+  const [lock, setLock] = useState(getSize)
+  const [userName, setUserName] = useState('')
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  });
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { loading, success } = useSelector((state) => state.Auth);
+  const { loading, success } = useSelector(state => state.Auth)
 
   useEffect(() => {
     if (success.ResetPassword)
       message.success(
-        "Reinicio de contraseña exitoso, revise su correo electronico"
-      );
-  }, [success.ResetPassword]);
+        'Reinicio de contraseña exitoso, revise su correo electronico'
+      )
+  }, [success.ResetPassword])
 
-  const onChange = (e) => setUserName(e.target.value);
+  const onChange = e => setUserName(e.target.value)
 
   const onSubmit = () => {
-    dispatch(auth.resetPassword(userName));
-  };
+    dispatch(resetPassword(userName))
+  }
 
   return loading ? (
     <Loading />
@@ -64,17 +65,17 @@ const ResetPassword = ({ appName }) => {
                   rules={[
                     {
                       required: true,
-                      message: "Por favor ingresa su nombre de usuario",
+                      message: 'Por favor ingresa su nombre de usuario',
                     },
                     {
                       min: 4,
                       message:
-                        "El nombre de usuario debe contener al menos 4 caracteres",
+                        'El nombre de usuario debe contener al menos 4 caracteres',
                     },
                     {
                       max: 45,
                       message:
-                        "El nombre de usuario debe contener maximo 45 caracteres",
+                        'El nombre de usuario debe contener maximo 45 caracteres',
                     },
                   ]}
                   hasFeedback
@@ -100,10 +101,10 @@ const ResetPassword = ({ appName }) => {
       </Col>
       <RedirectButton url="/login" imgPath="house.png" urlName="Login" />
     </div>
-  );
-};
+  )
+}
 
 ResetPassword.propTypes = {
   appName: PropTypes.string.isRequired,
-};
-export default ResetPassword;
+}
+export default ResetPassword

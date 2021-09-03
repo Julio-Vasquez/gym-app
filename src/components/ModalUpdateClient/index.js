@@ -1,1 +1,1 @@
-export { ModalUpdateClient } from "./ModalUpdateClient";
+export { ModalUpdateClient } from './ModalUpdateClient'

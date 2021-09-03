@@ -1,77 +1,83 @@
-import { put, takeLatest, all } from "redux-saga/effects";
-import { message } from "antd";
+import { put, takeLatest, all } from 'redux-saga/effects'
+import { message } from 'antd'
 
-import { FailedConnectionServer } from "../Util/FailedConnectionServer";
-import Api from "../../common/api";
+import { FailedConnectionServer } from '../Util/FailedConnectionServer'
+import Api from '../../common/api'
 
-import { clients } from "./ClientsActions";
+import {
+  createClient,
+  createClientFailed,
+  createClientSuccess,
+  getClients,
+  getClientsFailed,
+  getClientsSuccess,
+  updateClient,
+  updateClientFailed,
+  updateClientSuccess,
+} from './ClientsSlice'
 
 function* FetchGetClients({ payload }) {
   try {
-    const res = yield Api.GET(`users/find/${payload.role}`);
+    const res = yield Api.GET(`users/find/${payload.role}`)
     if (res && res.payload.success) {
-      yield put(clients.getClientsSuccess(res.payload.payload));
+      yield put(getClientsSuccess(res.payload.payload))
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`);
-      yield put(clients.getClientsFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`)
+      yield put(getClientsFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      yield put(clients.getClientsFailed(new TypeError("ERROR_GET_CLIENTS")));
+      message.error(`Error Desconocido`)
+      yield put(getClientsFailed(new TypeError('ERROR_GET_CLIENTS')))
     }
   } catch (e) {
-    yield put(clients.getClientsFailed(FailedConnectionServer()));
+    yield put(getClientsFailed(FailedConnectionServer()))
   }
 }
 
 function* FetchCreateClient({ payload }) {
   try {
-    const res = yield Api.POST("users/create", payload.client);
+    const res = yield Api.POST('users/create', payload.client)
     if (res && res.payload.success) {
-      yield put(clients.createClientSuccess(res.payload.payload));
-      message.success("cliente creado");
+      yield put(createClientSuccess(res.payload.payload))
+      message.success('cliente creado')
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`);
-      yield put(clients.createClientFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`)
+      yield put(createClientFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      yield put(
-        clients.createClientFailed(new TypeError("ERROR_CREATE_CLIENT"))
-      );
+      message.error(`Error Desconocido`)
+      yield put(createClientFailed(new TypeError('ERROR_CREATE_CLIENT')))
     }
   } catch (e) {
-    yield put(clients.createClientFailed(FailedConnectionServer()));
+    yield put(clients.createClientFailed(FailedConnectionServer()))
   }
 }
 
 function* FetchUpdateClient({ payload }) {
   try {
-    const res = yield Api.PUT("users/update", {
+    const res = yield Api.PUT('users/update', {
       oldId: payload.identification,
       ...payload.newClient,
-    });
+    })
     if (res && res.payload.success) {
-      yield put(clients.updateClientSuccess(res.payload.success));
-      message.success(res.payload.detail);
+      yield put(updateClientSuccess(res.payload.success))
+      message.success(res.payload.detail)
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`);
-      yield put(clients.updateClientFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`)
+      yield put(updateClientFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      yield put(
-        clients.updateClientFailed(new TypeError("ERROR_CHECK_PEOPLE"))
-      );
+      message.error(`Error Desconocido`)
+      yield put(updateClientFailed(new TypeError('ERROR_CHECK_PEOPLE')))
     }
   } catch (e) {
-    yield put(clients.createClientFailed(FailedConnectionServer()));
+    yield put(createClientFailed(FailedConnectionServer()))
   }
 }
 
 function* ActionWatcher() {
-  yield takeLatest(clients.getClients, FetchGetClients);
-  yield takeLatest(clients.createClient, FetchCreateClient);
-  yield takeLatest(clients.updateClient, FetchUpdateClient);
+  yield takeLatest(getClients, FetchGetClients)
+  yield takeLatest(createClient, FetchCreateClient)
+  yield takeLatest(updateClient, FetchUpdateClient)
 }
 
 export default function* ClientSaga() {
-  yield all([ActionWatcher()]);
+  yield all([ActionWatcher()])
 }

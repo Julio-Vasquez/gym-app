@@ -1,38 +1,39 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Col, Card, Row, Form, Button, Input, message } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { AlipayOutlined } from "@ant-design/icons";
+import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { Col, Card, Row, Form, Button, Input, message } from 'antd'
+import { useDispatch, useSelector } from 'react-redux'
+import { AlipayOutlined } from '@ant-design/icons'
 
-import { auth } from "./../../../../../services/Auth/AuthActions";
-import { RedirectButton } from "./../../../../../components/RedirectButton";
-import { Loading } from "../../../../../components/Loading";
+import { RedirectButton } from './../../../../../components/RedirectButton'
+import { Loading } from '../../../../../components/Loading'
+
+import { newPassword } from './../../../../../services/Auth/AuthSlice'
 
 export const SetPassword = ({ token }) => {
-  const { Item } = Form;
-  const { loading, success } = useSelector((state) => state.Auth);
+  const { Item } = Form
+  const { loading, success } = useSelector(state => state.Auth)
 
   useEffect(() => {
-    if (success.newPassword) message.success("Cambio de contraseña exitoso!");
-  }, [success.newPassword]);
+    if (success.newPassword) message.success('Cambio de contraseña exitoso!')
+  }, [success.newPassword])
 
   const [form, setForm] = useState({
-    password: "",
-    confirmPassword: "",
-  });
+    password: '',
+    confirmPassword: '',
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const onChange = (e) => {
+  const onChange = e => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
-  const onSubmit = (e) => {
-    dispatch(auth.newPassword(form.password, token));
-  };
+  const onSubmit = e => {
+    dispatch(newPassword(form.password, token))
+  }
 
   return loading ? (
     <Loading />
@@ -59,17 +60,17 @@ export const SetPassword = ({ token }) => {
                   rules={[
                     {
                       required: true,
-                      message: "Por favor ingresa la nueva contraseña",
+                      message: 'Por favor ingresa la nueva contraseña',
                     },
                     {
                       min: 4,
                       message:
-                        "La contraseña debe contener al menos 4 caracteres",
+                        'La contraseña debe contener al menos 4 caracteres',
                     },
                     {
                       max: 45,
                       message:
-                        "La contraseña debe contener maximo 4 caracteres",
+                        'La contraseña debe contener maximo 4 caracteres',
                     },
                   ]}
                   hasFeedback
@@ -83,29 +84,29 @@ export const SetPassword = ({ token }) => {
                 </Item>
                 <Item
                   name="confirmPasswordI"
-                  dependencies={["passwordI"]}
+                  dependencies={['passwordI']}
                   rules={[
                     {
                       required: true,
-                      message: "Por favor confirme la nueva contraseña",
+                      message: 'Por favor confirme la nueva contraseña',
                     },
                     {
                       min: 4,
                       message:
-                        "La contraseña debe contener al menos 4 caracteres",
+                        'La contraseña debe contener al menos 4 caracteres',
                     },
                     {
                       max: 45,
                       message:
-                        "La contraseña debe contener maximo 4 caracteres",
+                        'La contraseña debe contener maximo 4 caracteres',
                     },
                     ({ getFieldValue }) => ({
                       validator(rule, value) {
-                        return !value || getFieldValue("passwordI") === value
+                        return !value || getFieldValue('passwordI') === value
                           ? Promise.resolve()
                           : Promise.reject(
-                              "¡Las dos contraseñas que ingresó no coinciden!"
-                            );
+                              '¡Las dos contraseñas que ingresó no coinciden!'
+                            )
                       },
                     }),
                   ]}
@@ -130,9 +131,9 @@ export const SetPassword = ({ token }) => {
         <RedirectButton url="/login" imgPath="house.png" urlName="Login" />
       </Col>
     </div>
-  );
-};
+  )
+}
 
 SetPassword.propTypes = {
   token: PropTypes.string.isRequired,
-};
+}

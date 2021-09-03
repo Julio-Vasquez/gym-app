@@ -1,13 +1,12 @@
-import React from "react";
-import { Button, Tooltip } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
-import PropTypes from "prop-types";
+import { Button, Tooltip } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
+import PropTypes from 'prop-types'
 
 export const FloatingButton = ({ title, state, setState }) => {
-  const onCLickBtn = () => setState(!state);
+  const onCLickBtn = () => setState(!state)
 
   return (
-    <div style={{ padding: "20px 0" }}>
+    <div style={{ padding: '20px 0' }}>
       <Tooltip title={title}>
         <Button
           className="floating-button-add"
@@ -18,11 +17,11 @@ export const FloatingButton = ({ title, state, setState }) => {
         />
       </Tooltip>
     </div>
-  );
-};
+  )
+}
 
 FloatingButton.propTypes = {
   title: PropTypes.string.isRequired,
   state: PropTypes.bool.isRequired,
   setState: PropTypes.func.isRequired,
-};
+}

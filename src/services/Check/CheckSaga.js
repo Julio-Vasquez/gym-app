@@ -1,50 +1,57 @@
-import { put, takeLatest, all } from "redux-saga/effects";
-import { message } from "antd";
+import { put, takeLatest, all } from 'redux-saga/effects'
+import { message } from 'antd'
 
-import { FailedConnectionServer } from "../Util/FailedConnectionServer";
-import Api from "../../common/api";
+import { FailedConnectionServer } from '../Util/FailedConnectionServer'
+import Api from '../../common/api'
 
-import { check } from "./CheckActions";
+import {
+  checkPeople,
+  checkPeopleFailed,
+  checkPeopleIn,
+  checkPeopleInFailed,
+  checkPeopleInSuccess,
+  checkPeopleSuccess,
+} from './CheckSlice'
 
 function* FetchCheckPeople({ payload }) {
   try {
-    const res = yield Api.GET(`users/find-${payload.identification}`);
+    const res = yield Api.GET(`users/find-${payload.identification}`)
     if (res && res.payload.success) {
-      yield put(check.checkPeopleSuccess(res.payload.payload));
+      yield put(checkPeopleSuccess(res.payload.payload))
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`);
-      yield put(check.checkPeopleFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`)
+      yield put(checkPeopleFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      yield put(check.checkPeopleFailed(new TypeError("ERROR_CHECK_PEOPLE")));
+      message.error(`Error Desconocido`)
+      yield put(checkPeopleFailed(new TypeError('ERROR_CHECK_PEOPLE')))
     }
   } catch (e) {
-    yield put(check.checkPeopleFailed(FailedConnectionServer()));
+    yield put(checkPeopleFailed(FailedConnectionServer()))
   }
 }
 
 function* FetchCheckPeopleIn({ payload }) {
   try {
-    const res = yield Api.GET(`users/find-entry-${payload.identification}`);
+    const res = yield Api.GET(`users/find-entry-${payload.identification}`)
     if (res && res.payload.success) {
-      yield put(check.checkPeopleInSuccess(res.payload.payload));
+      yield put(checkPeopleInSuccess(res.payload.payload))
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`);
-      yield put(check.checkPeopleInFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`)
+      yield put(checkPeopleInFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      yield put(check.checkPeopleInFailed(new TypeError("ERROR_CHECK_PEOPLE")));
+      message.error(`Error Desconocido`)
+      yield put(checkPeopleInFailed(new TypeError('ERROR_CHECK_PEOPLE')))
     }
   } catch (e) {
-    yield put(check.checkPeopleInFailed(FailedConnectionServer()));
+    yield put(checkPeopleInFailed(FailedConnectionServer()))
   }
 }
 
 function* ActionWatcher() {
-  yield takeLatest(check.checkPeople, FetchCheckPeople);
-  yield takeLatest(check.checkPeopleIn, FetchCheckPeopleIn);
+  yield takeLatest(checkPeople, FetchCheckPeople)
+  yield takeLatest(checkPeopleIn, FetchCheckPeopleIn)
 }
 
 export default function* CheckSaga() {
-  yield all([ActionWatcher()]);
+  yield all([ActionWatcher()])
 }

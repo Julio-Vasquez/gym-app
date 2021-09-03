@@ -1,5 +1,3 @@
-import React from "react";
-
 export const ErrorToken = () => (
   <div id="notFound">
     <div className="notFound">
@@ -10,4 +8,4 @@ export const ErrorToken = () => (
       <a href="/">Inicio</a>
     </div>
   </div>
-);
+)

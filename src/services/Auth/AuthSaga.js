@@ -1,77 +1,88 @@
-import { put, takeLatest, all } from "redux-saga/effects";
-import { message } from "antd";
+import { put, takeLatest, all } from 'redux-saga/effects'
+import { message } from 'antd'
 
-import Api from "../../common/api";
-import { Token } from "../../common/storage";
+import Api from '../../common/api'
+import { Token } from '../../common/storage'
 
-import { FailedConnectionServer } from "../Util/FailedConnectionServer";
+import { FailedConnectionServer } from '../Util/FailedConnectionServer'
 
-import { auth } from "./AuthActions";
+import {
+  login,
+  loginFailed,
+  loginSuccess,
+  logout,
+  newPassword,
+  newPasswordFailed,
+  newPasswordSuccess,
+  resetPassword,
+  resetPasswordFailed,
+  resetPasswordSuccess,
+} from './AuthSlice'
 
 function* FetchLogin({ payload }) {
   try {
-    const res = yield Api.POST("auth/login", payload);
+    const res = yield Api.POST('auth/login', payload)
     if (res && res.payload.success) {
-      Token.SetToken(res.payload.token);
-      yield put(auth.loginSuccess(res.payload.token));
+      Token.SetToken(res.payload.token)
+      yield put(loginSuccess(res.payload.token))
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`);
-      yield put(auth.loginFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`)
+      yield put(loginFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      const err = new TypeError("ERROR_LOGIN");
-      yield put(auth.loginFailed(err));
+      message.error(`Error Desconocido`)
+      const err = new TypeError('ERROR_LOGIN')
+      yield put(loginFailed(err))
     }
   } catch (e) {
-    yield put(auth.loginFailed(FailedConnectionServer()));
+    yield put(loginFailed(FailedConnectionServer()))
   }
 }
 
-const FetchLogout = () => localStorage.clear();
+const FetchLogout = () => localStorage.clear()
 
 function* FetchForgotPassword({ payload }) {
   try {
-    const res = yield Api.POST("auth/request-forgot-password", payload);
+    const res = yield Api.POST('auth/request-forgot-password', payload)
     if (res && res.payload.success) {
-      yield put(auth.resetPasswordSuccess("ok"));
+      yield put(resetPasswordSuccess('ok'))
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`, 3);
-      yield put(auth.resetPasswordFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`, 3)
+      yield put(resetPasswordFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      const err = new TypeError("ERROR_RESET_PASSWORD");
-      yield put(auth.resetPasswordFailed(err));
+      message.error(`Error Desconocido`)
+      const err = new TypeError('ERROR_RESET_PASSWORD')
+      yield put(resetPasswordFailed(err))
     }
   } catch (e) {
-    yield put(auth.resetPasswordFailed(FailedConnectionServer()));
+    yield put(resetPasswordFailed(FailedConnectionServer()))
   }
 }
 
 function* FetchNewPassword({ payload }) {
   try {
-    const res = yield Api.PUT("auth/forgot-password", payload);
+    const res = yield Api.PUT('auth/forgot-password', payload)
     if (res && res.payload.success) {
-      yield put(auth.newPasswordSuccess("ok"));
+      yield put(newPasswordSuccess('ok'))
     } else if (res.payload.error) {
-      message.error(`${res.payload.detail}`, 5);
-      yield put(auth.newPasswordFailed(`${res.payload.detail}`));
+      message.error(`${res.payload.detail}`, 5)
+      yield put(newPasswordFailed(`${res.payload.detail}`))
     } else {
-      message.error(`Error Desconocido`);
-      const err = new TypeError("ERROR_RESET_PASSWORD");
-      yield put(auth.newPasswordFailed(err));
+      message.error(`Error Desconocido`)
+      const err = new TypeError('ERROR_RESET_PASSWORD')
+      yield put(newPasswordFailed(err))
     }
   } catch (e) {
-    yield put(auth.newPasswordFailed(FailedConnectionServer()));
+    yield put(newPasswordFailed(FailedConnectionServer()))
   }
 }
 
 function* ActionWatcher() {
-  yield takeLatest(auth.login, FetchLogin);
-  yield takeLatest(auth.resetPassword, FetchForgotPassword);
-  yield takeLatest(auth.logout, FetchLogout);
-  yield takeLatest(auth.newPassword, FetchNewPassword);
+  yield takeLatest(login, FetchLogin)
+  yield takeLatest(resetPassword, FetchForgotPassword)
+  yield takeLatest(logout, FetchLogout)
+  yield takeLatest(newPassword, FetchNewPassword)
 }
 
 export default function* AuthSaga() {
-  yield all([ActionWatcher()]);
+  yield all([ActionWatcher()])
 }
