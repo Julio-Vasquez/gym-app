@@ -1,6 +1,6 @@
-import { createBrowserHistory } from 'history';
-import { Store } from './store';
+import { createBrowserHistory } from 'history'
+import { Store } from './Store'
 
-export const history = createBrowserHistory();
+export const history = createBrowserHistory()
 
-export const store = Store(history);
+export const store = Store(history)
