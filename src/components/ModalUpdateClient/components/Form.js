@@ -29,7 +29,7 @@ export const FormModal = ({ client, identification }) => {
     if (form.debt === undefined) {
       setForm({ ...form, debt: 0 })
     }
-    dispatch(updateClient(identification, form))
+    dispatch(updateClient({ identification: identification, newClient: form }))
   }
 
   const onChangeForm = e =>

@@ -18,57 +18,63 @@ import {
 
 function* FetchGetClients({ payload }) {
   try {
-    const res = yield Api.GET(`users/find/${payload.role}`)
+    const res = yield Api.GET(`users/find/${payload}`)
     if (res && res.payload.success) {
-      yield put(getClientsSuccess(res.payload.payload))
+      yield put(getClientsSuccess({ listClients: res.payload.payload }))
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`)
-      yield put(getClientsFailed(`${res.payload.detail}`))
+      yield put(getClientsFailed({ error: `${res.payload.detail}` }))
     } else {
       message.error(`Error Desconocido`)
-      yield put(getClientsFailed(new TypeError('ERROR_GET_CLIENTS')))
+      yield put(getClientsFailed({ error: new TypeError('ERROR_GET_CLIENTS') }))
     }
   } catch (e) {
-    yield put(getClientsFailed(FailedConnectionServer()))
+    yield put(getClientsFailed({ error: FailedConnectionServer() }))
   }
 }
 
 function* FetchCreateClient({ payload }) {
   try {
-    const res = yield Api.POST('users/create', payload.client)
+    const res = yield Api.POST('users/create', payload)
     if (res && res.payload.success) {
-      yield put(createClientSuccess(res.payload.payload))
+      yield put(createClientSuccess({ client: res.payload.payload }))
       message.success('cliente creado')
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`)
-      yield put(createClientFailed(`${res.payload.detail}`))
+      yield put(createClientFailed({ error: `${res.payload.detail}` }))
     } else {
       message.error(`Error Desconocido`)
-      yield put(createClientFailed(new TypeError('ERROR_CREATE_CLIENT')))
+      yield put(
+        createClientFailed({ error: new TypeError('ERROR_CREATE_CLIENT') })
+      )
     }
   } catch (e) {
-    yield put(clients.createClientFailed(FailedConnectionServer()))
+    yield put(createClientFailed({ error: FailedConnectionServer() }))
   }
 }
 
 function* FetchUpdateClient({ payload }) {
+  console.log(payload)
   try {
     const res = yield Api.PUT('users/update', {
       oldId: payload.identification,
       ...payload.newClient,
     })
+    console.log(res)
     if (res && res.payload.success) {
-      yield put(updateClientSuccess(res.payload.success))
+      yield put(updateClientSuccess())
       message.success(res.payload.detail)
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`)
-      yield put(updateClientFailed(`${res.payload.detail}`))
+      yield put(updateClientFailed({ error: `${res.payload.detail}` }))
     } else {
       message.error(`Error Desconocido`)
-      yield put(updateClientFailed(new TypeError('ERROR_CHECK_PEOPLE')))
+      yield put(
+        updateClientFailed({ error: new TypeError('ERROR_CHECK_PEOPLE') })
+      )
     }
   } catch (e) {
-    yield put(createClientFailed(FailedConnectionServer()))
+    yield put(createClientFailed({ error: FailedConnectionServer() }))
   }
 }
 

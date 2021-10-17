@@ -15,35 +15,40 @@ import {
 
 function* FetchCheckPeople({ payload }) {
   try {
-    const res = yield Api.GET(`users/find-${payload.identification}`)
+    const res = yield Api.GET(`users/find-${payload}`)
     if (res && res.payload.success) {
-      yield put(checkPeopleSuccess(res.payload.payload))
+      yield put(checkPeopleSuccess({ people: res.payload.payload }))
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`)
-      yield put(checkPeopleFailed(`${res.payload.detail}`))
+      yield put(checkPeopleFailed({ error: `${res.payload.detail}` }))
     } else {
       message.error(`Error Desconocido`)
-      yield put(checkPeopleFailed(new TypeError('ERROR_CHECK_PEOPLE')))
+      yield put(
+        checkPeopleFailed({ error: new TypeError('ERROR_CHECK_PEOPLE') })
+      )
     }
   } catch (e) {
-    yield put(checkPeopleFailed(FailedConnectionServer()))
+    yield put(checkPeopleFailed({ error: FailedConnectionServer() }))
   }
 }
 
 function* FetchCheckPeopleIn({ payload }) {
+  console.log(payload)
   try {
-    const res = yield Api.GET(`users/find-entry-${payload.identification}`)
+    const res = yield Api.GET(`users/find-entry-${payload}`)
     if (res && res.payload.success) {
-      yield put(checkPeopleInSuccess(res.payload.payload))
+      yield put(checkPeopleInSuccess({ people: res.payload.payload }))
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`)
-      yield put(checkPeopleInFailed(`${res.payload.detail}`))
+      yield put(checkPeopleInFailed({ error: `${res.payload.detail}` }))
     } else {
       message.error(`Error Desconocido`)
-      yield put(checkPeopleInFailed(new TypeError('ERROR_CHECK_PEOPLE')))
+      yield put(
+        checkPeopleInFailed({ error: new TypeError('ERROR_CHECK_PEOPLE') })
+      )
     }
   } catch (e) {
-    yield put(checkPeopleInFailed(FailedConnectionServer()))
+    yield put(checkPeopleInFailed({ error: FailedConnectionServer() }))
   }
 }
 

@@ -10,7 +10,7 @@ export const initialState = {
     byIdentification: undefined,
     byDates: undefined,
   },
-  peoples: {},
+  peoples: [],
   user: {},
 }
 
@@ -75,4 +75,5 @@ export const {
   getPayIdentificationFailed,
   getPayIdentificationSuccess,
 } = ReportSlice.actions
+
 export default ReportSlice.reducer

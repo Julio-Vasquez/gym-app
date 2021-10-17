@@ -32,7 +32,7 @@ export const SetPassword = ({ token }) => {
   }
 
   const onSubmit = e => {
-    dispatch(newPassword(form.password, token))
+    dispatch(newPassword({ password: form.password, token: token }))
   }
 
   return loading ? (

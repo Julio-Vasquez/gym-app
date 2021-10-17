@@ -5,7 +5,6 @@ import Private from './../Routes/Private'
 import Public from './../Routes/Public'
 
 function App({ history }) {
-  console.log(history)
   const { authentication } = useSelector(state => state.Auth)
   return (
     <div className="App">

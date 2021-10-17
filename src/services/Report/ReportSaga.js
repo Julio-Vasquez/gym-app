@@ -14,39 +14,42 @@ import {
 } from './ReportSlice'
 
 function* FetchGetPayDates({ payload }) {
+  console.log(payload)
   try {
     const res = yield Api.GET(
       `reports/pays?start=${payload.start}&end=${payload.end}`
     )
     if (res && res.payload.success) {
-      yield put(getPayDatesSuccess(res.payload))
+      yield put(getPayDatesSuccess({ peoples: res.payload }))
     } else if (res.payload?.error) {
       message.error(res.payload.detail)
-      yield put(getPayDatesFailed(res.payload.detail))
+      yield put(getPayDatesFailed({ error: res.payload.detail }))
     } else {
       message.error(`Error Desconocido`)
-      yield put(getPayDatesFailed(new TypeError('ERROR_GET_PAYS')))
+      yield put(getPayDatesFailed({ error: new TypeError('ERROR_GET_PAYS') }))
     }
   } catch (e) {
-    yield put(getPayDatesFailed(FailedConnectionServer()))
+    yield put(getPayDatesFailed({ error: FailedConnectionServer() }))
   }
 }
 
 function* FetchGetPayIdentification({ payload }) {
   console.log(payload)
   try {
-    const res = yield Api.GET(`reports/pays-${payload.identification}`)
+    const res = yield Api.GET(`reports/pays-${payload}`)
     if (res && res.payload.success) {
-      yield put(getPayIdentificationSuccess(res.payload))
+      yield put(getPayIdentificationSuccess({ user: res.payload }))
     } else if (res.payload?.error) {
       message.error(res.payload.detail, 5)
-      yield put(getPayIdentificationFailed(res.payload.detail))
+      yield put(getPayIdentificationFailed({ error: res.payload.detail }))
     } else {
       message.error(`Error Desconocido`)
-      yield put(getPayIdentificationFailed(new TypeError('ERROR_GET_PAYS')))
+      yield put(
+        getPayIdentificationFailed({ error: new TypeError('ERROR_GET_PAYS') })
+      )
     }
   } catch (e) {
-    yield put(getPayIdentificationFailed(FailedConnectionServer()))
+    yield put(getPayIdentificationFailed({ error: FailedConnectionServer() }))
   }
 }
 

@@ -38,7 +38,10 @@ const Pays = () => {
     }
   }
 
-  const onChangeRange = (_, value) => setDates(value)
+  const onChangeRange = (_, value) => {
+    console.log(value)
+    setDates(value)
+  }
 
   const handlePays = () => {
     if (type === 'identification') {
@@ -47,7 +50,7 @@ const Pays = () => {
     } else {
       if (!dates || dates.length === 0)
         message.error('Debe llenar el formulario')
-      else dispatch(getPayDates(...dates))
+      else dispatch(getPayDates({ start: dates[0], end: dates[1] }))
     }
   }
 

@@ -15,10 +15,8 @@ const Login = ({ appName }) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const onFinishForm = e => {
-    const { password, user } = form
-    dispatch(login(user, password))
-  }
+  const onFinishForm = () =>
+    dispatch(login({ userName: form.user, password: form.password }))
 
   const { Item } = Form
 
