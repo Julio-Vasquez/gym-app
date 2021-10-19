@@ -6,7 +6,7 @@
     right: 0px;
     bottom: 0px;
     width: auto;
-    background-image: url(./../../../assets/img/bgLogin.jpg);
+    background-image: url(src/assets/img/bgLogin.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -34,7 +34,7 @@
       .name-app-hover a {
         float: left;
         color: #fff;
-        font-family: "Exo", sans-serif;
+        font-family: 'Exo', sans-serif;
         font-size: 35px;
         font-weight: 400;
         span {
@@ -60,10 +60,10 @@
     input {
       height: 28px;
     }
-    input[type="submit"] {
+    input[type='submit'] {
       margin-top: 10px;
     }
-    input[type="submit"] {
+    input[type='submit'] {
       width: 250px;
       height: 40px;
       background: #9e0036;
@@ -71,7 +71,7 @@
       cursor: pointer;
       border-radius: 15px;
       color: #fefefe;
-      font-family: "Exo", sans-serif;
+      font-family: 'Exo', sans-serif;
       font-size: 18px;
       font-weight: 500;
       padding: 6px;
@@ -102,7 +102,7 @@
   }
 }
 
-div[role="alert"] {
+div[role='alert'] {
   font-size: 14px;
   color: #ee0b0e;
 }
