@@ -1,6 +1,6 @@
 .check {
   background-size: cover;
-  background-image: url(./../../../assets/img/checkbg.jpg);
+  background-image: url(src/assets/img/checkbg.jpg);
   background-repeat: no-repeat;
   &-content {
     padding-top: 31.5vh;
@@ -17,7 +17,7 @@
       h2 {
         text-align: center;
         color: #111;
-        font-family: "exo", "Poppins";
+        font-family: 'exo', 'Poppins';
       }
       h2 {
         font-weight: 700;

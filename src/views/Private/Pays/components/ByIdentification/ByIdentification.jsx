@@ -16,7 +16,7 @@ export const ByIdentification = () => {
           <span>
             {user.name} {user.lastName}{' '}
           </span>
-          Identificaco con : <span>{user.identification}</span>
+          Identificaco con :<span>{user.identification}</span>
         </h1>
       </div>
       <div className="Rpt-body">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Form, Button, Col, Card, Input } from 'antd'
 import { IdcardOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'

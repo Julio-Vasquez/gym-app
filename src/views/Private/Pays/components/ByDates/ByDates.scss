@@ -8,8 +8,10 @@
 
 .ByDatesTable {
   &Col {
-    padding-top: 18px;
-    padding-bottom: 18px;
+    padding: {
+      top: 18px;
+      bottom: 18px;
+    }
   }
   &Table {
     padding-bottom: 18px;
@@ -24,9 +26,11 @@
     }
   }
   h3 {
-    font-family: exo;
-    font-size: 30px;
-    font-weight: 700;
+    font: {
+      family: exo;
+      size: 30px;
+      weight: 700;
+    }
     color: #ca3372;
   }
 

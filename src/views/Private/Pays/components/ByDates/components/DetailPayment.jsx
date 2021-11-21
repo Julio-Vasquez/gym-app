@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import { array } from 'prop-types'
 
 export const DetailPayment = ({ data }) => {
   return (
@@ -34,5 +34,5 @@ export const DetailPayment = ({ data }) => {
 }
 
 DetailPayment.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: array.isRequired,
 }

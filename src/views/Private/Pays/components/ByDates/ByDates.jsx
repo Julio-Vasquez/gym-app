@@ -25,7 +25,6 @@ export const ByDates = () => {
         <Col span={24} className="ByDatesTableCol">
           <h3>Registro de reportes de fechas.</h3>
         </Col>
-
         <Col className="ByDatesTableTable">
           <div className="ant-table-wrapper">
             <div className="ant-table">
