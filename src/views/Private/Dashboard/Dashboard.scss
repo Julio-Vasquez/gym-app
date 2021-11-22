@@ -3,12 +3,14 @@
   height: 89vh;
   width: 100%;
   &-bg {
-    width: 99.9%;
+    background: {
+      image: url('src/assets/img/BannerDash.jpg');
+      position: center;
+      repeat: no-repeat;
+      size: cover;
+    }
     height: 99.9%;
-    background-image: url('src/assets/img/BannerDash.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width: 99.9%;
   }
 }
 

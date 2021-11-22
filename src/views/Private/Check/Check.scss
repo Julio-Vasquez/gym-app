@@ -1,41 +1,49 @@
 .check {
-  background-size: cover;
-  background-image: url(src/assets/img/checkbg.jpg);
-  background-repeat: no-repeat;
+  background: {
+    image: url(src/assets/img/checkbg.jpg);
+    repeat: no-repeat;
+    size: cover;
+  }
   &-content {
-    padding-top: 31.5vh;
-    padding-bottom: 31.5vh;
+    padding: {
+      bottom: 31.5vh;
+      top: 31.5vh;
+    }
     &-card {
       box-shadow: 0 0 5px rgb(247, 241, 241);
       opacity: 0.85;
       padding: 0 5.2%;
       input {
-        height: 40px;
         font-size: 18px;
+        height: 40px;
       }
       p,
       h2 {
-        text-align: center;
         color: #111;
         font-family: 'exo', 'Poppins';
+        text-align: center;
       }
       h2 {
-        font-weight: 700;
-        font-size: 26px;
+        font: {
+          size: 26px;
+          weight: 700;
+        }
         padding-top: 15px;
       }
       p {
-        padding-bottom: 20px;
         font-weight: 600;
+        padding-bottom: 20px;
       }
       &-btn {
-        text-align: center;
         padding-bottom: 15px;
+        text-align: center;
         button {
+          border: {
+            color: #04a9f5;
+            radius: 5px;
+          }
           box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
           height: 45px;
-          border-color: #04a9f5;
-          border-radius: 5px;
           span {
             font-size: 16px;
           }
@@ -52,8 +60,10 @@
 @media (max-width: 1366px) and (max-height: 766px) {
   .check {
     &-content {
-      padding-top: 25.15vh;
-      padding-bottom: 25.15vh;
+      padding: {
+        bottom: 25.15vh;
+        top: 25.15vh;
+      }
     }
   }
 }

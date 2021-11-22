@@ -8,7 +8,6 @@
     "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.6.2",
     "antd": "^4.17.1",
-    "connected-react-router": "^6.9.1",
     "jwt-decode": "^3.1.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

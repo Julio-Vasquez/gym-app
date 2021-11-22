@@ -1,5 +1,5 @@
-@use "./components/ByIdentification/ByIdentification.scss";
-@use "./components/ByDates/ByDates.scss";
+@use './components/ByIdentification/ByIdentification.scss';
+@use './components/ByDates/ByDates.scss';
 
 .Pays {
   .ant-row {
@@ -20,9 +20,11 @@
   }
   .error_sms_id {
     color: red;
-    font-size: 18px;
-    font-family: "Poppins";
-    font-weight: 300;
+    font: {
+      family: 'Poppins';
+      size: 18px;
+      weight: 300;
+    }
   }
 
   .visible_data_payment {
@@ -40,7 +42,7 @@
 
   .text-id,
   .text-dates {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     color: #fefefe;
   }
   .bdc {

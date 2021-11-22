@@ -13,47 +13,53 @@
 }
 
 .sidebar {
-  position: fixed;
-  width: 262px;
-  height: calc(100vh - 90px);
-  margin-top: 50px;
-  margin-left: 20px;
-  z-index: 1024;
-  border-radius: 5px;
   background: linear-gradient(#97174d, #ca3372);
-  transition-property: top, bottom, width;
-  transition-duration: 0.2s, 0.2s, 0.35s;
-  transition-timing-function: linear, linear, ease;
+  border-radius: 5px;
+  height: calc(100vh - 90px);
+  margin: {
+    left: 20px;
+    top: 50px;
+  }
+  position: fixed;
+  transition: {
+    duration: 0.2s, 0.2s, 0.35s;
+    property: top, bottom, width;
+    timing-function: linear, linear, ease;
+  }
+  width: 262px;
+  z-index: 1024;
   &::after {
-    content: "";
-    position: absolute;
-    border-top: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #97174d;
-    top: -10px;
+    border: {
+      bottom: 5px solid #97174d;
+      left: 5px solid transparent;
+      right: 5px solid transparent;
+      top: 5px solid transparent;
+    }
+    content: '';
     left: 35px;
+    position: absolute;
+    top: -10px;
     transform: translate(-50%);
     .sidebar-wrapper {
-      min-height: 100%;
       max-height: calc(100vh - 705px);
+      min-height: 100%;
       z-index: 4;
     }
   }
 }
 /* Header */
 nav {
-  width: 100%;
   display: flex !important;
   justify-content: space-between;
-  white-space: pre;
   padding: 10px 35px 0px 20px !important;
+  white-space: pre;
+  width: 100%;
 }
 
 .navbar-bar {
-  position: relative;
-  display: flex;
   align-items: center;
+  display: flex;
+  position: relative;
 }
 
 .navbar-bar button#boton-sidebar {
@@ -73,9 +79,11 @@ nav {
 
 .navbar-bar p {
   color: #fff;
-  font-family: "Poppins";
-  font-weight: 300;
-  font-size: 16px !important;
+  font: {
+    family: 'Poppins';
+    weight: 300;
+    size: 16px !important;
+  }
   text-transform: uppercase;
   margin-left: 20px;
   opacity: 1;
@@ -142,83 +150,84 @@ nav {
 
 /* Menu Sidebar*/
 .logo-rc {
-  position: relative;
+  align-items: center;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 15px;
-}
-
-.logo-rc::after {
-  content: "";
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  height: 1px;
-  width: 90%;
-  right: 15px;
-  bottom: 0;
-  background: #fff;
-  z-index: 1;
-  transition-duration: 0.2s;
-}
-
-.logo-rc img {
-  width: 38px;
-  margin-left: 20px;
-}
-
-.logo-rc span {
-  text-transform: uppercase;
-  display: block;
-  white-space: nowrap;
-  font-size: 15px;
-  color: #fff;
-  font-family: "Poppins";
-  overflow: hidden;
-  margin-left: 10px;
-  transition: all 0.45s;
-  font-weight: 500;
+  padding: {
+    bottom: 15px;
+    top: 10px;
+  }
+  position: relative;
+  &::after {
+    background: #fff;
+    bottom: 0;
+    content: '';
+    display: flex;
+    height: 1px;
+    justify-content: center;
+    position: absolute;
+    right: 15px;
+    transition-duration: 0.2s;
+    width: 90%;
+    z-index: 1;
+  }
+  img {
+    margin-left: 20px;
+    width: 38px;
+  }
+  span {
+    color: #fff;
+    display: block;
+    font: {
+      family: 'Poppins';
+      size: 15px;
+      weight: 500;
+    }
+    margin-left: 10px;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: all 0.45s;
+    white-space: nowrap;
+  }
 }
 
 .nav ul {
   list-style: none;
   margin-top: 20px;
-}
-
-.nav ul li {
-  padding: 20px;
-  &:hover {
-    background-color: rgb(184, 28, 93);
+  li {
+    padding: 20px;
+    &:hover {
+      background-color: rgb(184, 28, 93);
+    }
+    a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      white-space: nowrap;
+      span {
+        color: #fff;
+        display: block;
+        font: {
+          family: 'Poppins';
+          size: 14px;
+          weight: 700;
+        }
+        text: {
+          decoration: none;
+          transform: uppercase;
+        }
+        transition: 0.22s !important;
+        width: 50px;
+        svg {
+          color: #fff;
+          font-size: 17px;
+          padding-right: 3px;
+          width: 35px;
+        }
+      }
+    }
   }
-}
-
-.nav ul li a {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.nav ul li a span svg {
-  color: #fff;
-  font-size: 17px;
-  padding-right: 3px;
-  width: 35px;
-}
-/*texto*/
-.nav ul li a span {
-  width: 50px;
-  display: block;
-  transition: 0.22s !important;
-  color: #fff;
-  font-size: 14px;
-  text-decoration: none;
-  font-family: "Poppins";
-  font-weight: 700;
-  text-transform: uppercase;
 }
 
 .block {
@@ -300,9 +309,11 @@ nav {
     z-index: 1000;
   }
   .sidebar-wrapper {
-    transition-property: top, bottom, width;
-    transition-duration: 0.2s, 0.2s, 0.35s;
-    transition-timing-function: linear, linear;
+    transition: {
+      duration: 0.2s, 0.2s, 0.35s;
+      property: top, bottom, width;
+      timing-function: linear, linear;
+    }
   }
   .main-panel > .content {
     padding-left: 30px;

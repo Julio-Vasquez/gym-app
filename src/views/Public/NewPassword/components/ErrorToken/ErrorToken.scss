@@ -13,50 +13,50 @@
     user-select: none;
     width: 100%;
     &-404 {
-      position: relative;
       height: 180px;
       margin-bottom: 20px;
+      position: relative;
       z-index: -1;
       h1,
       h2 {
-        font-family: "Montserrat", sans-serif;
-        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
         position: absolute;
+        text-transform: uppercase;
       }
       h1 {
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        color: #030005;
         font: {
           size: 224px;
           weight: 900;
         }
+        left: 50%;
+        letter-spacing: -20px;
         margin: {
           top: 0px;
           bottom: 0px;
           left: -12px;
         }
-        color: #030005;
         text-shadow: -1px -1px 0px #8400ff, 1px 1px 0px #ff005a;
-        letter-spacing: -20px;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
       h2 {
-        left: 0;
-        right: 0;
-        top: 110px;
+        color: #fff;
         font: {
           size: 42px;
           weight: 700;
         }
-        color: #fff;
-        text-shadow: 0px 2px 0px #8400ff;
+        left: 0;
         letter-spacing: 13px;
         margin: 0;
+        right: 0;
+        text-shadow: 0px 2px 0px #8400ff;
+        top: 110px;
       }
     }
     a {
       font: {
-        family: "Montserrat", sans-serif;
+        family: 'Montserrat', sans-serif;
         size: 14px;
         weight: 700;
       }

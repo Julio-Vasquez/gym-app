@@ -1,5 +1,4 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import { connectRouter } from 'connected-react-router'
 
 import { logout } from '../services/Auth/AuthSlice'
 
@@ -23,17 +22,15 @@ import reducerReport, {
   initialState as initialReport,
 } from '../services/Report/ReportSlice'
 
-const appReducers = history =>
-  combineReducers({
-    router: connectRouter(history),
-    Auth: reducerAuth,
-    Check: reducerCheck,
-    Clients: reducerClients,
-    Suscription: reducerSuscription,
-    Report: reducerReport,
-  })
+const appReducers = combineReducers({
+  Auth: reducerAuth,
+  Check: reducerCheck,
+  Clients: reducerClients,
+  Suscription: reducerSuscription,
+  Report: reducerReport,
+})
 
-export const rootReducers = history => (state, action) => {
+const rootReducers = (state, action) => {
   if (action.type === 'AUTH/LOGOUT' || action.type === logout().type)
     state = {
       Auth: initialAuth,
@@ -42,5 +39,7 @@ export const rootReducers = history => (state, action) => {
       Suscription: initialSuscription,
       Report: initialReport,
     }
-  return appReducers(history)(state, action)
+  return appReducers(state, action)
 }
+
+export default rootReducers

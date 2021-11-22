@@ -1,5 +1,7 @@
 .trainer-bg {
-  background-image: url(src/assets/img/clientsbg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: {
+    image: url(src/assets/img/clientsbg.jpg);
+    repeat: no-repeat;
+    size: cover;
+  }
 }

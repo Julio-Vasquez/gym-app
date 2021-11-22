@@ -1,42 +1,46 @@
 .fragmento {
   .body {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
+    background: {
+      attachment: fixed;
+      image: url(src/assets/img/bgLogin.jpg);
+      repeat: no-repeat;
+      size: 100% 100%;
+    }
     bottom: 0px;
-    width: auto;
-    background-image: url(src/assets/img/bgLogin.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     filter: brightness(0.6);
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: auto;
     z-index: 1;
   }
 
   .content-login {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 500px;
-    box-shadow: 0px 0px 20px 5px #900a0a;
     border-radius: 10px;
-    z-index: 99;
+    box-shadow: 0px 0px 20px 5px #900a0a;
+    display: flex;
+    flex-direction: column;
     height: 420px;
+    justify-content: center;
     position: absolute;
-    top: 20%;
     right: 15%;
+    top: 20%;
+    width: 500px;
+    z-index: 99;
     .header {
       display: flex;
       justify-content: center;
       align-items: center;
       .name-app-hover a {
-        float: left;
         color: #fff;
-        font-family: 'Exo', sans-serif;
-        font-size: 35px;
-        font-weight: 400;
+        float: left;
+        font: {
+          family: 'Exo', sans-serif;
+          size: 35px;
+          weight: 400;
+        }
         span {
           color: #ee0b0e;
         }
@@ -64,17 +68,19 @@
       margin-top: 10px;
     }
     input[type='submit'] {
-      width: 250px;
-      height: 40px;
       background: #9e0036;
-      border: 1px solid rgba(104, 91, 91, 0.808);
-      cursor: pointer;
       border-radius: 15px;
+      border: 1px solid rgba(104, 91, 91, 0.808);
       color: #fefefe;
-      font-family: 'Exo', sans-serif;
-      font-size: 18px;
-      font-weight: 500;
+      cursor: pointer;
+      font: {
+        family: 'Exo', sans-serif;
+        size: 18px;
+        weight: 500;
+      }
+      height: 40px;
       padding: 6px;
+      width: 250px;
       &:hover {
         opacity: 0.8;
         color: #fefefe;
@@ -86,7 +92,6 @@
         outline: none;
       }
     }
-
     .ant-input-affix-wrapper {
       border-radius: 15px;
     }
@@ -94,9 +99,11 @@
 }
 
 #forgot {
-  font-size: 16px;
   color: #ffffff;
-  font-weight: 500;
+  font: {
+    size: 16px;
+    weight: 500;
+  }
   &:hover {
     color: #ee0b0e;
   }

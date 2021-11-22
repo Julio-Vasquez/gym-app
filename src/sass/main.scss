@@ -1,11 +1,11 @@
-@import "./utils/mixins", "./utils/variables";
+@import './utils/variables';
 
-@import "./components/all";
+@import './components/all';
 
-@import "./layout/all";
+@import './layout/all';
 
-@import "./views/all";
+@import './views/all';
 
-@import "./base/reset", "./base/typography";
+@import './base/reset', './base/typography';
 
-@import "./vendors/antd";
+@import './vendors/antd';

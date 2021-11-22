@@ -20,8 +20,6 @@ import {
 } from './AuthSlice'
 
 function* FetchLogin({ type, payload }) {
-  console.log('=====')
-  console.log(payload)
   try {
     const res = yield Api.POST('auth/login', payload)
     if (res && res.payload.success) {

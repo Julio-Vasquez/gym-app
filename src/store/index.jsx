@@ -1,1 +1,1 @@
-export { history, default } from './Store'
+export { default } from './Store'
