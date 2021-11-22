@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export const Check = 'Check'
+
 export const initialState = {
   loading: false,
   error: { message: '', error: undefined },
@@ -8,7 +10,7 @@ export const initialState = {
 }
 
 const CheckSlice = createSlice({
-  name: 'check',
+  name: Check,
   initialState,
   reducers: {
     checkPeople: (state, { payload }) => ({

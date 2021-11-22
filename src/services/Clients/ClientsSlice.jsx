@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export const Clients = 'Clients'
+
 export const initialState = {
   loading: false,
   error: { message: '', error: undefined },
@@ -14,7 +16,7 @@ export const initialState = {
 }
 
 const ClientsSlice = createSlice({
-  name: 'clients',
+  name: Clients,
   initialState,
   reducers: {
     createClient: state => ({ ...state, loading: true }),

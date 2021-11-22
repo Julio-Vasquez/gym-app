@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export const Suscription = 'Suscription'
+
 export const initialState = {
   loading: false,
   success: undefined,
@@ -10,7 +12,7 @@ export const initialState = {
 }
 
 const SuscriptionSlice = createSlice({
-  name: 'suscription',
+  name: Suscription,
   initialState,
   reducers: {
     addSuscription: state => ({ ...state, loading: true }),

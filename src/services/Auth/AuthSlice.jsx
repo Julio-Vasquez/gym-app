@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { Token } from '../../common/storage'
 
+export const Auth = 'Auth'
+
 export const initialState = {
   authentication: Token.IsTokenValid(),
   loading: false,
@@ -19,7 +21,7 @@ export const initialState = {
 }
 
 const AuthSlice = createSlice({
-  name: 'auth',
+  name: Auth,
   initialState,
   reducers: {
     login: state => ({

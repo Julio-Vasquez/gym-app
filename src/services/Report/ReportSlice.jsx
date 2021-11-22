@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export const Report = 'Report'
 export const initialState = {
   loading: false,
   error: {
@@ -15,7 +16,7 @@ export const initialState = {
 }
 
 const ReportSlice = createSlice({
-  name: 'report',
+  name: Report,
   initialState,
   reducers: {
     getPayDates: state => ({ ...state, loading: true }),
