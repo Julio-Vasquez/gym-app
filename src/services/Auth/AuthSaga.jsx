@@ -41,8 +41,12 @@ function* FetchLogin({ type, payload }) {
 const FetchLogout = () => localStorage.clear()
 
 function* FetchForgotPassword({ payload }) {
+  console.log(payload)
   try {
-    const res = yield Api.POST('auth/request-forgot-password', payload)
+    const res = yield Api.POST('auth/request-forgot-password', {
+      userName: payload,
+    })
+    console.log(res)
     if (res && res.payload.success) {
       yield put(resetPasswordSuccess('ok'))
     } else if (res.payload.error) {

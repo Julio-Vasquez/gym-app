@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { Col, Card, Row, Form, Button, Input, message } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
 import { AlipayOutlined } from '@ant-design/icons'
+import { useDispatch } from 'react-redux'
+import { string } from 'prop-types'
 
 import { RedirectButton } from '../../../../../components/RedirectButton'
 import { Loading } from '../../../../../components/Loading'
 
-import { newPassword } from '../../../../../services/Auth/AuthSlice'
+import { newPassword, Auth } from '../../../../../services/Auth/AuthSlice'
+import { useData } from '../../../../../hooks/useData'
 
 export const SetPassword = ({ token }) => {
   const { Item } = Form
-  const { loading, success } = useSelector(state => state.Auth)
+  const { loading, success } = useData({ reducer: Auth })
 
   useEffect(() => {
     if (success.newPassword) message.success('Cambio de contraseña exitoso!')
@@ -135,5 +136,5 @@ export const SetPassword = ({ token }) => {
 }
 
 SetPassword.propTypes = {
-  token: PropTypes.string.isRequired,
+  token: string.isRequired,
 }

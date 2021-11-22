@@ -12,20 +12,17 @@ const Public = () => {
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/login" exact element={<Login appName="APOLO GYM" />} />
+          <Route path="/" element={<Login appName="APOLO GYM" />} />
+          <Route path="/login" element={<Login appName="APOLO GYM" />} />
+          <Route path="/setnewpassword" element={<NewPassword />}>
+            <Route path=":id" element={<NewPassword />} />
+          </Route>
           <Route
-            exact
-            path="/reset-password"
+            path="reset-password"
             element={<ResetPassword appName="APOLO GYM" />}
           />
-          <Route
-            exact
-            path="/setnewpassword/:token"
-            element={<NewPassword />}
-          />
-          <Route exact path="/setnewpassword/" element={<NewPassword />} />
-          <Route path="/" exact element={<Login appName="APOLO GYM" />} />
-          <Route from="/*" element={<Navigate replace to="/login" />} />
+
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

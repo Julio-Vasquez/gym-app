@@ -5,11 +5,7 @@ import { ErrorToken } from './components/ErrorToken'
 import { SetPassword } from './components/SetPassword'
 
 export default function NewPassword() {
-  const { token } = useParams()
+  const { id } = useParams()
 
-  return Token.CheckToken(token) ? (
-    <SetPassword token={token} />
-  ) : (
-    <ErrorToken />
-  )
+  return Token.CheckToken(id) ? <SetPassword token={id} /> : <ErrorToken />
 }

@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Form, Input, Button, Row, Col, Card, message } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { UserOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
 
 import { Loading } from '../../../components/Loading'
 import { RedirectButton } from '../../../components/RedirectButton'
 
-import { resetPassword } from '../../../services/Auth/AuthSlice'
+import { resetPassword, Auth } from '../../../services/Auth/AuthSlice'
+import { useData } from './../../../hooks/useData'
 
 const ResetPassword = ({ appName }) => {
   const name = appName.split(' ')
@@ -25,7 +26,7 @@ const ResetPassword = ({ appName }) => {
 
   const dispatch = useDispatch()
 
-  const { loading, success } = useSelector(state => state.Auth)
+  const { loading, success } = useData({ reducer: Auth })
 
   useEffect(() => {
     if (success.ResetPassword)

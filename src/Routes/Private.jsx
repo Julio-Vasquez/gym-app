@@ -24,6 +24,7 @@ const Private = () => {
             <Route exact path="/trainers" element={<Trainers />} />
             <Route exact path="/pays" element={<Pays />} />
             <Route path="/login" element={<Navigate replace to="/" />} />
+            <Route path="*" element={<Navigate replace to="/" />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
