@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { message } from 'antd'
 
 import { Loading } from '../../../components/Loading'
@@ -7,18 +7,19 @@ import { CustomTable } from '../../../components/CustomTable'
 import { FloatingButton } from '../../../components/FloatingButton'
 import { ModalNewClient } from '../../../components/ModalNewClient'
 
-import { getClients } from '../../../services/Clients/ClientsSlice'
+import { getClients, Clients } from '../../../services/Clients/ClientsSlice'
+import { Suscription } from '../../../services/Suscription/SuscriptionSlice'
+import { useData } from '../../../hooks/useData'
 
 const Trainer = () => {
   const [openModalNewTrainer, setOpenModalNewTrainer] = useState(false)
 
   const dispatch = useDispatch()
 
-  const { listClients, loading, successCreate, successUpdate } = useSelector(
-    state => state.Clients
-  )
-
-  const { success, successRemove } = useSelector(state => state.Suscription)
+  const { listClients, loading, successCreate, successUpdate } = useData({
+    reducer: Clients,
+  })
+  const { success, successRemove } = useData({ reducer: Suscription })
 
   useEffect(() => {
     dispatch(getClients('Entrenador'))

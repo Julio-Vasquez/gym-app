@@ -1,6 +1,6 @@
 import { Button, Tooltip } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import PropTypes from 'prop-types'
+import { string, bool, func } from 'prop-types'
 
 export const FloatingButton = ({ title, state, setState }) => {
   const onCLickBtn = () => setState(!state)
@@ -21,7 +21,7 @@ export const FloatingButton = ({ title, state, setState }) => {
 }
 
 FloatingButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  state: PropTypes.bool.isRequired,
-  setState: PropTypes.func.isRequired,
+  title: string.isRequired,
+  state: bool.isRequired,
+  setState: func.isRequired,
 }

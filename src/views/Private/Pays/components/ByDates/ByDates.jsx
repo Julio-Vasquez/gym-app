@@ -1,13 +1,15 @@
 import { useState, Fragment } from 'react'
-import { useSelector } from 'react-redux'
 import { Row, Col } from 'antd'
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
 
 import { Loading } from '../../../../../components/Loading'
 import { DetailPayment } from './components/DetailPayment'
 
+import { Report } from './../../../../../services/Report/ReportSlice'
+import { useData } from './../../../../../hooks/useData'
+
 export const ByDates = () => {
-  const { peoples, loading } = useSelector(state => state.Report)
+  const { peoples, loading } = useData({ reducer: Report })
 
   const [expanded, setExpanded] = useState(false)
   const [id, setId] = useState(0)

@@ -3,29 +3,30 @@ $shapeDimentions: 12px;
 $amount: 18px;
 
 .loading {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
   text-align: center;
   &__content {
+    animation: rotation 1s infinite;
+    height: $containerDimentions;
     position: relative;
     width: $containerDimentions;
-    height: $containerDimentions;
-    animation: rotation 1s infinite;
     .shape {
+      border-radius: 2px;
+      height: $shapeDimentions;
       position: absolute;
       width: $shapeDimentions;
-      height: $shapeDimentions;
-      border-radius: 2px;
-      &.shape{
-        &-3, &-4{
+      &.shape {
+        &-3,
+        &-4 {
           bottom: 0;
         }
-        &-1{
+        &-1 {
           left: 0;
           background-color: #4285f4;
         }
-        &-2{
+        &-2 {
           right: 0;
           background-color: #34a853;
         }
@@ -45,14 +46,16 @@ $amount: 18px;
     }
   }
   p {
-    padding-top: 110px;
-    display: block;
-    font-family: "Fira Code iScript";
-    font-weight: 600;
-    font-style: italic;
-    font-size: 20px;
-    margin-left: -50px;
     animation: colorLoading 1s infinite;
+    display: block;
+    font: {
+      family: 'Fira Code iScript';
+      size: 20px;
+      style: italic;
+      weight: 600;
+    }
+    margin-left: -50px;
+    padding-top: 110px;
   }
 }
 

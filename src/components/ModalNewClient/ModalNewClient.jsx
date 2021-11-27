@@ -10,20 +10,20 @@ import {
   Row,
   Space,
 } from 'antd'
-
 import {
   WhatsAppOutlined,
   IdcardOutlined,
   AlipayOutlined,
 } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
-import PropTypes from 'prop-types'
+import { bool, func, string } from 'prop-types'
 
 import { createClient } from '../../services/Clients/ClientsSlice'
 
 export const ModalNewClient = ({ open, close, title }) => {
   const { Item } = Form
   const { Group } = Radio
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({
     name: '',
@@ -34,8 +34,6 @@ export const ModalNewClient = ({ open, close, title }) => {
     phone: '',
     role: '',
   })
-
-  const dispatch = useDispatch()
 
   const onFinishForm = () => {
     close(false)
@@ -251,7 +249,7 @@ export const ModalNewClient = ({ open, close, title }) => {
   )
 }
 ModalNewClient.propTypes = {
-  open: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  open: bool.isRequired,
+  close: func.isRequired,
+  title: string.isRequired,
 }

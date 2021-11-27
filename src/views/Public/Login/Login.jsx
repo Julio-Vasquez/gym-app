@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Form, Input } from 'antd'
 import { UserOutlined, AlipayOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
-import PropTypes from 'prop-types'
+import { string } from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import { login } from '../../../services/Auth/AuthSlice'
 
 const Login = ({ appName }) => {
   const name = appName.split(' ')
-  const [form, setForm] = useState({ user: '', password: '' })
+  const { Item } = Form
   const dispatch = useDispatch()
+
+  const [form, setForm] = useState({ user: '', password: '' })
 
   const onChangeForm = e => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -18,18 +21,16 @@ const Login = ({ appName }) => {
   const onFinishForm = () =>
     dispatch(login({ userName: form.user, password: form.password }))
 
-  const { Item } = Form
-
   return (
     <div className="fragmento">
       <div className="body"></div>
       <div className="content-login">
         <div className="header">
           <div className="name-app-hover">
-            <a href="/">
+            <Link to="/">
               {name[0]}
               <span> {name[1]} </span>
-            </a>
+            </Link>
           </div>
         </div>
         <Form onChange={onChangeForm} onFinish={onFinishForm}>
@@ -72,13 +73,13 @@ const Login = ({ appName }) => {
                 name="password"
               />
             </Item>
-
             <input type="submit" value="Login" />
-            <br />
-            <br />
-            <a href="/reset-password" id="forgot">
-              Olvidaste tu contraseña?
-            </a>
+
+            <div className="login_forgot">
+              <Link to="/reset-password" id="forgot">
+                Olvidaste tu contraseña?
+              </Link>
+            </div>
           </div>
         </Form>
       </div>
@@ -87,7 +88,7 @@ const Login = ({ appName }) => {
 }
 
 Login.propTypes = {
-  appName: PropTypes.string.isRequired,
+  appName: string.isRequired,
 }
 
 export default Login

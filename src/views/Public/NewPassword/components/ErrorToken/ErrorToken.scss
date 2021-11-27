@@ -55,20 +55,20 @@
       }
     }
     a {
+      background: transparent;
+      border: 2px solid;
+      color: #ff005a;
+      display: inline-block;
       font: {
         family: 'Montserrat', sans-serif;
         size: 14px;
         weight: 700;
       }
-      display: inline-block;
-      color: #ff005a;
+      padding: 10px 40px;
       text: {
         transform: uppercase;
         decoration: none;
       }
-      border: 2px solid;
-      background: transparent;
-      padding: 10px 40px;
       transition: 0.2s all;
       &:hover {
         color: #8400ff;

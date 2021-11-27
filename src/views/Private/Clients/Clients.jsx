@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { message } from 'antd'
 
 import { Loading } from '../../../components/Loading'
@@ -7,18 +7,22 @@ import { CustomTable } from '../../../components/CustomTableClient'
 import { ModalNewClient } from '../../../components/ModalNewClient'
 import { FloatingButton } from '../../../components/FloatingButton'
 
-import { getClients } from '../../../services/Clients/ClientsSlice'
+import {
+  getClients,
+  Clients as Client,
+} from '../../../services/Clients/ClientsSlice'
+import { Suscription } from '../../../services/Suscription/SuscriptionSlice'
+import { useData } from './../../../hooks/useData'
 
 const Clients = () => {
   const [openModalNewClient, setOpenModalNewClient] = useState(false)
 
   const dispatch = useDispatch()
 
-  const { listClients, loading, successCreate, successUpdate } = useSelector(
-    state => state.Clients
-  )
-
-  const { success, successRemove } = useSelector(state => state.Suscription)
+  const { listClients, loading, successCreate, successUpdate } = useData({
+    reducer: Client,
+  })
+  const { success, successRemove } = useData({ reducer: Suscription })
 
   useEffect(() => {
     dispatch(getClients('Cliente'))

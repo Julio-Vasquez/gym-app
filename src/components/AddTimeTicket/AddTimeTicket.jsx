@@ -20,8 +20,8 @@ export const AddTimeTicket = ({ identification, open, close }) => {
   const { Group } = Radio
 
   const [error, setError] = useState(false)
-  const [type, setType] = useState('Mensual')
   const [form, setForm] = useState({
+    concept: 'Mensual',
     cost: 0,
     days: 0,
     debt: 0,
@@ -32,22 +32,19 @@ export const AddTimeTicket = ({ identification, open, close }) => {
   const onChangeForm = e =>
     setForm({ ...form, [e.target.name]: e.target.value })
 
-  const onChangeDebt = e => (e > form.cost ? setError(true) : setError(false))
+  const onChangeDebt = e => setError(e > form.cost)
 
-  const onChangeCost = e =>
-    parseInt(e.target.value) < form.debt ? setError(true) : setError(false)
+  const onChangeCost = e => setError(parseInt(e.target.value) < form.debt)
 
-  const onFinishForm = e => {
+  const onFinishForm = () => {
     close(false)
     if (form.debt <= parseInt(form.cost))
-      dispatch(addSuscription({ ...form, identification, concept: type }))
+      dispatch(addSuscription({ ...form, identification }))
     else
       message.error(
         'No puede decir que la deuda es mayor a lo que cuesta los dias facturados'
       )
   }
-
-  const onChangeRadio = e => setType(e.target.value)
 
   return (
     <Space>
@@ -63,10 +60,10 @@ export const AddTimeTicket = ({ identification, open, close }) => {
           <Row>
             <Item
               label="Tipo Pago"
-              name="type_pay"
+              name="type"
               rules={[{ required: true, message: 'Tipo pago, requqerido' }]}
             >
-              <Group onChange={onChangeRadio} value={type}>
+              <Group value={form.concept} name="concept">
                 <Radio value="Mensual">Mensual</Radio>
                 <Radio value="Tiquetera">Tiquetera</Radio>
               </Group>

@@ -32,7 +32,7 @@ const Check = () => {
     setIdentification(e.target.value)
   }
 
-  const onFinishForm = e => {
+  const onFinishForm = () => {
     dispatch(checkPeopleIn(identification))
     setOpen(true)
   }

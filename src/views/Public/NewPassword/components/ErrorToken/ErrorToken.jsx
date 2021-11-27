@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export const ErrorToken = () => (
   <div id="notFound">
     <div className="notFound">
@@ -5,7 +7,7 @@ export const ErrorToken = () => (
         <h1>404</h1>
         <h2>Solicitud Invalida</h2>
       </div>
-      <a href="/">Inicio</a>
+      <Link to="/">Inicio</Link>
     </div>
   </div>
 )

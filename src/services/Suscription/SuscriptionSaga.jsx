@@ -14,16 +14,18 @@ import {
 } from './SuscriptionSlice'
 
 function* FetchAddSuscription({ payload }) {
+  console.log(payload)
   try {
-    const res = yield Api.POST('suscription/pay', payload.suscription)
+    const res = yield Api.POST('suscription/pay', payload)
     if (res && res.payload.success) {
-      yield put(addSuscriptionSuccess(res.payload.payload))
+      message.success('Tiempo Agregado')
+      yield put(addSuscriptionSuccess())
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`)
-      yield put(addSuscriptionFailed(`${res.payload.detail}`))
+      yield put(addSuscriptionFailed())
     } else {
       message.error(`Error Desconocido`)
-      yield put(addSuscriptionFailed(new TypeError('ERROR_GET_CLIENTS')))
+      yield put(addSuscriptionFailed())
     }
   } catch (e) {
     yield put(addSuscriptionFailed(FailedConnectionServer()))
@@ -31,16 +33,18 @@ function* FetchAddSuscription({ payload }) {
 }
 
 function* FetchRemoveTime({ payload }) {
+  console.log(payload)
   try {
-    const res = yield Api.POST('suscription/remove', payload.time)
+    const res = yield Api.POST('suscription/remove', payload)
     if (res && res.payload.success) {
-      yield put(removeTimeSuccess(res.payload.payload))
+      message.success('Tiempo Modificado')
+      yield put(removeTimeSuccess())
     } else if (res.payload.error) {
       message.error(`${res.payload.detail}`)
-      yield put(removeTimeFailed(`${res.payload.detail}`))
+      yield put(removeTimeFailed())
     } else {
       message.error(`Error Desconocido`)
-      yield put(removeTimeFailed(new TypeError('ERROR_GET_CLIENTS')))
+      yield put(removeTimeFailed())
     }
   } catch (e) {
     yield put(removeTimeFailed(FailedConnectionServer()))

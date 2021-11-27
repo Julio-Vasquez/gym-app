@@ -8,15 +8,15 @@
   }
 
   .ant-radio-group {
-    display: flex;
     align-items: center;
+    display: flex;
     gap: 20px;
   }
 
   .ant-btn-round {
-    width: 100px;
     font-weight: 700;
     letter-spacing: 0.6px;
+    width: 100px;
   }
   .error_sms_id {
     color: red;
@@ -28,11 +28,11 @@
   }
 
   .visible_data_payment {
-    display: show;
+    align-items: center;
     display: flex;
+    display: show;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     text-align: center;
   }
 
@@ -46,10 +46,10 @@
     color: #fefefe;
   }
   .bdc {
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     text-align: center;
   }
 }

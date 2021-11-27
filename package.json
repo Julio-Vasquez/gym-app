@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.5",
+    "vite-plugin-react-router": "^1.2.1",
     "vite": "^2.6.10"
   }
 }

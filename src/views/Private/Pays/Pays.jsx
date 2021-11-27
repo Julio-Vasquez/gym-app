@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Radio, Button, DatePicker, Row, InputNumber, message } from 'antd'
 
 import { ByIdentification } from './components/ByIdentification'
@@ -8,10 +8,12 @@ import { ByDates } from './components/ByDates/ByDates'
 import {
   getPayDates,
   getPayIdentification,
+  Report,
 } from '../../../services/Report/ReportSlice'
+import { useData } from './../../../hooks/useData'
 
 const Pays = () => {
-  const { success } = useSelector(state => state.Report)
+  const { success } = useData({ reducer: Report })
   const { Group } = Radio
   const { RangePicker } = DatePicker
 
@@ -20,11 +22,9 @@ const Pays = () => {
   const [identification, setIdentification] = useState()
   const [dates, setDates] = useState()
 
-  console.log(type)
   const dispatch = useDispatch()
 
   const onChangeRadio = e => {
-    console.log(`cambie a :${e.target.value}`)
     setType(e.target.value)
     setSms()
   }
@@ -38,10 +38,7 @@ const Pays = () => {
     }
   }
 
-  const onChangeRange = (_, value) => {
-    console.log(value)
-    setDates(value)
-  }
+  const onChangeRange = (_, value) => setDates(value)
 
   const handlePays = () => {
     if (type === 'identification') {

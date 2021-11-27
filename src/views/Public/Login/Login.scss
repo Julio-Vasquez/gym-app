@@ -15,7 +15,6 @@
     width: auto;
     z-index: 1;
   }
-
   .content-login {
     align-items: center;
     border-radius: 10px;
@@ -56,16 +55,13 @@
       }
     }
   }
-
   .login {
+    display: inline-block;
+    padding: 30px 0;
     text-align: center;
     width: 350px;
-    padding: 30px 0;
     input {
       height: 28px;
-    }
-    input[type='submit'] {
-      margin-top: 10px;
     }
     input[type='submit'] {
       background: #9e0036;
@@ -73,6 +69,7 @@
       border: 1px solid rgba(104, 91, 91, 0.808);
       color: #fefefe;
       cursor: pointer;
+      margin-top: 10px;
       font: {
         family: 'Exo', sans-serif;
         size: 18px;
@@ -92,20 +89,22 @@
         outline: none;
       }
     }
+    &_forgot {
+      padding-top: 30px;
+      #forgot {
+        color: #ffffff;
+        font: {
+          size: 16px;
+          weight: 500;
+        }
+        &:hover {
+          color: #ee0b0e;
+        }
+      }
+    }
     .ant-input-affix-wrapper {
       border-radius: 15px;
     }
-  }
-}
-
-#forgot {
-  color: #ffffff;
-  font: {
-    size: 16px;
-    weight: 500;
-  }
-  &:hover {
-    color: #ee0b0e;
   }
 }
 

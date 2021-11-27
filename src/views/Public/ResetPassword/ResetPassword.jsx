@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Form, Input, Button, Row, Col, Card, message } from 'antd'
 import { useDispatch } from 'react-redux'
 import { UserOutlined } from '@ant-design/icons'
-import PropTypes from 'prop-types'
+import { string } from 'prop-types'
 
 import { Loading } from '../../../components/Loading'
 import { RedirectButton } from '../../../components/RedirectButton'
@@ -11,22 +11,23 @@ import { resetPassword, Auth } from '../../../services/Auth/AuthSlice'
 import { useData } from './../../../hooks/useData'
 
 const ResetPassword = ({ appName }) => {
-  const name = appName.split(' ')
-
-  const { Item } = Form
-  const getSize = () => document.body.clientWidth < 833
-  const handleResize = () => setLock(getSize())
   const [lock, setLock] = useState(getSize)
   const [userName, setUserName] = useState('')
+
+  const name = appName.split(' ')
+  const dispatch = useDispatch()
+  const { Item } = Form
+
+  const getSize = () => document.body.clientWidth < 833
+
+  const handleResize = () => setLock(getSize())
+
+  const { loading, success } = useData({ reducer: Auth })
 
   useEffect(() => {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   })
-
-  const dispatch = useDispatch()
-
-  const { loading, success } = useData({ reducer: Auth })
 
   useEffect(() => {
     if (success.ResetPassword)
@@ -106,6 +107,7 @@ const ResetPassword = ({ appName }) => {
 }
 
 ResetPassword.propTypes = {
-  appName: PropTypes.string.isRequired,
+  appName: string.isRequired,
 }
+
 export default ResetPassword

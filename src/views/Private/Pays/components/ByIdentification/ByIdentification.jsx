@@ -1,11 +1,13 @@
 import { Tag } from 'antd'
-import { useSelector } from 'react-redux'
 
 import { Loading } from '../../../../../components/Loading'
 import { ColorTab } from '../../../../../components/ColorTab'
 
+import { Report } from '../../../../../services/Report/ReportSlice'
+import { useData } from '../../../../../hooks/useData'
+
 export const ByIdentification = () => {
-  const { user, loading } = useSelector(state => state.Report)
+  const { user, loading } = useData({ reducer: Report })
 
   return loading ? (
     <Loading />

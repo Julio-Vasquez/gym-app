@@ -12,6 +12,7 @@ import { useData } from '../../../../../hooks/useData'
 
 export const SetPassword = ({ token }) => {
   const { Item } = Form
+  const dispatch = useDispatch()
   const { loading, success } = useData({ reducer: Auth })
 
   useEffect(() => {
@@ -23,8 +24,6 @@ export const SetPassword = ({ token }) => {
     confirmPassword: '',
   })
 
-  const dispatch = useDispatch()
-
   const onChange = e => {
     setForm({
       ...form,
@@ -32,7 +31,7 @@ export const SetPassword = ({ token }) => {
     })
   }
 
-  const onSubmit = e => {
+  const onSubmit = () => {
     dispatch(newPassword({ password: form.password, token: token }))
   }
 
@@ -102,7 +101,7 @@ export const SetPassword = ({ token }) => {
                         'La contraseña debe contener maximo 4 caracteres',
                     },
                     ({ getFieldValue }) => ({
-                      validator(rule, value) {
+                      validator(_, value) {
                         return !value || getFieldValue('passwordI') === value
                           ? Promise.resolve()
                           : Promise.reject(

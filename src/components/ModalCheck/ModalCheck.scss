@@ -1,46 +1,43 @@
-@use "./../../sass/utils/variables";
+@use './../../sass/utils/variables';
 
 .ant-modal-header {
+  border-bottom: none !important;
   display: flex;
   justify-content: center;
-  border-bottom: none !important;
-
   .ant-modal-title {
-    font-weight: 700;
-    font-family: "exo";
-    font-size: 30px;
     color: #ca3372;
+    font: {
+      family: 'exo';
+      size: 30px;
+      weight: 700;
+    }
   }
 }
 
 .ant-modal-body {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
   .info-body {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
-
     p {
-      font-size: 18px;
-      text-decoration: none;
-      font-family: "Poppins";
-      font-weight: 500;
-      text-transform: uppercase;
+      font: {
+        family: 'Poppins';
+        size: 18px;
+        weight: 500;
+      }
       padding-right: 10px;
+      text: {
+        decoration: none;
+        transform: uppercase;
+      }
     }
   }
 
-  span.anticon.anticon-check-circle.modal-check-icon {
-    font-size: 80px;
-  }
-
-  span.anticon.anticon-warning.modal-check-icon {
-    font-size: 80px;
-  }
-
+  span.anticon.anticon-check-circle.modal-check-icon,
+  span.anticon.anticon-warning.modal-check-icon,
   span.anticon.anticon-close-circle.modal-check-icon {
     font-size: 80px;
   }
@@ -51,12 +48,11 @@
 }
 
 .ant-modal-footer {
+  border-top: none !important;
   display: flex;
   justify-content: center;
-  border-top: none !important;
-
   .ant-btn > span {
-    font-family: "poppins";
+    font-family: 'poppins';
   }
 }
 

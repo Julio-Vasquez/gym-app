@@ -13,6 +13,7 @@ import { updateClient } from '../../../services/Clients/ClientsSlice'
 export const FormModal = ({ client, identification }) => {
   const { Item } = Form
   const { Group } = Radio
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({
     name: client.name,
@@ -23,12 +24,8 @@ export const FormModal = ({ client, identification }) => {
     debt: client.debt,
   })
 
-  const dispatch = useDispatch()
-
   const onFinishForm = () => {
-    if (form.debt === undefined) {
-      setForm({ ...form, debt: 0 })
-    }
+    if (form.debt === undefined) setForm({ ...form, debt: 0 })
     dispatch(updateClient({ identification: identification, newClient: form }))
   }
 

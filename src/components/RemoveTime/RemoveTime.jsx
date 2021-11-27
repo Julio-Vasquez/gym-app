@@ -1,24 +1,23 @@
 import { useState } from 'react'
 import { Button, Space, Modal, Input, Form, Row } from 'antd'
-import PropTypes from 'prop-types'
+import { any, bool, func } from 'prop-types'
 import { useDispatch } from 'react-redux'
 
 import { removeTime } from '../../services/Suscription/SuscriptionSlice'
 
 export const RemoveTime = ({ identification, open, close }) => {
   const { Item } = Form
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({
     days: 0,
   })
 
-  const dispatch = useDispatch()
-
   const onChangeForm = e => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const onFinishForm = e => {
+  const onFinishForm = () => {
     close(false)
     dispatch(
       removeTime({
@@ -69,9 +68,9 @@ export const RemoveTime = ({ identification, open, close }) => {
 }
 
 RemoveTime.propTypes = {
-  identification: PropTypes.any,
-  open: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
+  identification: any,
+  open: bool.isRequired,
+  close: func.isRequired,
 }
 
 RemoveTime.defaulrProps = {

@@ -14,14 +14,11 @@ const Public = () => {
         <Routes>
           <Route path="/" element={<Login appName="APOLO GYM" />} />
           <Route path="/login" element={<Login appName="APOLO GYM" />} />
-          <Route path="/setnewpassword" element={<NewPassword />}>
-            <Route path=":id" element={<NewPassword />} />
-          </Route>
+          <Route path="/setnewpassword/:token" element={<NewPassword />} />
           <Route
             path="reset-password"
             element={<ResetPassword appName="APOLO GYM" />}
           />
-
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </Suspense>

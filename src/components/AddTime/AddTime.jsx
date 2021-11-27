@@ -9,13 +9,14 @@ import {
   Row,
   Space,
 } from 'antd'
-import PropTypes from 'prop-types'
+import { bool, func, any } from 'prop-types'
 import { useDispatch } from 'react-redux'
 
 import { addSuscription } from '../../services/Suscription/SuscriptionSlice'
 
 export const AddTime = ({ identification, open, close }) => {
   const { Item } = Form
+  const dispatch = useDispatch()
 
   const [error, setError] = useState(false)
   const [form, setForm] = useState({
@@ -24,15 +25,15 @@ export const AddTime = ({ identification, open, close }) => {
     debt: 0,
   })
 
-  const dispatch = useDispatch()
-
   const onChangeForm = e =>
     setForm({ ...form, [e.target.name]: e.target.value })
 
-  const onChangeDebt = e => (e > form.cost ? setError(true) : setError(false))
-
-  const onChangeCost = e =>
+  //const onChangeDebt = e => (e > form.cost ? setError(true) : setError(false))
+  const onChangeDebt = e => setError(e > form.cost)
+  /*const onChangeCost = e =>
     parseInt(e.target.value) < form.debt ? setError(true) : setError(false)
+*/
+  const onChangeCost = e => setError(parseInt(e.target.value) < form.debt)
 
   const onFinishForm = () => {
     close(false)
@@ -117,9 +118,9 @@ export const AddTime = ({ identification, open, close }) => {
 }
 
 AddTime.propTypes = {
-  identification: PropTypes.any,
-  open: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
+  identification: any,
+  open: bool.isRequired,
+  close: func.isRequired,
 }
 
 AddTime.defaulrProps = {

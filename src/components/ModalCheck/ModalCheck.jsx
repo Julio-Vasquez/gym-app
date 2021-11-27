@@ -5,13 +5,15 @@ import {
   CloseCircleTwoTone,
   WarningTwoTone,
 } from '@ant-design/icons'
-import { useSelector } from 'react-redux'
-import PropTypes from 'prop-types'
+import { func, string, bool } from 'prop-types'
 
 import { ColorTab } from '../ColorTab'
 
+import { Check } from './../../services/Check/CheckSlice'
+import { useData } from './../../hooks/useData'
+
 export const ModalCheck = ({ title, close, ok, open, visible }) => {
-  const { client, loading } = useSelector(state => state.Check)
+  const { client, loading } = useData({ reducer: Check })
   const [color, setColor] = useState('')
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
     if (visible) {
       const timer = setTimeout(() => {
         ok()
-      }, 7000)
+      }, 4000)
       return () => {
         clearTimeout(timer)
       }
@@ -30,7 +32,7 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
   }, [client.time, ok, visible])
 
   return loading ? (
-    ''
+    <></>
   ) : (
     <div className="modal-check">
       <Space>
@@ -48,12 +50,14 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
                 className="modal-check-icon"
               />
             )}
+
             {client.time > 5 && (
               <CheckCircleTwoTone
                 twoToneColor="#8BC34A"
                 className="modal-check-icon"
               />
             )}
+
             {client.time <= 5 && client.time > 0 && (
               <WarningTwoTone
                 twoToneColor="#ff9800"
@@ -78,7 +82,7 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
                     color: color,
                   }}
                 >
-                  {client.time === null ? '0' : client.time} Dias
+                  {client.time === null ? '0' : client.time - 1} Dias
                 </p>
               </Row>
               <Row>
@@ -97,8 +101,8 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
 }
 
 ModalCheck.propTypes = {
-  title: PropTypes.string.isRequired,
-  close: PropTypes.func.isRequired,
-  ok: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
+  title: string.isRequired,
+  close: func.isRequired,
+  ok: func.isRequired,
+  open: bool.isRequired,
 }
