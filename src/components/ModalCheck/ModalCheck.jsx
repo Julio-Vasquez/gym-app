@@ -82,7 +82,8 @@ export const ModalCheck = ({ title, close, ok, open, visible }) => {
                     color: color,
                   }}
                 >
-                  {client.time === null ? '0' : client.time - 1} Dias
+                  {client.time === null ? '0' : client.time}
+                  {client.time === 1 ? ' Ultimo Dia' : ' Dias'}
                 </p>
               </Row>
               <Row>
