@@ -26,7 +26,13 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.5",
-    "vite-plugin-react-router": "^1.2.1",
-    "vite": "^2.6.10"
+    "standard": "^16.0.4",
+    "vite": "^2.6.10",
+    "vite-plugin-react-router": "^1.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
   }
 }
