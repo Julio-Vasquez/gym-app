@@ -1,1 +1,1 @@
-export { CustomTable } from "./CustomTableClient";
+export { CustomTable } from './CustomTableClient'
